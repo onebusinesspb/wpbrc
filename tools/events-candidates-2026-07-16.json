@@ -1,0 +1,112 @@
+[
+  {
+    "id": "city-commission-2026-07-20",
+    "title": "City Commission Meeting — Final Vote on Waterfront Moratorium",
+    "date": "2026-07-20",
+    "displayDate": "July 20, 2026 - 5:00 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Second-reading (final) vote on a proposed six-month moratorium on new planned development applications for the Flagler waterfront corridor (south of Monroe Drive, north of Southern Boulevard, west of Flagler Drive, east of Washington Road). Public comment is taken at Commission meetings.",
+    "tag": "Featured",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "planning-board-2026-07-21",
+    "title": "Planning Board Meeting",
+    "date": "2026-07-21",
+    "displayDate": "July 21, 2026 - 6:00 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular monthly hearing of the Planning Board, which reviews developments for conformance with the City's zoning regulations and Comprehensive Plan. Check the posted agenda before attending.",
+    "tag": "Hearing",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "hpb-2026-07-28",
+    "title": "Historic Preservation Board Meeting",
+    "date": "2026-07-28",
+    "displayDate": "July 28, 2026 - 4:30 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular monthly meeting of the Historic Preservation Board, which reviews certificates of appropriateness, variances, and special use permits for historic districts and properties.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "city-commission-2026-08-03",
+    "title": "City Commission Meeting",
+    "date": "2026-08-03",
+    "displayDate": "August 3, 2026 - 5:00 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular meeting of the West Palm Beach City Commission. Agendas are posted in advance on the City Clerk's page; public comment is taken.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "dac-2026-08-12",
+    "title": "Downtown Action Committee (DAC)",
+    "date": "2026-08-12",
+    "displayDate": "August 12, 2026 - 9:00 AM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "The DAC reviews appeals, variances, and special use permits in the Downtown Master Plan area. Regular schedule is the second Wednesday monthly at 9 AM; confirm the posted agenda before attending.",
+    "tag": "Hearing",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "city-commission-2026-08-17",
+    "title": "City Commission Meeting",
+    "date": "2026-08-17",
+    "displayDate": "August 17, 2026 - 5:00 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular meeting of the West Palm Beach City Commission. Agendas are posted in advance on the City Clerk's page; public comment is taken.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "planning-board-2026-08-18",
+    "title": "Planning Board Meeting",
+    "date": "2026-08-18",
+    "displayDate": "August 18, 2026 - 6:00 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular monthly hearing of the Planning Board. Check the posted agenda before attending.",
+    "tag": "Hearing",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "hpb-2026-08-25",
+    "title": "Historic Preservation Board Meeting",
+    "date": "2026-08-25",
+    "displayDate": "August 25, 2026 - 4:30 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular monthly meeting of the Historic Preservation Board for historic-district applications and certificates of appropriateness.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "city-commission-2026-08-31",
+    "title": "City Commission Meeting",
+    "date": "2026-08-31",
+    "displayDate": "August 31, 2026 - 5:00 PM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular meeting of the West Palm Beach City Commission. Agendas are posted in advance on the City Clerk's page; public comment is taken.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "dac-2026-09-09",
+    "title": "Downtown Action Committee (DAC)",
+    "date": "2026-09-09",
+    "displayDate": "September 9, 2026 - 9:00 AM",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "Regular monthly DAC hearing for Downtown Master Plan area applications. Regular schedule is the second Wednesday monthly at 9 AM; confirm the posted agenda before attending.",
+    "tag": "Hearing",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "900-rosemary-commission-vote-watch",
+    "title": "900 S Rosemary Hotel — City Commission Vote (Date TBD)",
+    "date": "",
+    "displayDate": "Date not yet set — watch Commission agendas",
+    "location": "Commission Chambers, City Hall, 401 Clematis Street",
+    "description": "The Planning Board approved the proposed 18-story, 400-room convention-center hotel on June 16, 2026. Final approval by the City Commission is still pending and no hearing date has been set; the developer has said it intends to break ground in late August.",
+    "tag": "Track",
+    "url": "https://stetnews.org/2026/06/22/second-convention-center-hotel-passes-key-test/"
+  }
+]

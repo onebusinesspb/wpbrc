@@ -1,0 +1,122 @@
+[
+  {
+    "id": "dac-2026-09-09",
+    "title": "Downtown Action Committee Meeting",
+    "date": "2026-09-09",
+    "displayDate": "September 9, 2026 - 9:00 AM",
+    "location": "City Hall, Commission Chambers, 401 Clematis St",
+    "description": "Monthly Downtown Action Committee meeting reviewing downtown development projects. Recent DAC meetings have been a focal point for the downtown redevelopment debate.",
+    "tag": "Featured",
+    "url": "https://www.wpb.org/Events-Folder/2026/090926-DAC"
+  },
+  {
+    "id": "dac-2026-08-12",
+    "title": "Downtown Action Committee Meeting (confirm)",
+    "date": "2026-08-12",
+    "displayDate": "August 12, 2026 - 9:00 AM (confirm on city calendar)",
+    "location": "City Hall, Commission Chambers, 401 Clematis St",
+    "description": "The DAC normally meets the second Wednesday of each month at 9 a.m. The city has not yet posted an event page for August; confirm before publishing.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "city-commission-2026-08-03",
+    "title": "City Commission Meeting",
+    "date": "2026-08-03",
+    "displayDate": "August 3, 2026 - 5:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Regular City Commission meeting; agendas post on the City Clerk's page before the meeting.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "city-commission-2026-08-17",
+    "title": "City Commission Meeting",
+    "date": "2026-08-17",
+    "displayDate": "August 17, 2026 - 5:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Regular City Commission meeting; agendas post on the City Clerk's page before the meeting.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "city-commission-2026-08-31",
+    "title": "City Commission Meeting",
+    "date": "2026-08-31",
+    "displayDate": "August 31, 2026 - 5:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Regular City Commission meeting; agendas post on the City Clerk's page before the meeting.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "city-commission-2026-09-14",
+    "title": "City Commission Meeting",
+    "date": "2026-09-14",
+    "displayDate": "September 14, 2026 - 5:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Regular City Commission meeting. September Commission meetings typically include the city's annual budget public hearings; watch the posted agenda.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/City-Commission-Meeting-2026"
+  },
+  {
+    "id": "cra-board-2026-08-03",
+    "title": "CRA Board Meeting",
+    "date": "2026-08-03",
+    "displayDate": "August 3, 2026 - 4:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Community Redevelopment Agency Board meeting, held before the same-day City Commission meeting.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/CRA-Meeting-2026"
+  },
+  {
+    "id": "cra-board-2026-09-14",
+    "title": "CRA Board Meeting",
+    "date": "2026-09-14",
+    "displayDate": "September 14, 2026 - 4:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Community Redevelopment Agency Board meeting, held before the same-day City Commission meeting.",
+    "tag": "Meeting",
+    "url": "https://www.wpb.org/Events-Folder/2026/CRA-Meeting-2026"
+  },
+  {
+    "id": "planning-board-2026-08-18",
+    "title": "Planning Board Hearing",
+    "date": "2026-08-18",
+    "displayDate": "August 18, 2026 - 6:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Planning Board public hearing on development applications and zoning items. Agenda posts on the Planning Division page before the meeting.",
+    "tag": "Hearing",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "planning-board-2026-09-15",
+    "title": "Planning Board Hearing",
+    "date": "2026-09-15",
+    "displayDate": "September 15, 2026 - 6:00 PM",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "Planning Board public hearing on development applications and zoning items. Agenda posts on the Planning Division page before the meeting.",
+    "tag": "Hearing",
+    "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Boards-and-Committees"
+  },
+  {
+    "id": "dmpu-partnership-track",
+    "title": "Downtown Master Plan Update - Resident Partnership",
+    "date": "",
+    "displayDate": "Ongoing - dates announced by the City",
+    "location": "City of West Palm Beach",
+    "description": "The Mayor announced a resident partnership initiative in July 2026 to expand community participation in the Downtown Master Plan Update. Watch for scheduled input sessions.",
+    "tag": "Track",
+    "url": "https://www.wpb.org/News-Folder/News-2026/070726-Downtown-Master-Plan-DMPU"
+  },
+  {
+    "id": "900-rosemary-commission-review-track",
+    "title": "900 S Rosemary Hotel - City Commission Review",
+    "date": "",
+    "displayDate": "Expected on an upcoming Commission agenda",
+    "location": "Commission Chambers, 401 Clematis Street",
+    "description": "The Planning Board approved the proposed 400-room convention-center hotel on June 16, 2026. Zoning items now go to the City Commission; watch upcoming Commission agendas for the readings.",
+    "tag": "Track",
+    "url": "https://www.palmbeachnow.com/related-ross-curio-hotel-convention-center-proposal/"
+  }
+]

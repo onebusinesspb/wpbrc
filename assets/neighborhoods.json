@@ -1,0 +1,304 @@
+{
+  "_meta": {
+    "title": "WPB Neighborhood Associations Directory",
+    "version": "June 2026",
+    "note": "Directory of tracked WPB neighborhood associations. Edit here to update the Neighborhoods page."
+  },
+  "neighborhoods": [
+    {
+      "name": "Andoros Isle Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Avondale at Bear Lakes Property Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Baywinds Master Homeowners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Bear Island Homeowners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Bear Lakes Estates North Propery Owners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Briar Bay Master Homeowners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Brittany Village Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Central Park Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Classics at Bear Lakes",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Coleman Park",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Derher Park Neighborhood Assocation",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Echo Lake Association of Neighbors",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Flamingo Park Neighborhood Association",
+      "district": "5",
+      "hasContact": true
+    },
+    {
+      "name": "Foxhall Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Grandview Heights Neighborhood Association",
+      "district": "5",
+      "hasContact": true
+    },
+    {
+      "name": "Heritage Village Homeowners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Historic El Cid Neighborhood Associartion",
+      "district": "5",
+      "hasContact": true
+    },
+    {
+      "name": "Historic Prospect & Southland Park Neighborhood Association",
+      "district": "5",
+      "hasContact": true
+    },
+    {
+      "name": "Ibis Property Owners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Ironhorse Property Owners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Jonathan's Cove Assocation Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Lake of Laguna Master Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Mango Promenade Neighborhood Association",
+      "district": "5",
+      "hasContact": true
+    },
+    {
+      "name": "Normandy Village",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northboro Park",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northshore Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northwest Residents In Action",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northwood Gardens Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northwood Harbor Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northwood Hills Neighborhood Association",
+      "district": "",
+      "hasContact": true
+    },
+    {
+      "name": "Northwood Legacy Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northwood Pines Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Northwood Shores Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Old Northwood Historic Neighborhood",
+      "district": "",
+      "hasContact": true
+    },
+    {
+      "name": "Palm Beach Lakes South Neighborhood Assocaiton",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Palm Club Village II",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Pineapple Park Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Pinewood Park Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Pleasant City Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Poinciana Park Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Presidential Estates Property Owners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Prospect Heights",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Providencia Park Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Regents Place Homeowners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Riverwalk of the Palm Beaches Neighborhood Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Roosevelt Estates North Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Roosevelt Estates South Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Sandalwood Lakes Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Saratoga Bay Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Saratoga Pointe Homeowners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "South End Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Spencer Lakes Property Owners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Sunshine Park Neighborhood Association",
+      "district": "5",
+      "hasContact": true
+    },
+    {
+      "name": "Townhouse Court Estates Homeowners Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Vedado Neighborhood Association Inc.",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Villages of Palm Beach Lakes",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Villas of Bear Lakes Property Owners Association",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "West Palm Beach Downtown Neighborhood Assocation",
+      "district": "",
+      "hasContact": false
+    },
+    {
+      "name": "Westfield Neighborhood Association",
+      "district": "",
+      "hasContact": false
+    }
+  ]
+}

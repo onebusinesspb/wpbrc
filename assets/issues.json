@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "title": "WPBRC Current Issues",
+    "version": "June 2026",
+    "disclaimer": "Working drafts. Positions are pending Board confirmation; key dates, studies, and meetings should be verified against official City of West Palm Beach agendas before publication.",
+    "statusNote": "Draft — pending Coalition Board confirmation"
+  },
+  "issues": [
+    {
+      "id": "downtown-master-plan",
+      "title": "Downtown Master Plan",
+      "tag": "Active",
+      "summary": "Long-range decisions that will shape downtown and the waterfront for decades — including building heights, density, and the public review process.",
+      "why": "The Downtown Master Plan (DMP) sets the rules for height, density, and land use across the city core. Proposed changes could add over 1,200 high-rise units along the waterfront corridor, with towers ranging from roughly 18 to 31 stories. Residents are asking for adequate time to review mobility and infrastructure impacts before the plan is finalized.",
+      "keyDates": [
+        "Apr 25, 2024 — Comprehensive Plan / DMP element adopted (Ord. 5071-23)",
+        "2025–2026 — DMP update process underway at the Planning Division",
+        "Verify upcoming Downtown Action Committee (DAC) and Commission dates against the City calendar"
+      ],
+      "studies": [
+        {"label": "City of WPB — Downtown Master Plan (official page)", "url": "https://www.wpb.org/Departments/Development-Services/Planning-Division/Downtown-Master-Plan"},
+        {"label": "Downtown WPB Mobility Plan (2018)", "url": "https://altago.com/wp-content/uploads/mobility_plan-master_final-5-21-18_1.pdf"}
+      ],
+      "meetings": [
+        "Downtown Action Committee (DAC) — see Calendar for the next public meeting",
+        "City Commission hearings on DMP amendments — dates to be confirmed"
+      ],
+      "position": "Draft — pending Board confirmation: Allow adequate time for mobility and infrastructure questions to be answered before the DMP is finalized; support meaningful resident participation in the process.",
+      "plan": [
+        "Track the public process and post every hearing date on the Calendar",
+        "Encourage residents to attend DAC and Commission meetings and submit comment",
+        "Coordinate an independent review of traffic and infrastructure impacts"
+      ],
+      "petitions": [
+        {"label": "Sign: Protect the Palm", "url": "https://protectthepalm.com/"},
+        {"label": "Sign: Save WPB", "url": "REPLACE-WITH-SAVE-WPB-PETITION-URL"}
+      ]
+    },
+    {
+      "id": "traffic-mobility",
+      "title": "Traffic & Mobility",
+      "tag": "Watching",
+      "summary": "How new growth affects congestion, parking, transit, and pedestrian and cyclist safety across the city.",
+      "why": "Each major project adds trips to roads that were not designed for this pace of growth. Residents want long-term planning aligned with the County Transportation Master Plan and regional mobility studies, not project-by-project review.",
+      "keyDates": [
+        "Verify against the County Transportation Planning Agency (TPA) meeting calendar"
+      ],
+      "studies": [
+        {"label": "Downtown WPB Mobility Plan (2018)", "url": "https://altago.com/wp-content/uploads/mobility_plan-master_final-5-21-18_1.pdf"}
+      ],
+      "meetings": [
+        "Palm Beach TPA board meetings — add dates to the Calendar"
+      ],
+      "position": "Draft — pending Board confirmation: Align long-term city planning with the County Transportation Master Plan and regional mobility studies; fund independent traffic and mobility analysis.",
+      "plan": [
+        "Commission or compile independent traffic and mobility analysis",
+        "Map cumulative trip impacts from the development pipeline",
+        "Advocate for a coordinated, citywide mobility approach"
+      ]
+    },
+    {
+      "id": "infrastructure-capacity",
+      "title": "Infrastructure Capacity",
+      "tag": "Watching",
+      "summary": "Whether water, sewer, drainage, and stormwater systems can support the scale of approved and proposed growth.",
+      "why": "Much of the city's infrastructure is aging. Rapid high-density growth raises questions about capacity for water, sewer, drainage, and resilience that residents want answered before, not after, approvals.",
+      "keyDates": [
+        "Tie to City budget and Capital Improvement Plan (CIP) cycles — verify dates"
+      ],
+      "studies": [
+        {"label": "City of WPB — Public Utilities", "url": "https://www.wpb.org/government/public-utilities"}
+      ],
+      "meetings": [
+        "City Commission budget / CIP workshops — add to Calendar"
+      ],
+      "position": "Draft — pending Board confirmation: Infrastructure capacity and resilience should be evaluated and disclosed before major approvals.",
+      "plan": [
+        "Request capacity and CIP documentation through public records",
+        "Summarize findings in plain language for residents",
+        "Track infrastructure commitments tied to each major project"
+      ]
+    },
+    {
+      "id": "public-safety",
+      "title": "Public Safety",
+      "tag": "Watching",
+      "summary": "Police, fire-rescue, and neighborhood safety keeping pace with population growth.",
+      "why": "A growing residential downtown and denser neighborhoods change demands on police and fire-rescue. Residents want service levels and response times to keep pace with growth.",
+      "keyDates": [
+        "Tie to City budget cycle — verify dates"
+      ],
+      "studies": [
+        {"label": "City of WPB — Police Department", "url": "https://www.wpb.org/government/police"}
+      ],
+      "meetings": [
+        "Neighborhood public-safety briefings — add to Calendar"
+      ],
+      "position": "Draft — pending Board confirmation: Public-safety staffing and response capacity should scale with new development.",
+      "plan": [
+        "Track public-safety staffing and budget against growth",
+        "Coordinate neighborhood safety concerns citywide"
+      ]
+    },
+    {
+      "id": "waterfront-planning",
+      "title": "Waterfront Planning",
+      "tag": "Active",
+      "summary": "Protecting public access, green space, views, and the Intracoastal ecosystem along the waterfront.",
+      "why": "The waterfront is a shared public asset. Proposed towers along the corridor raise concerns about shadows on historic neighborhoods, public access, and the health of the Intracoastal ecosystem, seagrass, and manatees.",
+      "keyDates": [
+        "Verify against DAC and Commission waterfront agenda items"
+      ],
+      "studies": [
+        {"label": "City of WPB — Waterfront & Parks", "url": "https://www.wpb.org/government/parks-and-recreation"}
+      ],
+      "meetings": [
+        "Waterfront-related Commission and DAC hearings — add to Calendar"
+      ],
+      "position": "Draft — pending Board confirmation: Protect public waterfront access, green space, and environmental resilience for the long term.",
+      "plan": [
+        "Track waterfront projects on the Development Tracker",
+        "Advocate for public access and environmental review",
+        "Support resident participation in waterfront decisions"
+      ],
+      "petitions": [
+        {"label": "Sign: Protect the Palm", "url": "https://protectthepalm.com/"}
+      ]
+    },
+    {
+      "id": "development-pipeline",
+      "title": "Development Pipeline",
+      "tag": "Active",
+      "summary": "The full slate of major projects proposed, approved, and under construction across the city.",
+      "why": "Dozens of major projects are moving through the pipeline from Northwood to SoSo. Looking at them together — not one at a time — is the only way to understand the cumulative impact on traffic, infrastructure, and neighborhood character.",
+      "keyDates": [
+        "Updated continuously — see the Development Tracker"
+      ],
+      "studies": [
+        {"label": "WPBRC Development Tracker", "url": "https://wpbrc.org/development.html"}
+      ],
+      "meetings": [
+        "Planning Board and DAC project hearings — add to Calendar"
+      ],
+      "position": "Draft — pending Board confirmation: Evaluate growth cumulatively and transparently so it strengthens neighborhoods.",
+      "plan": [
+        "Maintain the interactive Development Tracker",
+        "Publish a plain-language summary of cumulative impacts",
+        "Flag projects with citywide significance for resident attention"
+      ]
+    }
+  ]
+}

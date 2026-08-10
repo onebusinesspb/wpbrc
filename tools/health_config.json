@@ -1,0 +1,20 @@
+{
+  "_comment": "Config for the free site health & security checker. No LLM, no API key.",
+  "site_url": "https://wpbrc.org",
+  "check_ssl": true,
+  "ssl_warn_days": 21,
+  "check_internal_links": true,
+  "check_external_links": true,
+  "endpoints": [
+    { "label": "Zeffy donation form", "url": "https://www.zeffy.com/en-US/embed/donation-form/donate-to-shape-our-citys-future" },
+    { "label": "Zeffy newsletter form", "url": "https://www.zeffy.com/en-US/embed/newsletter-form/sign-up-for-our-newsletter-3752" },
+    { "label": "FormSubmit (contact)", "url": "https://formsubmit.co" },
+    { "label": "Leaflet CDN", "url": "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" },
+    { "label": "Sveltia CMS CDN", "url": "https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" },
+    { "label": "OpenStreetMap tiles", "url": "https://a.tile.openstreetmap.org/13/2297/3521.png" }
+  ],
+  "library_versions": [
+    { "name": "leaflet", "npm": "leaflet", "pinned": "1.9.4" }
+  ],
+  "skip_link_hosts": ["fonts.googleapis.com", "fonts.gstatic.com"]
+}

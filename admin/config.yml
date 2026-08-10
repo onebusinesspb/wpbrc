@@ -1,0 +1,337 @@
+# =====================================================================
+# WPBRC content admin — free, open-source, no-code editing at /admin/
+# Works with Sveltia CMS (admin/index.html) — a maintained drop-in for Decap.
+# Board members log in and edit content through friendly forms; saving commits
+# to the repo and Netlify rebuilds the site automatically (see netlify.toml).
+#
+# LOGIN — choose ONE backend below:
+#   • git-gateway  (default): easiest for non-technical editors. Requires Netlify
+#     Identity + Git Gateway enabled on the site; invite editors by email.
+#   • github: durable long-term. Editors need GitHub accounts; requires a GitHub
+#     OAuth app (Sveltia supports GitHub directly). Swap the backend block for the
+#     commented "github" one and set repo: OWNER/REPO.
+# =====================================================================
+
+backend:
+  name: git-gateway
+  branch: main
+# --- GitHub alternative (uncomment to use instead of git-gateway) ---
+# backend:
+#   name: github
+#   repo: your-org/wpbrc-website
+#   branch: main
+
+media_folder: "assets/uploads"     # uploaded images are stored here
+public_folder: "/assets/uploads"
+
+# Friendly labels for project statuses reused below
+# (Proposed / In Review / Planning / Approved / Under Construction / Completed / On Hold)
+
+collections:
+  # ------------------------------------------------------------------
+  - name: "tracker"
+    label: "🗺️ Development Tracker"
+    files:
+      - name: "projects"
+        label: "Projects (map)"
+        file: "assets/projects.json"
+        format: "json"
+        description: "Add or update development projects. The map updates on save."
+        fields:
+          - label: "Info"
+            name: "_meta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Version", name: "version", widget: "string", required: false }
+              - { label: "Disclaimer", name: "disclaimer", widget: "text", required: false }
+              - { label: "Status order", name: "statusOrder", widget: "list", required: false }
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.status}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "unique, lowercase-with-dashes" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location / address", name: "location", widget: "string" }
+              - { label: "Neighborhoods", name: "neighborhoods", widget: "list", required: false }
+              - { label: "District", name: "district", widget: "string", required: false }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["Proposed","In Review","Planning","Approved","Under Construction","Completed","On Hold"]
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+              - { label: "Latitude", name: "lat", widget: "number", value_type: "float", hint: "Right-click the building in Google Maps to copy lat/long" }
+              - { label: "Longitude", name: "lng", widget: "number", value_type: "float" }
+              - { label: "Show on site (approved)", name: "approved", widget: "boolean", default: true, hint: "Scout-added items arrive OFF — flip ON to publish." }
+
+  # ------------------------------------------------------------------
+  - name: "board"
+    label: "👥 Board of Directors"
+    files:
+      - name: "board"
+        label: "Board members"
+        file: "assets/board.json"
+        format: "json"
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [
+              { label: "Title", name: "title", widget: "string", required: false },
+              { label: "Version", name: "version", widget: "string", required: false },
+              { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Members"
+            name: "members"
+            widget: "list"
+            summary: "{{fields.role}} — {{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Neighborhood association", name: "neighborhood", widget: "string" }
+              - { label: "Years in WPB", name: "yearsInWPB", widget: "string", required: false }
+              - { label: "Short bio", name: "bio", widget: "text", required: false }
+
+  # ------------------------------------------------------------------
+  - name: "issues"
+    label: "📌 Current Issues"
+    files:
+      - name: "issues"
+        label: "Issues"
+        file: "assets/issues.json"
+        format: "json"
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [
+              { label: "Title", name: "title", widget: "string", required: false },
+              { label: "Version", name: "version", widget: "string", required: false },
+              { label: "Disclaimer", name: "disclaimer", widget: "text", required: false },
+              { label: "Status note", name: "statusNote", widget: "string", required: false } ] }
+          - label: "Issues"
+            name: "issues"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "unique, lowercase-with-dashes" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Tag", name: "tag", widget: "select", options: ["Active","Watching"], required: false }
+              - { label: "Summary", name: "summary", widget: "text", required: false }
+              - { label: "Why it matters", name: "why", widget: "text", required: false }
+              - { label: "Coalition position", name: "position", widget: "text", required: false }
+              - { label: "Key dates", name: "keyDates", widget: "list", required: false }
+              - { label: "Upcoming meetings", name: "meetings", widget: "list", required: false }
+              - label: "Relevant studies"
+                name: "studies"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string", required: false }
+              - { label: "Plan of action", name: "plan", widget: "list", required: false }
+              - label: "Petitions"
+                name: "petitions"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+
+  # ------------------------------------------------------------------
+  - name: "events"
+    label: "📅 Calendar / Events"
+    files:
+      - name: "events"
+        label: "Events"
+        file: "assets/events.json"
+        format: "json"
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [
+              { label: "Title", name: "title", widget: "string", required: false },
+              { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.displayDate}} — {{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Display date", name: "displayDate", widget: "string", required: false }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Tag", name: "tag", widget: "string", required: false }
+              - { label: "Link (URL)", name: "url", widget: "string", required: false }
+              - { label: "Show on site (approved)", name: "approved", widget: "boolean", default: true, hint: "Scout-added items arrive OFF — flip ON to publish." }
+
+  # ------------------------------------------------------------------
+  - name: "media"
+    label: "📰 Media / Press"
+    files:
+      - name: "media"
+        label: "Coverage"
+        file: "assets/media.json"
+        format: "json"
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [
+              { label: "Title", name: "title", widget: "string", required: false },
+              { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.displayDate}} — {{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Display date", name: "displayDate", widget: "string", required: false }
+              - { label: "Outlet", name: "outlet", widget: "string", required: false }
+              - { label: "Headline", name: "title", widget: "string" }
+              - { label: "Link (URL)", name: "url", widget: "string", required: false }
+              - { label: "Show on site (approved)", name: "approved", widget: "boolean", default: true, hint: "Scout-added items arrive OFF — flip ON to publish." }
+              - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+
+  # ------------------------------------------------------------------
+  - name: "blog"
+    label: "✍️ Blog"
+    files:
+      - name: "posts"
+        label: "Blog posts"
+        file: "assets/blog.json"
+        format: "json"
+        description: "Write or edit posts. Newest first. The Blog page + each post page rebuild on save."
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.displayDate}} — {{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "unique, lowercase-with-dashes" }
+              - { label: "Slug (filename)", name: "slug", widget: "string", hint: "post-<id>.html", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Display date", name: "displayDate", widget: "string", required: false }
+              - { label: "Author", name: "author", widget: "string", default: "WPBRC", required: false }
+              - { label: "Tag", name: "tag", widget: "select", options: ["Development","Meetings","Analysis","Update"], required: false }
+              - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+              - { label: "Body", name: "body", widget: "markdown", hint: "Write normally — Markdown or HTML both work." }
+              - { label: "Show on site (approved)", name: "approved", widget: "boolean", default: true, hint: "Scout-added items arrive OFF — flip ON to publish." }
+
+  # ------------------------------------------------------------------
+  - name: "pages"
+    label: "📄 Pages (add / edit / delete)"
+    folder: "content/pages"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    summary: "{{title}}"
+    description: "Create new content pages or edit/delete existing ones. Turn 'Show in top menu' on to add it to the navigation. Feature pages (Home, map, Blog, Calendar) are not here and can't be deleted."
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Page address (slug)", name: "slug", widget: "string", hint: "lowercase-with-dashes, e.g. get-involved (no .html)" }
+      - { label: "Show in top menu", name: "in_nav", widget: "boolean", default: false }
+      - { label: "Menu label", name: "nav_label", widget: "string", required: false, hint: "Defaults to the Title" }
+      - { label: "Menu order", name: "nav_order", widget: "number", default: 500, required: false, hint: "Lower = further left" }
+      - { label: "Hero eyebrow (small line)", name: "eyebrow", widget: "string", required: false }
+      - { label: "Hero subtitle", name: "subtitle", widget: "string", required: false }
+      - { label: "Meta description (SEO)", name: "meta_description", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown", hint: "Write normally — Markdown or HTML both work." }
+
+  # ------------------------------------------------------------------
+  - name: "navigation"
+    label: "🧭 Navigation & site settings"
+    files:
+      - name: "settings"
+        label: "Menu & settings"
+        file: "content/settings.json"
+        format: "json"
+        description: "Reorder, rename, hide, or add top-menu links. Lower 'order' = further left. Don't hide the locked feature pages (Home, Development, Calendar, Blog)."
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [ { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Join button"
+            name: "join"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link (URL)", name: "url", widget: "string" }
+          - label: "Menu items"
+            name: "nav"
+            widget: "list"
+            summary: "{{fields.order}} · {{fields.label}}{{#if fields.show}}{{else}} (hidden){{/if}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link (URL)", name: "url", widget: "string", hint: "e.g. about.html or a custom page's slug.html" }
+              - { label: "Order", name: "order", widget: "number", default: 500 }
+              - { label: "Show", name: "show", widget: "boolean", default: true }
+              - { label: "Feature page (do not remove)", name: "locked", widget: "boolean", default: false, required: false }
+
+  # ------------------------------------------------------------------
+  - name: "home_text"
+    label: "🏠 Home page text"
+    files:
+      - name: "home"
+        label: "Home wording"
+        file: "content/home.json"
+        format: "json"
+        description: "Edit the words on the Home page. The design/layout stays the same."
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [ { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Hero (top banner)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow (small line)", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - label: "Who we are"
+            name: "whoWeAre"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text" }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text" }
+          - label: "Fundraising block"
+            name: "fundraising"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text" }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text" }
+
+  # ------------------------------------------------------------------
+  - name: "about_text"
+    label: "ℹ️ About page text"
+    files:
+      - name: "about"
+        label: "About wording"
+        file: "content/about.json"
+        format: "json"
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [ { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Why we exist"
+            name: "purpose"
+            widget: "object"
+            fields:
+              - { label: "Lead paragraph", name: "lead", widget: "text" }
+              - { label: "Second paragraph", name: "paragraph", widget: "text" }
+
+  # ------------------------------------------------------------------
+  - name: "neighborhoods"
+    label: "🏘️ Neighborhood Directory"
+    files:
+      - name: "neighborhoods"
+        label: "Associations"
+        file: "assets/neighborhoods.json"
+        format: "json"
+        fields:
+          - { label: "Info", name: "_meta", widget: "object", collapsed: true, required: false, fields: [
+              { label: "Title", name: "title", widget: "string", required: false },
+              { label: "Version", name: "version", widget: "string", required: false },
+              { label: "Note", name: "note", widget: "text", required: false } ] }
+          - label: "Neighborhoods"
+            name: "neighborhoods"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "District", name: "district", widget: "string", required: false }
+              - { label: "Contact on file?", name: "hasContact", widget: "boolean", default: false }

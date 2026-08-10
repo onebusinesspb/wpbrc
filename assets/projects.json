@@ -1,0 +1,668 @@
+{
+  "_meta": {
+    "title": "WPB Development Pipeline Master List",
+    "version": "June 2026",
+    "disclaimer": "Merged from City of West Palm Beach, Planning Board, DAC filings, developer disclosures, and press reporting (June 2026). Details are subject to change; verify against current City agendas. Map coordinates are approximate, placed by street address.",
+    "statusOrder": [
+      "Proposed",
+      "In Review",
+      "Planning",
+      "Approved",
+      "Under Construction",
+      "Completed",
+      "On Hold"
+    ]
+  },
+  "projects": [
+    {
+      "id": "one-flagler",
+      "name": "One Flagler",
+      "location": "One Flagler Drive",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "3",
+      "status": "Completed",
+      "notes": "Class A Office; Developer: Related Ross; 25-story, 270,000 sq ft; Opened February 2025; 1.25-acre public park with Fred Eversley sculptures",
+      "lat": 26.71,
+      "lng": -80.057
+    },
+    {
+      "id": "the-bristol",
+      "name": "The Bristol",
+      "location": "1100 South Flagler Drive",
+      "neighborhoods": [
+        "El Cid / South Flagler"
+      ],
+      "district": "5",
+      "status": "Completed",
+      "notes": "Luxury Condominium; Developer: Bristol Development Group; Completed 2019; established S. Flagler as luxury corridor",
+      "lat": 26.689,
+      "lng": -80.0525
+    },
+    {
+      "id": "la-clara",
+      "name": "La Clara",
+      "location": "1515 South Flagler Drive",
+      "neighborhoods": [
+        "El Cid / South Flagler"
+      ],
+      "district": "5",
+      "status": "Completed",
+      "notes": "Luxury Condominium; Developer: 13th Floor Investments & Sason; Completed 2023",
+      "lat": 26.68506,
+      "lng": -80.0525
+    },
+    {
+      "id": "fort-on-flagler",
+      "name": "Forté on Flagler",
+      "location": "1309 South Flagler Drive",
+      "neighborhoods": [
+        "El Cid / South Flagler"
+      ],
+      "district": "5",
+      "status": "Completed",
+      "notes": "Luxury Condominium; Developer: Related Ross; 25-story, 41 units; Topped off April 2024",
+      "lat": 26.68851,
+      "lng": -80.0525
+    },
+    {
+      "id": "the-ben-hotel-autograph-collection",
+      "name": "The Ben Hotel (Autograph Collection)",
+      "location": "CityPlace",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Completed",
+      "notes": "Hotel; Developer: Related Ross; 206 rooms; completed 2020",
+      "lat": 26.7065,
+      "lng": -80.0595
+    },
+    {
+      "id": "canopy-hotel",
+      "name": "Canopy Hotel",
+      "location": "CityPlace",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Completed",
+      "notes": "Hotel; Developer: Related Ross; 150 rooms; completed 2020",
+      "lat": 26.7025,
+      "lng": -80.0585
+    },
+    {
+      "id": "hilton-west-palm-beach",
+      "name": "Hilton West Palm Beach",
+      "location": "600 Okeechobee Blvd",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Completed",
+      "notes": "Hotel / Convention; Developer: Hilton; 400 rooms; convention center hotel",
+      "lat": 26.7062,
+      "lng": -80.0575
+    },
+    {
+      "id": "brightline-station",
+      "name": "Brightline Station",
+      "location": "Downtown WPB",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "3",
+      "status": "Completed",
+      "notes": "Passenger Rail / Transit Hub; Developer: Brightline; Expanded regional rail connecting Miami–Orlando",
+      "lat": 26.712,
+      "lng": -80.056
+    },
+    {
+      "id": "casamara",
+      "name": "CasaMara",
+      "location": "3111 South Dixie Highway",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "Completed",
+      "notes": "Luxury Apartment Rental; Developer: TBD; Completed 2021; catalyzed SoSo retail & restaurant wave (Common Grounds, Pink Steak, etc.)",
+      "lat": 26.68156,
+      "lng": -80.0595
+    },
+    {
+      "id": "nora-district-phase-1",
+      "name": "NORA District — Phase 1",
+      "location": "North Dixie corridor",
+      "neighborhoods": [
+        "Northwood"
+      ],
+      "district": "1",
+      "status": "Completed",
+      "notes": "Mixed-Use; Developer: NDT Development, Place Projects & Wheelock Street Capital; Phase 1 open 2025",
+      "lat": 26.747,
+      "lng": -80.0585
+    },
+    {
+      "id": "icon-marina-village",
+      "name": "Icon Marina Village",
+      "location": "4400 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Completed",
+      "notes": "Residential; Developer: TBD; 399 units; completed",
+      "lat": 26.7493,
+      "lng": -80.0515
+    },
+    {
+      "id": "breakers-hotel-vdg-land-company",
+      "name": "Breakers Hotel / VDG Land Company",
+      "location": "2410, 2460, 2508 North Australian Avenue",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Apartment Complex (51% Breakers workforce housing); Developer: Flagler System Management; 8-story, 155 units",
+      "lat": 26.72435,
+      "lng": -80.0635
+    },
+    {
+      "id": "currie-park-redevelopment",
+      "name": "Currie Park Redevelopment",
+      "location": "2400 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Public waterfront park redevelopment / civic infrastructure; Developer: City of West Palm Beach / West Palm Beach CRA; 13 acres",
+      "lat": 26.732,
+      "lng": -80.0508
+    },
+    {
+      "id": "mr-c-residences-west-palm-beach",
+      "name": "Mr. C Residences West Palm Beach",
+      "location": "320 Lakeview Avenue",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Under Construction",
+      "notes": "Mixed-Use: Condominium, Hotel, Restaurant, Private Club; Developer: Terra Group & Sympatico Real Estate (Morrison Family entity); 27-story, 256 units total; 146 Condominiums / 110 Hotel Rooms",
+      "lat": 26.7065,
+      "lng": -80.0525
+    },
+    {
+      "id": "nora-district",
+      "name": "NORA District",
+      "location": "Bounded by Palm Beach Lakes Blvd (N), Quadrille Blvd (S), N. Dixie Hwy (E), FEC Railway (W)",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "3",
+      "status": "Under Construction",
+      "notes": "Mixed-Use: Retail, Restaurants, Office, Hotel, Residential; Developer: NDT Development, Place Projects & Wheelock Street Capital; Phase 1 open; additional phases in 2026",
+      "lat": 26.747,
+      "lng": -80.0575
+    },
+    {
+      "id": "olara",
+      "name": "Olara",
+      "location": "1919 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Mixed-Use: Condominiums, Apartment Rentals, Private Marina, Restaurant; Developer: Savanna; 26-story, 2 towers, 455 units total; Tower 1 (Condominium): 275 units; Tower 2 (Apartment Rentals): 210 units; Restaurant by Chef José Andrés; broke ground August 2025",
+      "lat": 26.7278,
+      "lng": -80.0508
+    },
+    {
+      "id": "palm-beach-atlantic-university-expansion",
+      "name": "Palm Beach Atlantic University Expansion",
+      "location": "1200 S. Dixie Highway",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "3",
+      "status": "Under Construction",
+      "notes": "Residence Hall & Parking Garage; Developer: Gilbane Development Company; 25-story, 275 units / 990 beds",
+      "lat": 26.69965,
+      "lng": -80.0575
+    },
+    {
+      "id": "shorecrest",
+      "name": "Shorecrest",
+      "location": "1901 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Condominium; Developer: Related Ross; 28-story, 98 units",
+      "lat": 26.7276,
+      "lng": -80.0508
+    },
+    {
+      "id": "south-flagler-house",
+      "name": "South Flagler House",
+      "location": "1355 South Flagler Drive",
+      "neighborhoods": [
+        "El Cid / South Flagler"
+      ],
+      "district": "5",
+      "status": "Under Construction",
+      "notes": "Condominium; Developer: Related Ross; 2 towers, 28 stories, 108 units total",
+      "lat": 26.6868,
+      "lng": -80.0523
+    },
+    {
+      "id": "the-berkeley-palm-beach",
+      "name": "The Berkeley Palm Beach",
+      "location": "550 S. Australian Avenue",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Condominium; Developer: The Adelson Group & Sympatico Real Estate (Morrison Family entity); 25-story, 198 units",
+      "lat": 26.714,
+      "lng": -80.0625
+    },
+    {
+      "id": "the-district-at-northwood",
+      "name": "The District at Northwood",
+      "location": "Bounded by 23rd St (S), 25th St (N), Broadway (E), railroad tracks (W)",
+      "neighborhoods": [
+        "Northwood"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Mixed-Use: Retail, Restaurants, Rental Apartments; Developer: Immocorp Capital & Beachwold Residential; 382 units; 60,772 sq ft restaurant/retail space",
+      "lat": 26.746,
+      "lng": -80.058
+    },
+    {
+      "id": "the-domaine-at-soso",
+      "name": "The Domaine at SoSo",
+      "location": "432 Nottingham Boulevard",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "5",
+      "status": "Under Construction",
+      "notes": "Townhomes; Developer: Pulte Homes; 30 townhomes",
+      "lat": 26.659,
+      "lng": -80.058
+    },
+    {
+      "id": "the-estates-at-nomar",
+      "name": "The Estates at NOMAR",
+      "location": "Bounded by 40th St (S), 45th St (N), N. Flagler Dr (E), Broadway (W)",
+      "neighborhoods": [
+        "Northwood"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Single-Family Residential — Northwood Marina District; Developer: GL Homes & Huizenga Holdings; 100 single-family homes",
+      "lat": 26.748,
+      "lng": -80.058
+    },
+    {
+      "id": "the-ritz-carlton-residences",
+      "name": "The Ritz-Carlton Residences",
+      "location": "1717 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Condominium; Developer: Related Group & BH Group; 27-story, 138 units; Groundbreaking Q1 2026; completion early 2028",
+      "lat": 26.726,
+      "lng": -80.0505
+    },
+    {
+      "id": "the-sound-apartments",
+      "name": "The Sound Apartments",
+      "location": "8111 South Dixie Highway",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "Under Construction",
+      "notes": "Mixed-Use: Rental Apartments, Retail; Developer: Woodfield Development & Flagler Realty & Development; 8-story, 358 units (90 workforce units); Includes Trader Joe's (opened June 12, 2026)",
+      "lat": 26.63,
+      "lng": -80.0565
+    },
+    {
+      "id": "west-palm-point",
+      "name": "West Palm Point",
+      "location": "801 South Dixie Avenue",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "Under Construction",
+      "notes": "Mixed-Use: Office, Retail; Developer: Cohen Brothers Realty Corporation; 24-story; Foundation permit issued",
+      "lat": 26.70284,
+      "lng": -80.0605
+    },
+    {
+      "id": "10-cityplace-15-cityplace",
+      "name": "10 CityPlace & 15 CityPlace",
+      "location": "CityPlace, Downtown West Palm Beach",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Under Construction",
+      "notes": "Class A Office; Developer: Related Ross; Nearly 1 million sq ft combined; Record $772M construction loan; Cleveland Clinic signed as anchor tenant; Expected completion 2027",
+      "lat": 26.7035,
+      "lng": -80.0595
+    },
+    {
+      "id": "good-samaritan-medical-center-campus-redevelopment",
+      "name": "Good Samaritan Medical Center Campus Redevelopment (Phase 1)",
+      "location": "1301 N. Dixie Highway (hospital); 1309 N. Flagler Drive (condos)",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "3",
+      "status": "Under Construction",
+      "notes": "Waterfront Mixed-Use District; Developer: Palm Beach Health Network & Easton Street Capital; New hospital: 10 floors, 225 beds; 2 luxury condo towers at 1309 N. Flagler: approx. 300 units (150/tower); Apartment rentals / workforce housing: TBD units; Announced February 2026",
+      "lat": 26.745,
+      "lng": -80.0595
+    },
+    {
+      "id": "nyu-langone-health-medical-tower",
+      "name": "NYU Langone Health Medical Tower",
+      "location": "324 Datura Street",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Under Construction",
+      "notes": "Medical Office / Healthcare; Developer: NYU Langone Health; Part of WPB's healthcare expansion wave",
+      "lat": 26.7145,
+      "lng": -80.058
+    },
+    {
+      "id": "cleveland-clinic-hospital",
+      "name": "Cleveland Clinic Hospital",
+      "location": "Australian Avenue / Clear Lake",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "1",
+      "status": "Under Construction",
+      "notes": "Hospital; Developer: Cleveland Clinic; 150-bed hospital planned; Anchor tenant signed at 10 CityPlace",
+      "lat": 26.714,
+      "lng": -80.0655
+    },
+    {
+      "id": "apogee",
+      "name": "Apogee",
+      "location": "4906 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Approved",
+      "notes": "Condominium; Developer: Related Group; 21-story, 39 units",
+      "lat": 26.7537,
+      "lng": -80.0515
+    },
+    {
+      "id": "banyan-tree-residences-west-palm-beach",
+      "name": "Banyan Tree Residences West Palm Beach",
+      "location": "400 Hibiscus Street / 635 South Dixie Highway",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "Approved",
+      "notes": "Mixed-Use: Condominium, Retail; Developer: Mast Capital & JCZM Development; 25-story, 88 units",
+      "lat": 26.70806,
+      "lng": -80.0595
+    },
+    {
+      "id": "edgeworth",
+      "name": "Edgeworth",
+      "location": "1155 South Flagler Drive",
+      "neighborhoods": [
+        "El Cid / South Flagler"
+      ],
+      "district": "5",
+      "status": "Approved",
+      "notes": "Condominium; Developer: Related Ross; 2 towers, 28-story, 168 units total; North Tower: 102 units; South Tower: 66 units",
+      "lat": 26.68935,
+      "lng": -80.0515
+    },
+    {
+      "id": "maison-d-or",
+      "name": "Maison D'Or",
+      "location": "3705 South Flagler Drive",
+      "neighborhoods": [
+        "El Cid / South Flagler"
+      ],
+      "district": "5",
+      "status": "Approved",
+      "notes": "Condominium; Developer: Kolter Urban & Perko Development Partners; 19-story, 39 units",
+      "lat": 26.66,
+      "lng": -80.0515
+    },
+    {
+      "id": "mandarin-oriental-residences",
+      "name": "Mandarin Oriental Residences",
+      "location": "5400 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Approved",
+      "notes": "Branded Condominium; Developer: Great Gulf; 31-story, 87 units",
+      "lat": 26.758,
+      "lng": -80.0515
+    },
+    {
+      "id": "rybovich-village-phase-1",
+      "name": "Rybovich Village — Phase 1",
+      "location": "4000–4300 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Approved",
+      "notes": "Mixed-Use: Condominiums, Office, Retail, Restaurant, Private Club, Marina; Developer: Huizenga Holdings & Integra Investments; Phase 1: 2 towers, approved — construction not started; Tower 1: 36-story (tallest building in WPB), 112 condo units; Tower 2: 34-story, 141 condo units; Full build-out (4 t",
+      "lat": 26.7472,
+      "lng": -80.0515
+    },
+    {
+      "id": "alba-palm-beach",
+      "name": "Alba Palm Beach",
+      "location": "4714 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "Approved",
+      "notes": "Condominium; Developer: BGI Companies; 22-story, 55 units; Groundbreaking targeted June 2026",
+      "lat": 26.7521,
+      "lng": -80.0515
+    },
+    {
+      "id": "district-pointe-residences",
+      "name": "District Pointe Residences",
+      "location": "1501 Belvedere Road",
+      "neighborhoods": [
+        "Airport / Belvedere"
+      ],
+      "district": "5",
+      "status": "Approved",
+      "notes": "Residential; Developer: TBD; 280 units (market-rate and workforce); Site plan approved January 2026; Near Palm Beach International Airport",
+      "lat": 26.6815,
+      "lng": -80.0685
+    },
+    {
+      "id": "oasis-tower",
+      "name": "Oasis Tower",
+      "location": "1415 Centrepark Boulevard",
+      "neighborhoods": [
+        "Airport / Belvedere"
+      ],
+      "district": "5",
+      "status": "Approved",
+      "notes": "Apartment Rental; Developer: TBD; 12-story, 323 units (81 workforce units); Approved April 2025",
+      "lat": 26.6905,
+      "lng": -80.069
+    },
+    {
+      "id": "vanderbilt-university-west-palm-beach-graduate-cam",
+      "name": "Vanderbilt University West Palm Beach Graduate Campus",
+      "location": "Downtown West Palm Beach, near Tamarind Ave / Sapodilla Ave, between Fern and Datura Streets",
+      "neighborhoods": [
+        "Downtown"
+      ],
+      "district": "3",
+      "status": "Planning",
+      "notes": "Graduate university campus — business, technology, engineering, AI & innovation; Developer: Vanderbilt University / City of West Palm Beach / Palm Beach County; Pre-construction; additional approvals pending; Major institutional anchor for downtown knowledge economy",
+      "lat": 26.71,
+      "lng": -80.063
+    },
+    {
+      "id": "2001-n-flagler-drive-name-tbd",
+      "name": "2001 N. Flagler Drive (Name TBD)",
+      "location": "2002 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "In Review",
+      "notes": "Condominium; Developer: Related Group & BH Group; 27-story, 90 units & townhomes",
+      "lat": 26.7285,
+      "lng": -80.0508
+    },
+    {
+      "id": "alba-reserve",
+      "name": "Alba Reserve",
+      "location": "4720 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "In Review",
+      "notes": "Condominium; Developer: BGI Companies & Blue Road Group; 30-story, 129 units & 1 townhouse",
+      "lat": 26.7524,
+      "lng": -80.0515
+    },
+    {
+      "id": "currie-towers",
+      "name": "Currie Towers",
+      "location": "2175 & 2251 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "In Review",
+      "notes": "Mixed-Use: Condominium, Commercial/Retail; Developer: Jeff Greene Development; 2 towers, 30-story each, 152 units total",
+      "lat": 26.73,
+      "lng": -80.0508
+    },
+    {
+      "id": "deco-northwood",
+      "name": "Deco Northwood",
+      "location": "2900 Broadway",
+      "neighborhoods": [
+        "Northwood"
+      ],
+      "district": "1",
+      "status": "In Review",
+      "notes": "Mixed-Use: Rental Apartments, Commercial; Developer: The Prime Company; 8-story, 140 units",
+      "lat": 26.749,
+      "lng": -80.059
+    },
+    {
+      "id": "jeff-greene-south-dixie-housing-development",
+      "name": "Jeff Greene South Dixie Housing Development",
+      "location": "120 South Dixie Highway",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "In Review",
+      "notes": "Apartment Rentals (40% workforce housing); Developer: Jeff Greene Development; 25-story, 366–399 units; Construction material: pre-fabricated timber; Under review with Plans and Plats Review Committee",
+      "lat": 26.714,
+      "lng": -80.0575
+    },
+    {
+      "id": "the-press-shops-at-the-press",
+      "name": "The Press / Shops at The Press",
+      "location": "2751 South Dixie Highway",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "In Review",
+      "notes": "Mixed-Use: Retail, Office (former Palm Beach Post site); Developer: Tricera Capital; 125,000 sq ft retail anchored by organic grocer (Joseph's Market); Workplaces at The Press office component",
+      "lat": 26.68234,
+      "lng": -80.0565
+    },
+    {
+      "id": "nora-district-remaining-phases",
+      "name": "NORA District — Remaining Phases",
+      "location": "NORA District, North Dixie corridor",
+      "neighborhoods": [
+        "Northwood"
+      ],
+      "district": "1",
+      "status": "In Review",
+      "notes": "Mixed-Use: Residential, Hotel, Retail, Public Space; Developer: NDT Development, Place Projects & Wheelock Street Capital; Additional residential, hotel, retail and public space phases scheduled for 2026+",
+      "lat": 26.744,
+      "lng": -80.0555
+    },
+    {
+      "id": "brodsky-organization-development-project",
+      "name": "Brodsky Organization Development Project",
+      "location": "690 South Olive Avenue (land leased from Holy Trinity Episcopal Church)",
+      "neighborhoods": [
+        "Citywide"
+      ],
+      "district": "3",
+      "status": "On Hold",
+      "notes": "Condominium; Developer: Brodsky Organization; 30-story, 62 units; Draft proposal filed with City; on hold pending church lease resolution",
+      "lat": 26.71,
+      "lng": -80.0535
+    },
+    {
+      "id": "carefree-6",
+      "name": "Carefree 6",
+      "location": "2000 South Dixie Highway",
+      "neighborhoods": [
+        "SoSo / South Dixie"
+      ],
+      "district": "5",
+      "status": "On Hold",
+      "notes": "Mixed-Use: Apartments, Commercial/Retail; Developer: Cohen Brothers Realty Corporation; 59 units + restaurant/retail/entertainment; On hold",
+      "lat": 26.69324,
+      "lng": -80.0565
+    },
+    {
+      "id": "rybovich-village-phase-2",
+      "name": "Rybovich Village — Phase 2",
+      "location": "4000–4300 North Flagler Drive",
+      "neighborhoods": [
+        "Northwood / North Flagler"
+      ],
+      "district": "1",
+      "status": "On Hold",
+      "notes": "Mixed-Use: Condominiums, Office, Retail, Restaurant, Private Club, Marina; Developer: Huizenga Holdings & Integra Investments; 2 towers, 401 units total — not approved; Building 3: approx. 40-story; Building 4: approx. 36-story; On hold pending Phase 1 progress",
+      "lat": 26.748,
+      "lng": -80.0515
+    }
+  ]
+}

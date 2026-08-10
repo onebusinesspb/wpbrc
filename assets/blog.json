@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "note": "Blog posts for the WPBRC site. Each post becomes its own page (slug). Drafted weekly by the content agent; published after Board review.",
+    "tags": [
+      "Update",
+      "Development",
+      "Meetings",
+      "Analysis",
+      "Announcement"
+    ]
+  },
+  "posts": [
+    {
+      "id": "welcome",
+      "slug": "post-welcome.html",
+      "title": "Welcome to the WPBRC Blog",
+      "date": "2026-06-18",
+      "displayDate": "June 18, 2026",
+      "author": "WPBRC",
+      "tag": "Announcement",
+      "excerpt": "A new place for clear, non-partisan updates on the development projects, public meetings, and decisions shaping West Palm Beach.",
+      "body": "<p>Welcome to the West Palm Beach Residents Coalition blog. This is where we&rsquo;ll share clear, non-partisan updates on the issues that affect our whole city &mdash; new development projects, upcoming public meetings and hearings, and the long-term planning decisions that shape our neighborhoods.</p><h2>What to expect</h2><p>Each week we&rsquo;ll summarize what&rsquo;s moving on the <a href=\"development.html\">development tracker</a>, flag the <a href=\"events.html\">meetings worth showing up for</a>, and explain what it means for residents &mdash; in plain language, with sources.</p><h2>Stay in the loop</h2><p>Prefer it in your inbox? <a href=\"events.html#newsletter\">Sign up for our newsletter</a>, and consider <a href=\"join.html\">joining the Coalition</a> to add your voice.</p>"
+    },
+    {
+      "id": "development-snapshot-june-2026",
+      "slug": "post-development-snapshot-june-2026.html",
+      "title": "What’s rising across West Palm Beach: a development snapshot",
+      "date": "2026-06-17",
+      "displayDate": "June 17, 2026",
+      "author": "WPBRC",
+      "tag": "Development",
+      "excerpt": "From the Flagler Drive towers to the SoSo and Northwood corridors, here is a high-level look at the projects we are tracking citywide.",
+      "body": "<p>Our <a href=\"development.html\">development tracker</a> now follows dozens of major projects across West Palm Beach &mdash; completed, under construction, approved, proposed, and on hold. Here&rsquo;s a brief snapshot of the landscape.</p><h2>The waterfront keeps building up</h2><p>North and South Flagler Drive continue to see a wave of residential towers. These projects bring investment and new residents, but also raise real questions about traffic, density, and public access to the water &mdash; exactly the citywide issues the Coalition follows.</p><h2>Downtown and the corridors</h2><p>Downtown, CityPlace, and the Dixie Highway corridor (including SoSo) are adding offices, hotels, and mixed-use space, while Northwood and the North End see large redevelopments. Use the map to filter by status and district to see what&rsquo;s near you.</p><p class=\"note\">This is a working summary; verify specifics against current City of West Palm Beach agendas. See the full, filterable map on the <a href=\"development.html\">Development page</a>.</p>"
+    }
+  ]
+}

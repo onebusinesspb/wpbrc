@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "title": "WPBRC In the News",
+    "version": "June 2026",
+    "disclaimer": "Press mentions and coverage relevant to the Coalition and citywide issues. This list is maintained with a weekly draft-then-approve process; entries are added only after Board review.",
+    "note": "Add entries below. The weekly Media agent proposes candidates into tools/ for approval; approved items are merged here."
+  },
+  "items": [
+    {
+      "id": "example-coverage",
+      "date": "2026-06-01",
+      "displayDate": "June 1, 2026",
+      "outlet": "Example Outlet",
+      "title": "Residents organize a citywide coalition on growth and the Downtown Master Plan",
+      "url": "",
+      "excerpt": "Example placeholder entry — replace with a real article. Each item links to the original coverage and includes the outlet, date, and a short excerpt."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# West Palm Beach Residents Coalition (WPBRC)
+> Stronger Neighborhoods. Stronger Community. A citywide, non-partisan 501(c)(4) giving West Palm Beach residents a coordinated voice on
+> growth/development, infrastructure, resilience, transparency, public safety, mobility, and waterfront planning.
+
+## Pages
+- [Home](https://wpbrc.org/): Mission, focus areas, get involved.
+- [About](https://wpbrc.org/about.html): Purpose, priorities, governance.
+- [Current Issues](https://wpbrc.org/issues.html): Six citywide issues with why-it-matters, key dates, studies, meetings, Coalition position, and plan of action.
+- [Resources](https://wpbrc.org/resources.html): How local government works — commission districts, commissioner contacts, public records, how development is approved, the DAC, the Planning Board, county vs city.
+- [Media](https://wpbrc.org/media.html): Press coverage and mentions relevant to the Coalition.
+- [Development Tracker](https://wpbrc.org/development.html): Interactive map of WPB development projects by status/district.
+- [Neighborhoods](https://wpbrc.org/neighborhoods.html): Directory of WPB neighborhood associations.
+- [Board](https://wpbrc.org/board.html): Board and officer roles.
+- [Events](https://wpbrc.org/events.html): Events, meetings to track, newsletter.
+- [Join](https://wpbrc.org/join.html): Membership categories and sign-up (Zeffy).
+- [Donate and Sponsor](https://wpbrc.org/donate.html): Support the Coalition via Zeffy.
+- [Contact](https://wpbrc.org/contact.html): Reach the Coalition (emails info@wpbrc.org).

@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "note": "Editable text for the Home page. The layout stays fixed in the generator; only this wording changes when you edit here."
+  },
+  "hero": {
+    "eyebrow": "The central information hub for West Palm Beach residents",
+    "headline": "Shaping the future of West Palm Beach, together.",
+    "subtitle": "A citywide, non-partisan coalition of residents, property owners, and neighborhood leaders — organizing the information our city needs and working across district lines on the issues that affect every part of it."
+  },
+  "whoWeAre": {
+    "eyebrow": "Who we are",
+    "heading": "A citywide alliance of neighborhood leaders.",
+    "paragraph1": "The West Palm Beach Residents Coalition is a citywide alliance of neighborhood leaders working together to ensure West Palm Beach grows thoughtfully, responsibly, and with residents at the table.",
+    "paragraph2": "We believe the strongest communities are built through collaboration, transparency, and informed decision-making. By bringing neighborhoods together under one coordinated, constructive voice, we can help create practical, long-term solutions that benefit everyone who lives, works, and invests in our city."
+  },
+  "fundraising": {
+    "eyebrow": "What we're raising funds for",
+    "heading": "Independent analysis for smarter growth.",
+    "paragraph1": "Our current fundraising priority is to commission independent citywide mobility and infrastructure studies that complement existing public studies while providing objective, West Palm Beach-specific analysis — helping residents, elected officials, planners, and developers make informed decisions about future growth.",
+    "paragraph2": "Your support helps fund independent research, expert analysis, community engagement, and educational resources that empower residents and provide thoughtful, data-driven input as West Palm Beach plans for the future."
+  }
+}

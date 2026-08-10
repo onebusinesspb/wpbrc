@@ -1,0 +1,34 @@
+# Netlify build config — regenerates the site from the JSON data on every deploy,
+# so /admin (CMS) edits publish automatically. No database, no server.
+[build]
+  command = "pip install -r requirements.txt >/dev/null 2>&1; python3 build.py"
+  publish = "."
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+# Long-cache the immutable assets; the CSS is cache-busted via ?v=N in the HTML.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# ---- Security headers (harden the static site) ----
+# Applied to the whole site. If the CMS at /admin ever misbehaves, the looser
+# block below relaxes the policy just for that path.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(self \"https://www.zeffy.com\")"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://unpkg.com; connect-src 'self' https://*.tile.openstreetmap.org https://registry.npmjs.org; frame-src https://www.zeffy.com https://*.zeffy.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'"
+
+# /admin uses the Sveltia CMS (loads from unpkg, talks to GitHub/Netlify) — give it
+# a permissive policy so the editor is never blocked by CSP.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; frame-src https:; connect-src https:; img-src https: data: blob:"

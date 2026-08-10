@@ -1,0 +1,426 @@
+/* =====================================================================
+   West Palm Beach Residents Coalition — Modern design system
+   Palette from the official logo (navy / green / teal / gold) · WCAG-AA
+   ===================================================================== */
+:root{
+  --navy:#163B65; --navy-700:#102C4C; --navy-900:#0B1E36;
+  --teal:#2F7C93; --teal-light:#92C3D1;
+  --green:#5F7E3C; --green-light:#88A65C;
+  --gold:#E0A43B; --gold-deep:#B9791F;
+  --ink:#1F2A37; --muted:#5B6B78;
+  --cream:#F7F5EF; --sand:#EFEADD; --surface:#FFFFFF; --line:#E5E2D8;
+  --maxw:1180px; --radius:16px; --radius-sm:10px;
+  --shadow:0 18px 50px rgba(16,44,76,.12);
+  --shadow-sm:0 6px 20px rgba(16,44,76,.08);
+  --head:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+  --body:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--surface);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:var(--head);color:var(--navy);line-height:1.15;margin:0 0 .5em;font-weight:800;letter-spacing:-.02em;}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);}
+h3{font-size:1.3rem;font-weight:700;}
+p{margin:0 0 1rem;}
+a{color:var(--teal);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;display:block;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+.center{text-align:center;}
+.eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:800;color:var(--teal);margin-bottom:.7rem;}
+.eyebrow.gold{color:var(--gold-deep);}
+.lead{font-size:1.18rem;color:var(--muted);}
+.mt-0{margin-top:0;} .mb-0{margin-bottom:0;}
+.note{font-size:.9rem;color:var(--muted);}
+.reviewed{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1.5rem;}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--navy);padding:.6rem 1rem;z-index:100;border-radius:0 0 8px 0;}
+.skip-link:focus{left:0;}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:700;font-family:var(--body);font-size:1rem;cursor:pointer;border:2px solid transparent;transition:transform .12s,box-shadow .2s,background .2s;text-decoration:none;}
+.btn:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.btn-primary{background:var(--gold);color:var(--navy);}
+.btn-primary:hover{background:#edb45a;}
+.btn-secondary{background:var(--navy);color:#fff;}
+.btn-secondary:hover{background:var(--navy-700);}
+.btn-teal{background:var(--teal);color:#fff;}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy);}
+.btn-ghost:hover{background:var(--navy);color:#fff;}
+.btn-ghost.light{color:#fff;border-color:rgba(255,255,255,.6);}
+.btn-ghost.light:hover{background:#fff;color:var(--navy);}
+.btn-lg{padding:1.05rem 2.1rem;font-size:1.08rem;}
+
+/* Header */
+.site-header{background:rgba(255,255,255,.95);backdrop-filter:saturate(1.4) blur(8px);position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line);}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.5rem 22px;max-width:var(--maxw);margin:0 auto;}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;}
+.brand:hover{text-decoration:none;}
+.brand img{height:52px;width:auto;}
+.brand .bt{font-family:var(--head);font-weight:800;color:var(--navy);font-size:1.02rem;line-height:1;}
+.brand .bt span{display:block;font-family:var(--body);font-weight:600;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);margin-top:.2rem;}
+@media(max-width:520px){.brand .bt{display:none;}}
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none;margin:0;padding:0;}
+.nav-links a{color:var(--navy);padding:.5rem .7rem;border-radius:8px;font-weight:600;font-size:.93rem;}
+.nav-links a:hover,.nav-links a.active{background:var(--sand);text-decoration:none;}
+.nav-links .btn-primary{color:var(--navy);margin-left:.35rem;}
+.nav-toggle{display:none;background:none;border:0;color:var(--navy);font-size:1.7rem;cursor:pointer;padding:.2rem .5rem;}
+@media(max-width:980px){
+  .nav-toggle{display:block;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:.6rem 18px 1rem;gap:.15rem;border-bottom:1px solid var(--line);box-shadow:var(--shadow);}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:.8rem .6rem;}
+  .nav-links .btn-primary{margin:.5rem 0 0;}
+}
+
+/* Hero */
+.hero{position:relative;color:#fff;background:linear-gradient(135deg,var(--navy-900),var(--navy) 55%,var(--teal));overflow:hidden;padding:5rem 0 4.5rem;}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(224,164,59,.5),transparent 70%);pointer-events:none;}
+.hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:url("wave.svg") repeat-x bottom/auto 70px;opacity:.5;}
+.hero .container{position:relative;z-index:2;}
+.hero h1{color:#fff;max-width:18ch;}
+.hero p{font-size:1.22rem;max-width:60ch;color:#e8f1f4;}
+.hero .tagline{font-family:var(--head);font-weight:700;color:var(--gold);letter-spacing:.02em;margin-bottom:.4rem;}
+.hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.7rem;}
+.hero-sm{padding:3.2rem 0 3rem;}
+.hero h1,.hero p{text-shadow:0 2px 16px rgba(6,26,45,.45);}
+.hero.has-photo,body[class*="page-"] .hero{background-size:cover;background-position:center;}
+/* per-page hero photos (url is relative to THIS stylesheet, which lives in assets/) */
+body.page-home .hero{background-image:linear-gradient(100deg,rgba(13,52,79,.80),rgba(20,60,92,.42) 45%,rgba(20,60,92,0) 80%),url("hero-skyline.jpg");}
+body.page-about .hero{background-image:linear-gradient(105deg,rgba(16,44,76,.80),rgba(47,124,147,.40) 50%,rgba(20,60,92,0) 80%),url("hero-civic.jpg");}
+body.page-development .hero{background-image:linear-gradient(110deg,rgba(13,52,79,.82),rgba(36,120,150,.42) 55%,rgba(20,60,92,0) 80%),url("hero-towers.jpg");}
+body.page-neighborhoods .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.78),rgba(95,126,60,.34) 52%,rgba(20,60,92,0) 80%),url("hero-rooftops.jpg");}
+body.page-board .hero{background-image:linear-gradient(115deg,rgba(16,44,76,.82),rgba(47,124,147,.40) 55%,rgba(20,60,92,0) 80%),url("hero-civic.jpg");}
+body.page-events .hero{background-image:linear-gradient(100deg,rgba(18,60,92,.78),rgba(47,124,147,.38) 50%,rgba(20,60,92,0) 80%),url("hero-waterfront.jpg");}
+body.page-join .hero{background-image:linear-gradient(105deg,rgba(13,52,79,.78),rgba(176,90,34,.30) 55%,rgba(20,60,92,0) 80%),url("hero-sunset.jpg");}
+body.page-donate .hero{background-image:linear-gradient(115deg,rgba(13,52,79,.80),rgba(47,124,147,.40) 55%,rgba(20,60,92,0) 80%),url("hero-waterfront.jpg");}
+body.page-contact .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.80),rgba(58,140,170,.40) 55%,rgba(20,60,92,0) 80%),url("hero-skyline.jpg");}
+
+/* Photo band */
+.photo-band{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--navy);min-height:340px;margin:0;}
+.photo-band img{width:100%;height:100%;object-fit:cover;display:block;min-height:340px;}
+.photo-band figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1.6rem;color:#fff;font-family:var(--head);font-weight:700;font-size:1.15rem;background:linear-gradient(transparent,rgba(11,30,54,.85));}
+.photo-band .credit{position:absolute;right:.5rem;top:.5rem;font-size:.62rem;background:rgba(11,30,54,.55);color:#dfe8ee;padding:.15rem .5rem;border-radius:6px;font-weight:600;}
+
+/* Sections */
+.section{padding:4.5rem 0;}
+.section.alt{background:var(--cream);}
+.section.sand{background:var(--sand);}
+.section.navy{background:linear-gradient(135deg,var(--navy-900),var(--teal));color:#eaf4f7;}
+.section.navy h2,.section.navy h3{color:#fff;}
+.section-head{max-width:62ch;margin-bottom:2.2rem;}
+.section.center .section-head{margin-inline:auto;}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:start;}
+@media(max-width:820px){.split{grid-template-columns:1fr;gap:1.6rem;}}
+
+/* Grid + cards */
+.grid{display:grid;gap:1.5rem;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:880px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem;box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .2s;}
+.card.hover:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.card .ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:1rem;background:var(--sand);color:var(--navy);}
+.card h3{margin-bottom:.4rem;}
+.card p{color:var(--muted);margin-bottom:0;font-size:.98rem;}
+.feature{border-top:4px solid var(--teal);}
+.feature:nth-child(2){border-top-color:var(--green);}
+.feature:nth-child(3){border-top-color:var(--gold);}
+.feature:nth-child(4){border-top-color:var(--navy);}
+.media{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;}
+@media(max-width:820px){.media{grid-template-columns:1fr;}}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center;}
+.stats .num{font-family:var(--head);font-weight:800;font-size:2.8rem;color:var(--gold);line-height:1;}
+.stats .lbl{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:.78rem;}
+.section.navy .stats .lbl{color:#acc4d2;}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);gap:1.6rem;}}
+
+/* Callout / banner / tags */
+.banner{background:var(--gold);color:var(--navy);text-align:center;padding:.7rem 1rem;font-weight:700;font-size:.95rem;}
+.banner a{color:var(--navy);text-decoration:underline;}
+.callout{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:var(--radius-sm);padding:1.6rem;box-shadow:var(--shadow-sm);}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:.3rem .7rem;border-radius:999px;background:var(--sand);color:var(--navy);}
+.tag.alert{background:#fbe9cf;color:var(--gold-deep);}
+.issue{display:flex;gap:1.1rem;align-items:flex-start;padding:1.3rem 0;border-bottom:1px solid var(--line);}
+.issue:last-child{border-bottom:0;}
+
+/* Directory table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm);}
+table.dir{border-collapse:collapse;width:100%;font-size:.95rem;}
+table.dir th,table.dir td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--line);}
+table.dir thead th{background:var(--navy);color:#fff;font-weight:600;position:sticky;top:0;}
+table.dir tbody tr:nth-child(even){background:var(--cream);}
+.pill{display:inline-block;background:var(--sand);color:var(--navy);font-weight:700;font-size:.78rem;padding:.18rem .65rem;border-radius:999px;}
+.pill.empty{background:#eef0f2;color:#9aa3ad;}
+
+/* ===== Modern form fields (shared) ===== */
+.form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);}
+.field{margin-bottom:1.2rem;}
+.field label,.searchbar label{display:block;font-weight:600;margin-bottom:.45rem;color:var(--navy);font-size:.95rem;}
+.field input,.field select,.field textarea,
+.filters select,.filters input,.searchbar input{
+  width:100%;padding:.85rem 1rem;border:1.5px solid var(--line);border-radius:12px;
+  font-size:1rem;font-family:var(--body);color:var(--ink);background:#fff;
+  transition:border-color .15s ease, box-shadow .15s ease;-webkit-appearance:none;appearance:none;
+}
+.field textarea{min-height:140px;resize:vertical;}
+.field input::placeholder,.searchbar input::placeholder,.filters input::placeholder{color:#9aa3ad;}
+.field input:focus,.field select:focus,.field textarea:focus,
+.filters select:focus,.filters input:focus,.searchbar input:focus{
+  outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(47,124,147,.16);
+}
+/* custom chevron for selects */
+.field select,.filters select{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232F7C93' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.6rem;cursor:pointer;
+}
+.searchbar input{border-radius:999px;}
+
+/* Tiers */
+.tier{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.9rem;text-align:center;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;}
+.tier.featured{border:2px solid var(--gold);position:relative;}
+.tier.featured::before{content:"Founding";position:absolute;top:-.8rem;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:.25rem .9rem;border-radius:999px;}
+.tier .price{font-family:var(--head);font-weight:800;font-size:2.1rem;color:var(--navy);margin:.3rem 0;}
+.tier ul{list-style:none;padding:0;margin:1rem 0 1.5rem;text-align:left;}
+.tier li{padding:.4rem 0 .4rem 1.7rem;position:relative;color:var(--muted);}
+.tier li::before{content:"\2726";position:absolute;left:0;color:var(--gold-deep);font-weight:700;}
+.tier .btn{margin-top:auto;}
+
+/* FAQ */
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;padding:0 1.3rem;}
+.faq summary{cursor:pointer;font-weight:700;color:var(--navy);font-family:var(--head);padding:1.1rem 0;list-style:none;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";float:right;color:var(--gold-deep);font-weight:800;}
+.faq details[open] summary::after{content:"\2013";}
+.faq details[open] summary{border-bottom:1px solid var(--line);}
+.faq .ans{padding:1rem 0;color:var(--muted);}
+
+/* Embedded forms (Zeffy) */
+.embed-wrap{position:relative;width:100%;height:var(--embed-h,900px);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);}
+.embed-wrap iframe.zeffy{width:100%;height:100%;border:0;display:block;}
+@media(max-width:600px){.embed-wrap{height:calc(var(--embed-h,900px) + 160px);}}
+
+/* ===== Development Tracker (map + filters) ===== */
+.tracker-layout{display:grid;grid-template-columns:320px 1fr;gap:1.4rem;align-items:start;}
+@media(max-width:900px){.tracker-layout{grid-template-columns:1fr;}}
+#map{height:520px;width:100%;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#dbe7ec;z-index:1;}
+@media(max-width:900px){#map{height:420px;}}
+.filters{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow-sm);align-self:start;position:sticky;top:80px;}
+.filters h3{margin-top:0;}
+.filters label{display:block;font-size:.82rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;margin:.9rem 0 .35rem;}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin-top:1.1rem;font-size:.8rem;}
+.legend span{display:inline-flex;align-items:center;gap:.35rem;color:var(--muted);font-weight:600;}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.15);}
+.st-proposed{background:#9aa7b1;}.st-review{background:var(--gold);}.st-planning{background:var(--teal-light);}
+.st-approved{background:var(--teal);}.st-construction{background:var(--green);}.st-complete{background:var(--navy);}.st-onhold{background:#B0432E;}
+.proj-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.4rem;}
+@media(max-width:680px){.proj-list{grid-template-columns:1fr;}}
+.proj{background:#fff;border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);cursor:pointer;transition:transform .12s,box-shadow .2s;}
+.proj:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.proj h4{margin:0 0 .3rem;font-family:var(--head);color:var(--navy);font-size:1.05rem;}
+.proj .meta{font-size:.82rem;color:var(--muted);margin-bottom:.5rem;}
+.proj .status{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .6rem;border-radius:999px;color:#fff;}
+.leaflet-popup-content{font-family:var(--body);}
+.leaflet-popup-content h4{margin:0 0 .3rem;font-family:var(--head);color:var(--navy);}
+
+/* Sponsors */
+.sponsors{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;}
+.sponsor{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;min-width:150px;text-align:center;color:var(--muted);font-weight:700;box-shadow:var(--shadow-sm);}
+
+/* Footer */
+.site-footer{background:var(--navy-900);color:#a9c0cf;padding:3.2rem 0 1.6rem;font-size:.95rem;}
+.site-footer h4{color:#fff;font-family:var(--head);font-size:1.02rem;margin-bottom:.8rem;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;gap:1.4rem;}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr;}}
+.site-footer a{color:#a9c0cf;}
+.site-footer a:hover{color:#fff;}
+.foot-list{list-style:none;padding:0;margin:0;}
+.foot-list li{margin-bottom:.45rem;}
+.foot-brand img{height:64px;background:#fff;border-radius:12px;padding:6px;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:1.3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;font-size:.85rem;color:#7e98a8;}
+.disclaimer{font-size:.8rem;color:#7e98a8;max-width:65ch;margin-top:.6rem;}
+
+/* Blog */
+.postcard{display:block;text-decoration:none;color:inherit;}
+.postcard:hover{text-decoration:none;}
+.postcard .readmore{color:var(--teal);font-weight:700;font-size:.92rem;}
+.article{max-width:760px;margin:0 auto;}
+.article h2{margin-top:1.8rem;font-size:1.4rem;}
+.article p{margin-bottom:1.1rem;}
+.article a{color:var(--teal-600,var(--teal));text-decoration:underline;}
+
+/* Blog */
+.postcard{display:block;text-decoration:none;color:inherit;}
+.postcard:hover{text-decoration:none;box-shadow:var(--shadow);}
+.postcard .readmore{color:var(--teal);font-weight:700;font-size:.92rem;}
+.article{max-width:760px;margin:0 auto;}
+.article h2{margin-top:1.8rem;font-size:1.4rem;}
+.article p{margin-bottom:1.1rem;}
+.article a{color:var(--teal);text-decoration:underline;}
+
+/* =====================================================================
+   VIBRANT / DYNAMIC LAYER (v7) — brighter palette, lifestyle hero photos,
+   gradient buttons, colorful accents, scroll reveal. Later rules win.
+   ===================================================================== */
+:root{
+  --coral:#FF6B4A; --sky:#1FA2D8; --sunshine:#FFC23C; --grape:#6C5CE7;
+}
+/* gradient, punchier buttons */
+.btn-primary{background:linear-gradient(135deg,var(--sunshine),var(--coral));color:#3a1c10;}
+.btn-primary:hover{background:linear-gradient(135deg,#ffce5e,#ff7d57);}
+.btn-secondary{background:linear-gradient(135deg,var(--navy),var(--teal));}
+.btn-teal{background:linear-gradient(135deg,var(--teal),var(--sky));}
+.btn:hover{transform:translateY(-3px) scale(1.02);}
+
+/* brighter section accents */
+.section.alt{background:linear-gradient(180deg,#fef6ec,#fdeede);}
+.section.sand{background:linear-gradient(180deg,#fdeede,#fae3cf);}
+.section.navy{background:linear-gradient(135deg,var(--navy-900),var(--teal) 70%,var(--green));}
+.eyebrow{color:var(--coral);}
+.eyebrow.gold{color:var(--coral);}
+.stats .num{background:linear-gradient(135deg,var(--coral),var(--sunshine));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+/* feature cards: thicker, brighter top accents + lift */
+.feature{border-top-width:5px;}
+.feature:nth-child(1){border-top-color:var(--coral);}
+.feature:nth-child(2){border-top-color:var(--sky);}
+.feature:nth-child(3){border-top-color:var(--sunshine);}
+.feature:nth-child(4){border-top-color:var(--green);}
+.card.hover:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(16,44,76,.18);}
+.tag{background:linear-gradient(135deg,var(--sky),var(--teal));color:#fff;}
+.tag.alert{background:linear-gradient(135deg,var(--coral),var(--sunshine));color:#3a1c10;}
+
+/* lifestyle hero photos (people enjoying WPB) — lighter, more colorful overlays */
+body[class*="page-"] .hero{background-size:cover;background-position:center;}
+body.page-home .hero{background-image:linear-gradient(100deg,rgba(13,52,79,.74),rgba(31,162,216,.32) 48%,rgba(255,194,60,0) 82%),url("life-flagler.jpg");}
+body.page-about .hero{background-image:linear-gradient(105deg,rgba(16,44,76,.74),rgba(255,107,74,.26) 52%,rgba(255,194,60,0) 82%),url("life-cityplace.jpg");}
+body.page-neighborhoods .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.72),rgba(96,170,90,.30) 50%,rgba(255,194,60,0) 82%),url("life-park.jpg");}
+body.page-board .hero{background-image:linear-gradient(115deg,rgba(16,44,76,.76),rgba(47,140,160,.30) 55%,rgba(255,194,60,0) 82%),url("life-cityplace.jpg");}
+body.page-events .hero{background-image:linear-gradient(100deg,rgba(18,60,92,.74),rgba(255,107,74,.26) 52%,rgba(255,194,60,0) 82%),url("life-cityplace.jpg");}
+body.page-join .hero{background-image:linear-gradient(105deg,rgba(13,52,79,.72),rgba(31,162,216,.30) 55%,rgba(255,194,60,0) 82%),url("life-flagler.jpg");}
+body.page-donate .hero{background-image:linear-gradient(115deg,rgba(13,52,79,.74),rgba(96,170,90,.30) 55%,rgba(255,194,60,0) 82%),url("life-park.jpg");}
+body.page-contact .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.74),rgba(31,162,216,.30) 55%,rgba(255,194,60,0) 82%),url("life-flagler.jpg");}
+body.page-development .hero{background-image:linear-gradient(110deg,rgba(13,52,79,.80),rgba(36,120,150,.40) 55%,rgba(20,60,92,0) 80%),url("hero-towers.jpg");}
+/* animated sun glow on hero */
+.hero::after{animation:floaty 9s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(22px)}}
+
+/* scroll reveal (graceful: only hides when JS is active) */
+html.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+html.js .reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){html.js .reveal{opacity:1;transform:none;transition:none;}}
+
+/* =====================================================================
+   REAL WPB PHOTO BANNERS (v8) — client-supplied photography, enhanced
+   Diagonal navy gradient keeps white headline text WCAG-AA legible.
+   Home is intentionally lighter/brighter per brief.
+   ===================================================================== */
+body[class*="page-"] .hero{background-size:cover;background-position:center;}
+body.page-home .hero{background-image:linear-gradient(100deg,rgba(13,52,79,.66),rgba(20,60,92,.30) 46%,rgba(20,60,92,.06) 82%),url("hero-banyan.jpg");}
+body.page-about .hero{background-image:linear-gradient(105deg,rgba(16,44,76,.74),rgba(47,124,147,.36) 52%,rgba(20,60,92,.05) 82%),url("hero-palms-dusk.jpg");}
+body.page-development .hero{background-image:linear-gradient(110deg,rgba(13,52,79,.78),rgba(36,120,150,.38) 55%,rgba(20,60,92,.07) 82%),url("hero-palms-dusk.jpg");}
+body.page-neighborhoods .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.70),rgba(95,126,60,.32) 52%,rgba(20,60,92,.05) 82%),url("hero-banyan.jpg");}
+body.page-board .hero{background-image:linear-gradient(115deg,rgba(11,30,54,.62),rgba(16,44,76,.40) 55%,rgba(11,30,54,.20) 85%),url("hero-skyline-night.jpg");}
+body.page-events .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.70),rgba(47,124,147,.36) 52%,rgba(20,60,92,.06) 82%),url("hero-square.jpg");}
+body.page-blog .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.72),rgba(47,124,147,.36) 52%,rgba(20,60,92,.06) 82%),url("hero-palms-dusk.jpg");}
+body.page-join .hero{background-image:linear-gradient(105deg,rgba(13,52,79,.66),rgba(176,90,34,.30) 55%,rgba(20,60,92,.06) 82%),url("hero-palm-sunset.jpg");}
+body.page-donate .hero{background-image:linear-gradient(115deg,rgba(11,30,54,.62),rgba(16,44,76,.40) 55%,rgba(11,30,54,.18) 85%),url("hero-skyline-night.jpg");}
+body.page-contact .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.72),rgba(47,124,147,.36) 52%,rgba(20,60,92,.06) 82%),url("hero-square.jpg");}
+
+/* =====================================================================
+   PRESIDENT FEEDBACK ADDITIONS (v10) — stats band, issues, modal, etc.
+   ===================================================================== */
+/* Leading stats band */
+.stats-lead{padding:2.2rem 0;}
+.stats.stats-5{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;text-align:center;}
+.stats.stats-5 .num{font-family:var(--head);font-weight:800;font-size:clamp(1.5rem,3vw,2.3rem);
+  background:linear-gradient(90deg,var(--teal),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.05;}
+.stats.stats-5 .lbl{font-size:.82rem;color:var(--muted);font-weight:600;margin-top:.25rem;text-transform:uppercase;letter-spacing:.04em;}
+@media(max-width:760px){.stats.stats-5{grid-template-columns:repeat(2,1fr);gap:1.3rem 1rem;}}
+
+/* Tighten nav so 12 items fit */
+.nav-links{gap:.05rem;}
+.nav-links a{padding:.5rem .55rem;font-size:.9rem;}
+@media(max-width:1080px) and (min-width:981px){.nav-links a{padding:.5rem .45rem;font-size:.86rem;}}
+
+/* Issues page */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 2rem;}
+.chip{display:inline-block;padding:.45rem .85rem;border-radius:999px;background:var(--sand);color:var(--navy);font-weight:600;font-size:.9rem;border:1px solid var(--line);}
+.chip:hover{background:var(--teal);color:#fff;text-decoration:none;}
+.issue-block{padding:2rem 0;border-top:1px solid var(--line);scroll-margin-top:90px;}
+.issue-head{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.4rem;}
+.issue-fields{margin-top:1.2rem;}
+.issue-fields .card h3{color:var(--teal);font-size:1.05rem;}
+.issue-fields ul{margin:0;padding-left:1.1rem;}
+.issue-fields li{margin-bottom:.35rem;}
+.petitions{background:linear-gradient(100deg,rgba(47,124,147,.10),rgba(95,126,60,.10));border:1px solid var(--line);border-radius:var(--radius-sm);padding:1rem 1.2rem;margin:.4rem 0 .2rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;}
+.petitions .eyebrow{margin:0 .4rem 0 0;}
+a[aria-disabled="true"]{opacity:.5;pointer-events:none;}
+
+/* Resources placeholders */
+.placeholder-map{background:var(--sand);border:1px dashed var(--teal-light);border-radius:var(--radius-sm);padding:2.4rem 1.2rem;text-align:center;color:var(--muted);}
+.placeholder-map .btn{margin-top:.8rem;}
+
+/* Board member cards */
+.card.member .role{color:var(--gold-deep);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.78rem;}
+
+/* Donation modal */
+.modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:1.2rem;}
+.modal[hidden]{display:none;}
+.modal-backdrop{position:absolute;inset:0;background:rgba(11,30,54,.6);backdrop-filter:blur(3px);}
+.modal-card{position:relative;background:#fff;border-radius:var(--radius);max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:1.6rem 1.6rem 1.2rem;box-shadow:var(--shadow);animation:modalpop .22s ease;}
+@keyframes modalpop{from{opacity:0;transform:translateY(12px) scale(.98);}to{opacity:1;transform:none;}}
+.modal-close{position:absolute;top:.6rem;right:.8rem;background:none;border:0;font-size:1.8rem;line-height:1;color:var(--muted);cursor:pointer;}
+.modal-close:hover{color:var(--navy);}
+body.modal-open{overflow:hidden;}
+
+/* New-page hero photos */
+body.page-issues .hero{background-image:linear-gradient(105deg,rgba(13,52,79,.80),rgba(176,90,34,.32) 55%,rgba(20,60,92,.06) 82%),url("hero-palm-sunset.jpg");}
+body.page-resources .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.78),rgba(47,124,147,.36) 52%,rgba(20,60,92,.06) 82%),url("hero-square.jpg");}
+body.page-media .hero{background-image:linear-gradient(110deg,rgba(11,30,54,.62),rgba(16,44,76,.40) 55%,rgba(11,30,54,.18) 85%),url("hero-skyline-night.jpg");}
+
+/* =====================================================================
+   WATERCOLOR BANNERS (v11) — home = client watercolor; others stylized
+   to match. Lighter overlays since artwork is bright; headline keeps shadow.
+   ===================================================================== */
+body[class*="page-"] .hero{background-size:cover;background-position:center;}
+body.page-home .hero{background-image:linear-gradient(100deg,rgba(13,52,79,.60),rgba(20,60,92,.26) 46%,rgba(20,60,92,.04) 82%),url("hero-home-wc.jpg");}
+body.page-about .hero{background-image:linear-gradient(105deg,rgba(16,44,76,.66),rgba(47,124,147,.30) 52%,rgba(20,60,92,.05) 82%),url("hero-palms-dusk-wc.jpg");}
+body.page-issues .hero{background-image:linear-gradient(105deg,rgba(13,52,79,.66),rgba(176,90,34,.26) 55%,rgba(20,60,92,.05) 82%),url("hero-palm-sunset-wc.jpg");}
+body.page-development .hero{background-image:linear-gradient(110deg,rgba(13,52,79,.66),rgba(36,120,150,.30) 55%,rgba(20,60,92,.05) 82%),url("hero-palms-dusk-wc.jpg");}
+body.page-resources .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.66),rgba(47,124,147,.30) 52%,rgba(20,60,92,.05) 82%),url("hero-square-wc.jpg");}
+body.page-neighborhoods .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.62),rgba(95,126,60,.28) 52%,rgba(20,60,92,.05) 82%),url("hero-banyan-wc.jpg");}
+body.page-board .hero{background-image:linear-gradient(115deg,rgba(11,30,54,.60),rgba(16,44,76,.36) 55%,rgba(11,30,54,.16) 85%),url("hero-skyline-night-wc.jpg");}
+body.page-events .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.64),rgba(47,124,147,.30) 52%,rgba(20,60,92,.05) 82%),url("hero-square-wc.jpg");}
+body.page-join .hero{background-image:linear-gradient(105deg,rgba(13,52,79,.62),rgba(176,90,34,.26) 55%,rgba(20,60,92,.05) 82%),url("hero-palm-sunset-wc.jpg");}
+body.page-donate .hero{background-image:linear-gradient(115deg,rgba(11,30,54,.60),rgba(16,44,76,.36) 55%,rgba(11,30,54,.16) 85%),url("hero-skyline-night-wc.jpg");}
+body.page-contact .hero{background-image:linear-gradient(100deg,rgba(16,44,76,.64),rgba(47,124,147,.30) 52%,rgba(20,60,92,.05) 82%),url("hero-square-wc.jpg");}
+body.page-media .hero{background-image:linear-gradient(115deg,rgba(11,30,54,.60),rgba(16,44,76,.36) 55%,rgba(11,30,54,.16) 85%),url("hero-skyline-night-wc.jpg");}
+
+/* Navy sections: ensure all body text is white/legible (lead class was overriding to muted) */
+.section.navy .lead{color:#ffffff;}
+.section.navy p{color:#eaf4f7;}
+
+/* =====================================================================
+   HERO LEGIBILITY (v13) — stronger overlay on bright watercolor banners
+   + text-shadow on eyebrow/tagline so all hero text stays readable.
+   ===================================================================== */
+.hero .eyebrow,.hero .tagline{text-shadow:0 2px 12px rgba(6,26,45,.65);}
+.hero h1,.hero p,.hero .lead{text-shadow:0 2px 16px rgba(6,26,45,.6);}
+body.page-home .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.82),rgba(13,44,72,.56) 46%,rgba(20,60,92,.16) 84%),url("hero-home-wc.jpg");}
+body.page-about .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(16,44,76,.52) 48%,rgba(20,60,92,.16) 84%),url("hero-palms-dusk-wc.jpg");}
+body.page-issues .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(40,60,40,.46) 50%,rgba(20,60,92,.16) 84%),url("hero-palm-sunset-wc.jpg");}
+body.page-development .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(16,44,76,.52) 50%,rgba(20,60,92,.16) 84%),url("hero-palms-dusk-wc.jpg");}
+body.page-resources .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(16,44,76,.50) 48%,rgba(20,60,92,.16) 84%),url("hero-square-wc.jpg");}
+body.page-neighborhoods .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(40,60,40,.48) 50%,rgba(20,60,92,.16) 84%),url("hero-banyan-wc.jpg");}
+body.page-board .hero{background-image:linear-gradient(110deg,rgba(8,24,42,.78),rgba(16,44,76,.52) 52%,rgba(11,30,54,.22) 86%),url("hero-skyline-night-wc.jpg");}
+body.page-events .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(16,44,76,.50) 48%,rgba(20,60,92,.16) 84%),url("hero-square-wc.jpg");}
+body.page-join .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(16,44,76,.50) 50%,rgba(20,60,92,.16) 84%),url("hero-palm-sunset-wc.jpg");}
+body.page-donate .hero{background-image:linear-gradient(110deg,rgba(8,24,42,.78),rgba(16,44,76,.52) 52%,rgba(11,30,54,.22) 86%),url("hero-skyline-night-wc.jpg");}
+body.page-contact .hero{background-image:linear-gradient(100deg,rgba(8,28,48,.80),rgba(16,44,76,.50) 48%,rgba(20,60,92,.16) 84%),url("hero-square-wc.jpg");}
+body.page-media .hero{background-image:linear-gradient(110deg,rgba(8,24,42,.78),rgba(16,44,76,.52) 52%,rgba(11,30,54,.22) 86%),url("hero-skyline-night-wc.jpg");}

@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "title": "WPBRC Events & Meetings",
+    "note": "Upcoming civic meetings and Coalition events. Past-dated items hide automatically. Drafted by the events agent; published after Board review.",
+    "tags": ["Featured", "Hearing", "Meeting", "Forum", "Track"]
+  },
+  "events": [
+    {
+      "id": "900-rosemary-outreach",
+      "title": "900 S Rosemary Community Outreach",
+      "date": "2026-06-02",
+      "displayDate": "June 2, 2026 · 6:00 PM",
+      "location": "Hilton West Palm Beach, Oceana Ballroom, 600 Okeechobee Blvd",
+      "description": "Hear updates on the proposed convention-center hotel and take part in Q&A. Hosted by the developer; confirm details before attending.",
+      "tag": "Featured",
+      "url": "development.html#"
+    },
+    {
+      "id": "coalition-board-meeting",
+      "title": "Coalition Board Meeting",
+      "date": "",
+      "displayDate": "Quarterly — see newsletter",
+      "location": "West Palm Beach",
+      "description": "The Board meets at least quarterly. Members are welcome; dates and locations are shared via the newsletter.",
+      "tag": "Meeting",
+      "url": ""
+    },
+    {
+      "id": "city-meetings-watch",
+      "title": "City meetings to watch",
+      "date": "",
+      "displayDate": "Ongoing",
+      "location": "City of West Palm Beach",
+      "description": "Downtown Master Plan workshops, Planning Board hearings, City Commission readings, and CRA Board meetings.",
+      "tag": "Track",
+      "url": "development.html"
+    }
+  ]
+}

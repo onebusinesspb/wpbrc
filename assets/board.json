@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "title": "WPBRC Board of Directors",
+    "version": "June 2026",
+    "note": "Board members with role and the neighborhood association they represent. Add yearsInWPB and bio when available; cards omit those fields when blank."
+  },
+  "members": [
+    {"name": "Jessica Swift", "role": "Chair", "neighborhood": "Historic Prospect & Southland Park Association", "yearsInWPB": "", "bio": ""},
+    {"name": "James Waldron III", "role": "Vice Chair", "neighborhood": "North Shore Neighborhood Association", "yearsInWPB": "", "bio": ""},
+    {"name": "Erica Elliott", "role": "Treasurer", "neighborhood": "Flamingo Park", "yearsInWPB": "", "bio": ""},
+    {"name": "Arsine Koushakjian", "role": "Secretary", "neighborhood": "Northwood Neighborhood Association", "yearsInWPB": "", "bio": ""},
+    {"name": "Karen Steele", "role": "Communications", "neighborhood": "El Cid Neighborhood Association", "yearsInWPB": "", "bio": ""},
+    {"name": "Alayassia “Dr. Asia” Taylor", "role": "Neighborhood Relations", "neighborhood": "Pleasant City First Neighborhood Association", "yearsInWPB": "", "bio": ""},
+    {"name": "India Foster", "role": "Steering", "neighborhood": "El Cid Neighborhood Association", "yearsInWPB": "", "bio": ""},
+    {"name": "Bruce Barber", "role": "Growth & Development", "neighborhood": "Grandview Heights Neighborhood", "yearsInWPB": "", "bio": ""},
+    {"name": "TBD", "role": "Infrastructure", "neighborhood": "Position open", "yearsInWPB": "", "bio": ""},
+    {"name": "Fritz Van Der Grift", "role": "Crime & Safety", "neighborhood": "SENA (South End Neighborhood Association)", "yearsInWPB": "", "bio": ""},
+    {"name": "Margaret Frazzini", "role": "Traffic & Parking", "neighborhood": "Grandview Heights Neighborhood Association", "yearsInWPB": "", "bio": ""}
+  ]
+}

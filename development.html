@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Palm Beach Development Tracker | Interactive Project Map</title>
+<meta name="description" content="An interactive map of major West Palm Beach development projects — proposed, approved, and under construction — by status, district, and neighborhood.">
+<link rel="canonical" href="https://wpbrc.org/development.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="West Palm Beach Residents Coalition">
+<meta property="og:title" content="West Palm Beach Development Tracker | Interactive Project Map">
+<meta property="og:description" content="An interactive map of major West Palm Beach development projects — proposed, approved, and under construction — by status, district, and neighborhood.">
+<meta property="og:url" content="https://wpbrc.org/development.html">
+<meta property="og:image" content="https://wpbrc.org/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=13">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NGO", "@id": "https://wpbrc.org/#org", "name": "West Palm Beach Residents Coalition", "alternateName": "WPBRC", "slogan": "Stronger Neighborhoods. Stronger Community.", "url": "https://wpbrc.org", "logo": "https://wpbrc.org/assets/wpbrc-logo.png", "description": "A citywide, non-partisan 501(c)(4) coalition giving West Palm Beach residents a coordinated voice on growth, development, infrastructure, resilience, transparency, and quality of life.", "areaServed": {"@type": "City", "name": "West Palm Beach", "address": {"@type": "PostalAddress", "addressLocality": "West Palm Beach", "addressRegion": "FL", "addressCountry": "US"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://wpbrc.org/#website", "url": "https://wpbrc.org", "name": "West Palm Beach Residents Coalition", "publisher": {"@id": "https://wpbrc.org/#org"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://wpbrc.org/"}, {"@type": "ListItem", "position": 2, "name": "West Palm Beach Development Tracker", "item": "https://wpbrc.org/development.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the 900 S Rosemary project?", "acceptedAnswer": {"@type": "Answer", "text": "900 S Rosemary is a proposed second convention-center hotel in downtown West Palm Beach. Because a project of this scale affects traffic, parking, and downtown character, the Coalition tracks it as a citywide issue."}}, {"@type": "Question", "name": "How current is this development map?", "acceptedAnswer": {"@type": "Answer", "text": "The tracker is a working draft maintained by the Coalition. Commission district, board status, and hearing dates should be verified against current City of West Palm Beach agendas before relying on them. Map locations are approximate."}}]}</script>
+</head>
+<body class="page-development">
+<a class="skip-link" href="#main">Skip to content</a><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <img src="assets/wpbrc-logo.png" alt="West Palm Beach Residents Coalition logo">
+      <span class="bt">WPBRC<span>Stronger Neighborhoods</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="development.html" class="active">Development</a></li><li><a href="resources.html">Resources</a></li><li><a href="neighborhoods.html">Neighborhoods</a></li><li><a href="board.html">Board</a></li><li><a href="events.html">Calendar</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="donate.html" data-donate>Donate</a></li><li><a href="contact.html" class="btn btn-primary">Join</a></li></ul>
+  </nav>
+</header><main id="main">
+<section class="hero hero-sm has-photo" style="--hero-img:url('assets/hero-skyline.jpg')">
+  <div class="container">
+    <p class="tagline">Stronger Neighborhoods. Stronger Community.</p>
+    <p class="eyebrow" style="color:var(--gold)">Development Tracker</p>
+    <h1>What&rsquo;s being built across West Palm Beach.</h1>
+    <p>An interactive map of major development projects &mdash; what&rsquo;s proposed, in review, approved, and under construction &mdash; near you and across the city.</p>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="callout" style="margin-bottom:1.6rem;border-left-color:var(--gold)">
+      <p class="mb-0"><strong>Working draft.</strong> Merged from City of West Palm Beach, Planning Board, DAC filings, developer disclosures, and press reporting (June 2026). Details are subject to change; verify against current City agendas. Map coordinates are approximate, placed by street address.</p>
+    </div>
+    <div class="tracker-layout">
+      <aside class="filters" aria-label="Map filters">
+        <h3>Filter projects</h3>
+        <label for="f-status">Status</label>
+        <select id="f-status"><option value="">All statuses</option></select>
+        <label for="f-district">Commission district</label>
+        <select id="f-district"><option value="">All districts</option></select>
+        <label for="f-search">Search</label>
+        <input id="f-search" type="search" placeholder="Project or neighborhood&hellip;">
+        <div class="legend" aria-hidden="true">
+          <span><i class="dot st-proposed"></i>Proposed</span>
+          <span><i class="dot st-review"></i>In Review</span>
+          <span><i class="dot st-planning"></i>Planning</span>
+          <span><i class="dot st-approved"></i>Approved</span>
+          <span><i class="dot st-construction"></i>Construction</span>
+          <span><i class="dot st-complete"></i>Completed</span>
+          <span><i class="dot st-onhold"></i>On Hold</span>
+        </div>
+        <p class="note" style="margin-top:1rem"><span id="count"></span> projects shown</p>
+      </aside>
+      <div><div id="map" role="application" aria-label="Map of West Palm Beach development projects" style="height:520px"><p class="note" style="padding:1.6rem">Loading the interactive map… if it stays blank, make sure you&rsquo;re online (the map tiles load from the web).</p></div></div>
+    </div>
+    <div class="proj-list" id="proj-list"></div>
+  </div>
+</section>
+
+<section class="section sand">
+  <div class="container" style="max-width:840px"><p class="eyebrow">Common questions</p><h2>About the tracker</h2><div class="faq">
+    <details><summary>What is the 900 S Rosemary project?</summary><div class="ans">900 S Rosemary is a proposed second convention-center hotel in downtown West Palm Beach. Because a project of this scale affects traffic, parking, and downtown character, the Coalition tracks it as a citywide issue.</div></details>
+    <details><summary>How current is this development map?</summary><div class="ans">The tracker is a working draft maintained by the Coalition. Commission district, board status, and hearing dates should be verified against current City of West Palm Beach agendas before relying on them. Map locations are approximate.</div></details>
+  </div>
+  <p class="note">Key meetings to track: Downtown Master Plan workshops &amp; hearings, DAC review meetings, Planning Board hearings, City Commission readings, and CRA Board meetings.</p>
+  <p class="reviewed">Working draft &mdash; review against City agendas. Last updated: June 2026.</p></div>
+</section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const PROJECTS=[{"id": "one-flagler", "name": "One Flagler", "location": "One Flagler Drive", "neighborhoods": ["Citywide"], "district": "3", "status": "Completed", "notes": "Class A Office; Developer: Related Ross; 25-story, 270,000 sq ft; Opened February 2025; 1.25-acre public park with Fred Eversley sculptures", "lat": 26.71, "lng": -80.057}, {"id": "the-bristol", "name": "The Bristol", "location": "1100 South Flagler Drive", "neighborhoods": ["El Cid / South Flagler"], "district": "5", "status": "Completed", "notes": "Luxury Condominium; Developer: Bristol Development Group; Completed 2019; established S. Flagler as luxury corridor", "lat": 26.689, "lng": -80.0525}, {"id": "la-clara", "name": "La Clara", "location": "1515 South Flagler Drive", "neighborhoods": ["El Cid / South Flagler"], "district": "5", "status": "Completed", "notes": "Luxury Condominium; Developer: 13th Floor Investments & Sason; Completed 2023", "lat": 26.68506, "lng": -80.0525}, {"id": "fort-on-flagler", "name": "Fort\u00e9 on Flagler", "location": "1309 South Flagler Drive", "neighborhoods": ["El Cid / South Flagler"], "district": "5", "status": "Completed", "notes": "Luxury Condominium; Developer: Related Ross; 25-story, 41 units; Topped off April 2024", "lat": 26.68851, "lng": -80.0525}, {"id": "the-ben-hotel-autograph-collection", "name": "The Ben Hotel (Autograph Collection)", "location": "CityPlace", "neighborhoods": ["Downtown"], "district": "3", "status": "Completed", "notes": "Hotel; Developer: Related Ross; 206 rooms; completed 2020", "lat": 26.7065, "lng": -80.0595}, {"id": "canopy-hotel", "name": "Canopy Hotel", "location": "CityPlace", "neighborhoods": ["Downtown"], "district": "3", "status": "Completed", "notes": "Hotel; Developer: Related Ross; 150 rooms; completed 2020", "lat": 26.7025, "lng": -80.0585}, {"id": "hilton-west-palm-beach", "name": "Hilton West Palm Beach", "location": "600 Okeechobee Blvd", "neighborhoods": ["Downtown"], "district": "3", "status": "Completed", "notes": "Hotel / Convention; Developer: Hilton; 400 rooms; convention center hotel", "lat": 26.7062, "lng": -80.0575}, {"id": "brightline-station", "name": "Brightline Station", "location": "Downtown WPB", "neighborhoods": ["Citywide"], "district": "3", "status": "Completed", "notes": "Passenger Rail / Transit Hub; Developer: Brightline; Expanded regional rail connecting Miami\u2013Orlando", "lat": 26.712, "lng": -80.056}, {"id": "casamara", "name": "CasaMara", "location": "3111 South Dixie Highway", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "Completed", "notes": "Luxury Apartment Rental; Developer: TBD; Completed 2021; catalyzed SoSo retail & restaurant wave (Common Grounds, Pink Steak, etc.)", "lat": 26.68156, "lng": -80.0595}, {"id": "nora-district-phase-1", "name": "NORA District \u2014 Phase 1", "location": "North Dixie corridor", "neighborhoods": ["Northwood"], "district": "1", "status": "Completed", "notes": "Mixed-Use; Developer: NDT Development, Place Projects & Wheelock Street Capital; Phase 1 open 2025", "lat": 26.747, "lng": -80.0585}, {"id": "icon-marina-village", "name": "Icon Marina Village", "location": "4400 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Completed", "notes": "Residential; Developer: TBD; 399 units; completed", "lat": 26.7493, "lng": -80.0515}, {"id": "breakers-hotel-vdg-land-company", "name": "Breakers Hotel / VDG Land Company", "location": "2410, 2460, 2508 North Australian Avenue", "neighborhoods": ["Citywide"], "district": "1", "status": "Under Construction", "notes": "Apartment Complex (51% Breakers workforce housing); Developer: Flagler System Management; 8-story, 155 units", "lat": 26.72435, "lng": -80.0635}, {"id": "currie-park-redevelopment", "name": "Currie Park Redevelopment", "location": "2400 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Under Construction", "notes": "Public waterfront park redevelopment / civic infrastructure; Developer: City of West Palm Beach / West Palm Beach CRA; 13 acres", "lat": 26.732, "lng": -80.0508}, {"id": "mr-c-residences-west-palm-beach", "name": "Mr. C Residences West Palm Beach", "location": "320 Lakeview Avenue", "neighborhoods": ["Downtown"], "district": "3", "status": "Under Construction", "notes": "Mixed-Use: Condominium, Hotel, Restaurant, Private Club; Developer: Terra Group & Sympatico Real Estate (Morrison Family entity); 27-story, 256 units total; 146 Condominiums / 110 Hotel Rooms", "lat": 26.7065, "lng": -80.0525}, {"id": "nora-district", "name": "NORA District", "location": "Bounded by Palm Beach Lakes Blvd (N), Quadrille Blvd (S), N. Dixie Hwy (E), FEC Railway (W)", "neighborhoods": ["SoSo / South Dixie"], "district": "3", "status": "Under Construction", "notes": "Mixed-Use: Retail, Restaurants, Office, Hotel, Residential; Developer: NDT Development, Place Projects & Wheelock Street Capital; Phase 1 open; additional phases in 2026", "lat": 26.747, "lng": -80.0575}, {"id": "olara", "name": "Olara", "location": "1919 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Under Construction", "notes": "Mixed-Use: Condominiums, Apartment Rentals, Private Marina, Restaurant; Developer: Savanna; 26-story, 2 towers, 455 units total; Tower 1 (Condominium): 275 units; Tower 2 (Apartment Rentals): 210 units; Restaurant by Chef Jos\u00e9 Andr\u00e9s; broke ground August 2025", "lat": 26.7278, "lng": -80.0508}, {"id": "palm-beach-atlantic-university-expansion", "name": "Palm Beach Atlantic University Expansion", "location": "1200 S. Dixie Highway", "neighborhoods": ["Citywide"], "district": "3", "status": "Under Construction", "notes": "Residence Hall & Parking Garage; Developer: Gilbane Development Company; 25-story, 275 units / 990 beds", "lat": 26.69965, "lng": -80.0575}, {"id": "shorecrest", "name": "Shorecrest", "location": "1901 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Under Construction", "notes": "Condominium; Developer: Related Ross; 28-story, 98 units", "lat": 26.7276, "lng": -80.0508}, {"id": "south-flagler-house", "name": "South Flagler House", "location": "1355 South Flagler Drive", "neighborhoods": ["El Cid / South Flagler"], "district": "5", "status": "Under Construction", "notes": "Condominium; Developer: Related Ross; 2 towers, 28 stories, 108 units total", "lat": 26.6868, "lng": -80.0523}, {"id": "the-berkeley-palm-beach", "name": "The Berkeley Palm Beach", "location": "550 S. Australian Avenue", "neighborhoods": ["Citywide"], "district": "1", "status": "Under Construction", "notes": "Condominium; Developer: The Adelson Group & Sympatico Real Estate (Morrison Family entity); 25-story, 198 units", "lat": 26.714, "lng": -80.0625}, {"id": "the-district-at-northwood", "name": "The District at Northwood", "location": "Bounded by 23rd St (S), 25th St (N), Broadway (E), railroad tracks (W)", "neighborhoods": ["Northwood"], "district": "1", "status": "Under Construction", "notes": "Mixed-Use: Retail, Restaurants, Rental Apartments; Developer: Immocorp Capital & Beachwold Residential; 382 units; 60,772 sq ft restaurant/retail space", "lat": 26.746, "lng": -80.058}, {"id": "the-domaine-at-soso", "name": "The Domaine at SoSo", "location": "432 Nottingham Boulevard", "neighborhoods": ["Citywide"], "district": "5", "status": "Under Construction", "notes": "Townhomes; Developer: Pulte Homes; 30 townhomes", "lat": 26.659, "lng": -80.058}, {"id": "the-estates-at-nomar", "name": "The Estates at NOMAR", "location": "Bounded by 40th St (S), 45th St (N), N. Flagler Dr (E), Broadway (W)", "neighborhoods": ["Northwood"], "district": "1", "status": "Under Construction", "notes": "Single-Family Residential \u2014 Northwood Marina District; Developer: GL Homes & Huizenga Holdings; 100 single-family homes", "lat": 26.748, "lng": -80.058}, {"id": "the-ritz-carlton-residences", "name": "The Ritz-Carlton Residences", "location": "1717 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Under Construction", "notes": "Condominium; Developer: Related Group & BH Group; 27-story, 138 units; Groundbreaking Q1 2026; completion early 2028", "lat": 26.726, "lng": -80.0505}, {"id": "the-sound-apartments", "name": "The Sound Apartments", "location": "8111 South Dixie Highway", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "Under Construction", "notes": "Mixed-Use: Rental Apartments, Retail; Developer: Woodfield Development & Flagler Realty & Development; 8-story, 358 units (90 workforce units); Includes Trader Joe's (opened June 12, 2026)", "lat": 26.63, "lng": -80.0565}, {"id": "west-palm-point", "name": "West Palm Point", "location": "801 South Dixie Avenue", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "Under Construction", "notes": "Mixed-Use: Office, Retail; Developer: Cohen Brothers Realty Corporation; 24-story; Foundation permit issued", "lat": 26.70284, "lng": -80.0605}, {"id": "10-cityplace-15-cityplace", "name": "10 CityPlace & 15 CityPlace", "location": "CityPlace, Downtown West Palm Beach", "neighborhoods": ["Downtown"], "district": "3", "status": "Under Construction", "notes": "Class A Office; Developer: Related Ross; Nearly 1 million sq ft combined; Record $772M construction loan; Cleveland Clinic signed as anchor tenant; Expected completion 2027", "lat": 26.7035, "lng": -80.0595}, {"id": "good-samaritan-medical-center-campus-redevelopment", "name": "Good Samaritan Medical Center Campus Redevelopment (Phase 1)", "location": "1301 N. Dixie Highway (hospital); 1309 N. Flagler Drive (condos)", "neighborhoods": ["Citywide"], "district": "3", "status": "Under Construction", "notes": "Waterfront Mixed-Use District; Developer: Palm Beach Health Network & Easton Street Capital; New hospital: 10 floors, 225 beds; 2 luxury condo towers at 1309 N. Flagler: approx. 300 units (150/tower); Apartment rentals / workforce housing: TBD units; Announced February 2026", "lat": 26.745, "lng": -80.0595}, {"id": "nyu-langone-health-medical-tower", "name": "NYU Langone Health Medical Tower", "location": "324 Datura Street", "neighborhoods": ["Downtown"], "district": "3", "status": "Under Construction", "notes": "Medical Office / Healthcare; Developer: NYU Langone Health; Part of WPB's healthcare expansion wave", "lat": 26.7145, "lng": -80.058}, {"id": "cleveland-clinic-hospital", "name": "Cleveland Clinic Hospital", "location": "Australian Avenue / Clear Lake", "neighborhoods": ["Citywide"], "district": "1", "status": "Under Construction", "notes": "Hospital; Developer: Cleveland Clinic; 150-bed hospital planned; Anchor tenant signed at 10 CityPlace", "lat": 26.714, "lng": -80.0655}, {"id": "apogee", "name": "Apogee", "location": "4906 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Approved", "notes": "Condominium; Developer: Related Group; 21-story, 39 units", "lat": 26.7537, "lng": -80.0515}, {"id": "banyan-tree-residences-west-palm-beach", "name": "Banyan Tree Residences West Palm Beach", "location": "400 Hibiscus Street / 635 South Dixie Highway", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "Approved", "notes": "Mixed-Use: Condominium, Retail; Developer: Mast Capital & JCZM Development; 25-story, 88 units", "lat": 26.70806, "lng": -80.0595}, {"id": "edgeworth", "name": "Edgeworth", "location": "1155 South Flagler Drive", "neighborhoods": ["El Cid / South Flagler"], "district": "5", "status": "Approved", "notes": "Condominium; Developer: Related Ross; 2 towers, 28-story, 168 units total; North Tower: 102 units; South Tower: 66 units", "lat": 26.68935, "lng": -80.0515}, {"id": "maison-d-or", "name": "Maison D'Or", "location": "3705 South Flagler Drive", "neighborhoods": ["El Cid / South Flagler"], "district": "5", "status": "Approved", "notes": "Condominium; Developer: Kolter Urban & Perko Development Partners; 19-story, 39 units", "lat": 26.66, "lng": -80.0515}, {"id": "mandarin-oriental-residences", "name": "Mandarin Oriental Residences", "location": "5400 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Approved", "notes": "Branded Condominium; Developer: Great Gulf; 31-story, 87 units", "lat": 26.758, "lng": -80.0515}, {"id": "rybovich-village-phase-1", "name": "Rybovich Village \u2014 Phase 1", "location": "4000\u20134300 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Approved", "notes": "Mixed-Use: Condominiums, Office, Retail, Restaurant, Private Club, Marina; Developer: Huizenga Holdings & Integra Investments; Phase 1: 2 towers, approved \u2014 construction not started; Tower 1: 36-story (tallest building in WPB), 112 condo units; Tower 2: 34-story, 141 condo units; Full build-out (4 t", "lat": 26.7472, "lng": -80.0515}, {"id": "alba-palm-beach", "name": "Alba Palm Beach", "location": "4714 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "Approved", "notes": "Condominium; Developer: BGI Companies; 22-story, 55 units; Groundbreaking targeted June 2026", "lat": 26.7521, "lng": -80.0515}, {"id": "district-pointe-residences", "name": "District Pointe Residences", "location": "1501 Belvedere Road", "neighborhoods": ["Airport / Belvedere"], "district": "5", "status": "Approved", "notes": "Residential; Developer: TBD; 280 units (market-rate and workforce); Site plan approved January 2026; Near Palm Beach International Airport", "lat": 26.6815, "lng": -80.0685}, {"id": "oasis-tower", "name": "Oasis Tower", "location": "1415 Centrepark Boulevard", "neighborhoods": ["Airport / Belvedere"], "district": "5", "status": "Approved", "notes": "Apartment Rental; Developer: TBD; 12-story, 323 units (81 workforce units); Approved April 2025", "lat": 26.6905, "lng": -80.069}, {"id": "vanderbilt-university-west-palm-beach-graduate-cam", "name": "Vanderbilt University West Palm Beach Graduate Campus", "location": "Downtown West Palm Beach, near Tamarind Ave / Sapodilla Ave, between Fern and Datura Streets", "neighborhoods": ["Downtown"], "district": "3", "status": "Planning", "notes": "Graduate university campus \u2014 business, technology, engineering, AI & innovation; Developer: Vanderbilt University / City of West Palm Beach / Palm Beach County; Pre-construction; additional approvals pending; Major institutional anchor for downtown knowledge economy", "lat": 26.71, "lng": -80.063}, {"id": "2001-n-flagler-drive-name-tbd", "name": "2001 N. Flagler Drive (Name TBD)", "location": "2002 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "In Review", "notes": "Condominium; Developer: Related Group & BH Group; 27-story, 90 units & townhomes", "lat": 26.7285, "lng": -80.0508}, {"id": "alba-reserve", "name": "Alba Reserve", "location": "4720 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "In Review", "notes": "Condominium; Developer: BGI Companies & Blue Road Group; 30-story, 129 units & 1 townhouse", "lat": 26.7524, "lng": -80.0515}, {"id": "currie-towers", "name": "Currie Towers", "location": "2175 & 2251 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "In Review", "notes": "Mixed-Use: Condominium, Commercial/Retail; Developer: Jeff Greene Development; 2 towers, 30-story each, 152 units total", "lat": 26.73, "lng": -80.0508}, {"id": "deco-northwood", "name": "Deco Northwood", "location": "2900 Broadway", "neighborhoods": ["Northwood"], "district": "1", "status": "In Review", "notes": "Mixed-Use: Rental Apartments, Commercial; Developer: The Prime Company; 8-story, 140 units", "lat": 26.749, "lng": -80.059}, {"id": "jeff-greene-south-dixie-housing-development", "name": "Jeff Greene South Dixie Housing Development", "location": "120 South Dixie Highway", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "In Review", "notes": "Apartment Rentals (40% workforce housing); Developer: Jeff Greene Development; 25-story, 366\u2013399 units; Construction material: pre-fabricated timber; Under review with Plans and Plats Review Committee", "lat": 26.714, "lng": -80.0575}, {"id": "the-press-shops-at-the-press", "name": "The Press / Shops at The Press", "location": "2751 South Dixie Highway", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "In Review", "notes": "Mixed-Use: Retail, Office (former Palm Beach Post site); Developer: Tricera Capital; 125,000 sq ft retail anchored by organic grocer (Joseph's Market); Workplaces at The Press office component", "lat": 26.68234, "lng": -80.0565}, {"id": "nora-district-remaining-phases", "name": "NORA District \u2014 Remaining Phases", "location": "NORA District, North Dixie corridor", "neighborhoods": ["Northwood"], "district": "1", "status": "In Review", "notes": "Mixed-Use: Residential, Hotel, Retail, Public Space; Developer: NDT Development, Place Projects & Wheelock Street Capital; Additional residential, hotel, retail and public space phases scheduled for 2026+", "lat": 26.744, "lng": -80.0555}, {"id": "brodsky-organization-development-project", "name": "Brodsky Organization Development Project", "location": "690 South Olive Avenue (land leased from Holy Trinity Episcopal Church)", "neighborhoods": ["Citywide"], "district": "3", "status": "On Hold", "notes": "Condominium; Developer: Brodsky Organization; 30-story, 62 units; Draft proposal filed with City; on hold pending church lease resolution", "lat": 26.71, "lng": -80.0535}, {"id": "carefree-6", "name": "Carefree 6", "location": "2000 South Dixie Highway", "neighborhoods": ["SoSo / South Dixie"], "district": "5", "status": "On Hold", "notes": "Mixed-Use: Apartments, Commercial/Retail; Developer: Cohen Brothers Realty Corporation; 59 units + restaurant/retail/entertainment; On hold", "lat": 26.69324, "lng": -80.0565}, {"id": "rybovich-village-phase-2", "name": "Rybovich Village \u2014 Phase 2", "location": "4000\u20134300 North Flagler Drive", "neighborhoods": ["Northwood / North Flagler"], "district": "1", "status": "On Hold", "notes": "Mixed-Use: Condominiums, Office, Retail, Restaurant, Private Club, Marina; Developer: Huizenga Holdings & Integra Investments; 2 towers, 401 units total \u2014 not approved; Building 3: approx. 40-story; Building 4: approx. 36-story; On hold pending Phase 1 progress", "lat": 26.748, "lng": -80.0515}];
+const COLORS={"Proposed":"#9aa7b1","In Review":"#E0A43B","Planning":"#92C3D1","Approved":"#2F7C93","Under Construction":"#5F7E3C","Completed":"#163B65","On Hold":"#B0432E"};
+const map=L.map('map',{scrollWheelZoom:false}).setView([26.715,-80.055],13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+let markers=[];
+const VISIBLE=PROJECTS.filter(function(p){return p.approved!==false;});
+const elStatus=document.getElementById('f-status'),elDist=document.getElementById('f-district'),
+      elSearch=document.getElementById('f-search'),list=document.getElementById('proj-list'),count=document.getElementById('count');
+[...new Set(VISIBLE.map(p=>p.status))].forEach(v=>{let o=document.createElement('option');o.value=v;o.textContent=v;elStatus.appendChild(o);});
+[...new Set(VISIBLE.map(p=>p.district))].sort().forEach(v=>{let o=document.createElement('option');o.value=v;o.textContent='District '+v;elDist.appendChild(o);});
+function render(){
+  markers.forEach(m=>map.removeLayer(m));markers=[];list.innerHTML='';
+  const q=elSearch.value.trim().toLowerCase(),st=elStatus.value,di=elDist.value;
+  let shown=0;
+  VISIBLE.forEach(p=>{
+    if(p.lat==null||p.lng==null)return;
+    const hay=(p.name+' '+p.neighborhoods.join(' ')+' '+p.location).toLowerCase();
+    if(st&&p.status!==st)return; if(di&&p.district!==di)return; if(q&&!hay.includes(q))return;
+    shown++;
+    const col=COLORS[p.status]||'#9aa7b1';
+    const m=L.circleMarker([p.lat,p.lng],{radius:9,color:'#fff',weight:2,fillColor:col,fillOpacity:.95}).addTo(map);
+    m.bindPopup(`<h4>${p.name}</h4><b>${p.status}</b> &middot; District ${p.district}<br>${p.location} &mdash; ${p.neighborhoods.join(', ')}<br><span style="color:#5B6B78">${p.notes}</span>`);
+    markers.push(m);
+    const card=document.createElement('div');card.className='proj';card.style.borderLeftColor=col;
+    card.innerHTML=`<h4>${p.name}</h4><div class="meta">${p.location} &middot; ${p.neighborhoods.join(', ')} &middot; District ${p.district}</div><span class="status" style="background:${col}">${p.status}</span><p class="note" style="margin:.6rem 0 0">${p.notes}</p>`;
+    card.tabIndex=0;
+    card.addEventListener('click',()=>{map.setView([p.lat,p.lng],15);m.openPopup();window.scrollTo({top:document.getElementById('map').offsetTop-70,behavior:'smooth'});});
+    list.appendChild(card);
+  });
+  count.textContent=shown;
+}
+[elStatus,elDist].forEach(e=>e.addEventListener('change',render));
+elSearch.addEventListener('input',render);
+render();
+setTimeout(function(){map.invalidateSize();},300);window.addEventListener('load',function(){map.invalidateSize();});
+// Live data: when hosted, pull the latest projects.json (updated from the Google Sheet); fall back to embedded data for local viewing.
+fetch('assets/projects.json').then(r=>r.ok?r.json():null).then(d=>{if(d&&d.projects&&d.projects.length){PROJECTS.length=0;d.projects.forEach(p=>PROJECTS.push(p));render();}}).catch(()=>{});
+</script>
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="assets/wpbrc-logo.png" alt="West Palm Beach Residents Coalition logo"></div>
+        <p style="margin-top:1rem">A citywide, non-partisan voice for the residents and stakeholders of West Palm Beach. <em>Stronger Neighborhoods. Stronger Community.</em></p>
+        <p class="disclaimer">Organized under Section 501(c)(4) of the Internal Revenue Code. We do not endorse or oppose candidates for public office.</p>
+      </div>
+      <div><h4>Explore</h4><ul class="foot-list">
+        <li><a href="about.html">About</a></li><li><a href="development.html">Development Tracker</a></li>
+        <li><a href="neighborhoods.html">Neighborhoods</a></li><li><a href="resources.html">Resources</a></li><li><a href="board.html">Board</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Get involved</h4><ul class="foot-list">
+        <li><a href="join.html">Join</a></li><li><a href="donate.html">Donate &amp; Sponsor</a></li>
+        <li><a href="events.html">Calendar</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Stay informed</h4><ul class="foot-list">
+        <li><a href="events.html#newsletter">Newsletter</a></li><li><a href="development.html">What&rsquo;s being built</a></li>
+        <li><a href="contact.html">Raise an issue</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 West Palm Beach Residents Coalition.</span><span>West Palm Beach, Florida</span></div>
+  </div>
+</footer>
+<div id="donate-modal" class="modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="donate-modal-title">
+  <div class="modal-backdrop" data-donate-close></div>
+  <div class="modal-card" role="document">
+    <button class="modal-close" type="button" aria-label="Close" data-donate-close>&times;</button>
+    <p class="eyebrow gold" style="margin-bottom:.3rem">Support the Coalition</p>
+    <h3 id="donate-modal-title" class="mt-0">Help Fund Independent Traffic, Mobility &amp; Infrastructure Analysis</h3>
+    <div class="embed-wrap" style="--embed-h:620px">
+      <iframe class="zeffy" title="WPBRC donation form" src="https://www.zeffy.com/en-US/embed/donation-form/donate-to-shape-our-citys-future" allow="payment" allowtransparency="true" loading="lazy"></iframe>
+    </div>
+    <p class="note" style="margin-top:.6rem">100% of your contribution reaches the Coalition (Zeffy charges no fees). Prefer a full page? <a href="donate.html">Open the donation page</a>.</p>
+  </div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

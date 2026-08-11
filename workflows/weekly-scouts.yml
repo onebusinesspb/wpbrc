@@ -1,0 +1,48 @@
+name: Weekly scouts (free, open-source)
+
+# Runs the development + events scouts on GitHub's free runners. No LLM, no API
+# key, no cost. The scouts append PENDING items (approved: false) to the data
+# files and commit directly to main. Pending items are HIDDEN on the live site;
+# a Board member approves them in the CMS by flipping "Show on site (approved)".
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"   # Mondays ~9am ET (13:00 UTC) — development scout
+    - cron: "0 13 * * 4"   # Thursdays ~9am ET — events scout
+  workflow_dispatch:        # run manually from the Actions tab any time
+
+permissions:
+  contents: write
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install open-source deps
+        run: pip install -r requirements.txt
+
+      - name: Run development scout (Mondays / manual)
+        if: github.event.schedule == '0 13 * * 1' || github.event_name == 'workflow_dispatch'
+        run: python3 tools/scout_development.py
+
+      - name: Run events scout (Thursdays / manual)
+        if: github.event.schedule == '0 13 * * 4' || github.event_name == 'workflow_dispatch'
+        run: python3 tools/scout_events.py
+
+      - name: Commit pending items (hidden until approved in the CMS)
+        run: |
+          git config user.name  "wpbrc-scout[bot]"
+          git config user.email "scout@users.noreply.github.com"
+          if [ -n "$(git status --porcelain assets/)" ]; then
+            git add assets/*.json
+            git commit -m "chore(scouts): add pending items for CMS approval"
+            git push
+          else
+            echo "No new items this run."
+          fi

@@ -1,0 +1,58 @@
+name: Site health & security (free)
+
+# Weekly deterministic check — uptime, SSL expiry, broken links, integration
+# reachability (Zeffy/CDN/OSM), and outdated libraries. No LLM, no API key.
+# On problems it opens/updates a GitHub Issue (and optionally emails, if SMTP
+# secrets are set). GitHub also emails the repo owner when a scheduled run fails.
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"   # Mondays ~8am ET
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run health & security check
+        id: check
+        run: |
+          set +e
+          python3 tools/site_healthcheck.py
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Open / update an Issue when problems are found
+        if: steps.check.outputs.status != '0'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Site health & security — action needed"
+          content-filepath: drafts/health-report.md
+          labels: security, needs-attention
+
+      # OPTIONAL email — runs only if you add SMTP secrets in repo settings:
+      #   MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, MAIL_TO
+      - name: Email the report (optional)
+        if: steps.check.outputs.status != '0' && env.MAIL_SERVER != ''
+        env:
+          MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "WPBRC site health & security — action needed"
+          to: ${{ secrets.MAIL_TO }}
+          from: WPBRC Monitor <${{ secrets.MAIL_USERNAME }}>
+          body: file://drafts/health-report.md

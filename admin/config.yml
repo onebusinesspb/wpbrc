@@ -13,13 +13,9 @@
 # =====================================================================
 
 backend:
-  name: git-gateway
+  name: github
+  repo: onebusinesspb/wpbrc
   branch: main
-# --- GitHub alternative (uncomment to use instead of git-gateway) ---
-# backend:
-#   name: github
-#   repo: your-org/wpbrc-website
-#   branch: main
 
 media_folder: "assets/uploads"     # uploaded images are stored here
 public_folder: "/assets/uploads"

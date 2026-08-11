@@ -1,12 +1,344 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>WPBRC Content Admin</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="../assets/one-intelligence-mark.svg">
+<title>WPBRC Site Control · ONE Intelligence</title>
+<style>
+  :root{
+    /* ONE Intelligence style guide */
+    --copper:#9a5f2c; --copper-dk:#7a4a22; --copper-soft:#f3e9dc;
+    --ink:#23282d; --head:#171c21; --muted:#6c6760;
+    --cream:#faf7f2; --paper:#fff; --band:#efe6d9; --rule:#e4d9c8;
+    --ok:#2e7d52; --ok-soft:#e7f3ea; --warn:#9a5f2c; --err:#b3402f;
+    --shadow:0 1px 2px rgba(40,30,12,.06),0 10px 30px rgba(40,30,12,.06);
+    --serif:Georgia,'Palatino Linotype','Book Antiqua',serif;
+    --sans:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:var(--sans); color:var(--ink); background:var(--cream);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--copper-dk); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+
+  /* Header */
+  header.top{
+    background:var(--head); color:#fff; border-bottom:3px solid var(--copper);
+  }
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; gap:16px; flex-wrap:wrap}
+  .brand{display:flex; align-items:center; gap:12px}
+  .brand .mark{ width:38px; height:38px; flex:0 0 auto; display:block }
+  .brand .mark svg{ width:38px; height:38px; display:block }
+  .brand .who{font-family:var(--serif); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#e7d3b9}
+  .brand .who b{display:block; font-size:16px; letter-spacing:.02em; color:#fff; text-transform:none; font-weight:600}
+  .top .site{font-size:13px; color:#cbb89b}
+  .top .site b{color:#fff}
+
+  /* Hero strip */
+  .hero{background:var(--paper); border-bottom:1px solid var(--rule)}
+  .hero .wrap{padding:26px 24px}
+  .hero h1{font-family:var(--serif); font-weight:600; color:var(--head); margin:0 0 4px; font-size:26px}
+  .hero p{margin:0; color:var(--muted); font-size:15px}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600;
+    padding:11px 18px; border-radius:8px; border:1px solid transparent; cursor:pointer;
+  }
+  .btn.primary{background:var(--copper); color:#fff}
+  .btn.primary:hover{background:var(--copper-dk); text-decoration:none}
+  .btn.ghost{background:#fff; color:var(--ink); border-color:var(--rule)}
+  .btn.ghost:hover{border-color:var(--copper); text-decoration:none}
+
+  /* Sections */
+  section{padding:30px 0 6px}
+  .eyebrow{font-family:var(--serif); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--copper); margin:0 0 4px}
+  h2.sec{font-family:var(--serif); font-weight:600; color:var(--head); font-size:20px; margin:0 0 16px}
+
+  /* Cards grid */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px}
+  .card{background:var(--paper); border:1px solid var(--rule); border-radius:12px; padding:16px 16px 14px; box-shadow:var(--shadow); position:relative}
+  .card .label{font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.02em}
+  .card .num{font-family:var(--serif); font-size:34px; font-weight:700; color:var(--head); line-height:1.1; margin:6px 0 2px}
+  .card .sub{font-size:12.5px; color:var(--muted)}
+  .card a.open{font-size:12.5px; font-weight:600}
+  .pill{
+    display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700;
+    padding:3px 9px; border-radius:999px; margin-top:8px;
+  }
+  .pill.pending{background:var(--copper-soft); color:var(--copper-dk)}
+  .pill.clear{background:var(--ok-soft); color:var(--ok)}
+  .dot{width:7px; height:7px; border-radius:50%; background:currentColor; display:inline-block}
+
+  /* Agents */
+  .agents{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px}
+  .agent{background:var(--paper); border:1px solid var(--rule); border-left:4px solid var(--copper); border-radius:12px; padding:16px; box-shadow:var(--shadow)}
+  .agent h3{font-family:var(--serif); font-size:16px; color:var(--head); margin:0 0 2px}
+  .agent .cadence{font-size:12.5px; color:var(--muted); margin:0 0 10px}
+  .agent .status{display:flex; align-items:center; gap:7px; font-size:13px; font-weight:600; margin-bottom:10px}
+  .agent .links{display:flex; gap:14px; flex-wrap:wrap; font-size:13px; font-weight:600}
+  .queue{
+    grid-column:1/-1; background:var(--band); border:1px solid var(--rule); border-radius:12px;
+    padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .queue .msg{font-size:14px; color:var(--ink)}
+  .queue .msg b{font-family:var(--serif); color:var(--head)}
+
+  /* Quick links */
+  .links-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px}
+  .lnk{display:flex; align-items:center; gap:10px; background:var(--paper); border:1px solid var(--rule); border-radius:10px; padding:13px 15px; font-size:14px; font-weight:600; color:var(--ink)}
+  .lnk:hover{border-color:var(--copper); text-decoration:none}
+  .lnk .ic{width:26px; height:26px; border-radius:6px; background:var(--copper-soft); color:var(--copper-dk); display:flex; align-items:center; justify-content:center; font-size:14px; flex:0 0 auto}
+  .lnk .arr{margin-left:auto; color:var(--muted)}
+
+  footer.foot{margin-top:34px; border-top:1px solid var(--rule); background:var(--paper)}
+  footer.foot .wrap{padding:18px 24px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:12.5px; color:var(--muted)}
+  .stamp{font-size:12.5px; color:var(--muted)}
+  .err-note{color:var(--err); font-size:12.5px}
+
+  /* Deploy status line */
+  .deploy-line{margin-top:14px; font-size:13px; color:var(--muted); display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .deploy-line img{vertical-align:middle; border-radius:4px}
+
+  /* Recent activity */
+  .activity{background:var(--paper); border:1px solid var(--rule); border-radius:12px; box-shadow:var(--shadow); overflow:hidden}
+  .act-row{display:flex; align-items:center; gap:14px; padding:13px 16px; border-top:1px solid var(--rule)}
+  .act-row:first-child{border-top:none}
+  .act-type{font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--copper-dk); background:var(--copper-soft); padding:3px 9px; border-radius:999px; flex:0 0 auto; min-width:74px; text-align:center}
+  .act-title{font-size:14px; color:var(--ink); font-weight:600; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .act-date{font-size:12.5px; color:var(--muted); flex:0 0 auto}
+  .act-empty{padding:16px; color:var(--muted); font-size:13.5px}
+</style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="ONE Intelligence"><rect width="64" height="64" rx="14" fill="#171c21"/><circle cx="32" cy="32" r="16.5" fill="none" stroke="#9a5f2c" stroke-width="4.5"/><circle cx="32" cy="32" r="5" fill="#faf7f2"/><rect x="30.4" y="8.5" width="3.2" height="9" rx="1.6" fill="#171c21"/></svg></div>
+      <div class="who">Powered by<b>ONE Intelligence</b></div>
+    </div>
+    <div class="site">Managing · <b>West Palm Beach Residents Coalition</b></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Site Control</h1>
+    <p>Your one place to edit content, review what the agents have gathered, and keep the site healthy.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="editor.html">✎ Open Content Editor</a>
+      <a class="btn ghost" href="/" target="_blank" rel="noopener">↗ View live site</a>
+      <a class="btn ghost" href="https://github.com/onebusinesspb/wpbrc/actions" target="_blank" rel="noopener">⚙ Agent runs</a>
+    </div>
+    <div class="deploy-line">Live deploy:
+      <a href="https://app.netlify.com/projects/wpbrcagentic/deploys" target="_blank" rel="noopener">
+        <img src="https://api.netlify.com/api/v1/badges/a7c2330e-e3c7-4563-8f35-5dd8698ada4d/deploy-status" alt="Netlify deploy status" height="20">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <p class="eyebrow">Content overview</p>
+    <h2 class="sec">What's on the site right now</h2>
+    <div class="grid" id="content-grid">
+      <div class="card"><div class="label">Loading…</div></div>
+    </div>
+    <p class="err-note" id="load-err" style="display:none"></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Automation</p>
+    <h2 class="sec">Agents &amp; site health</h2>
+    <div class="agents">
+
+      <div class="agent">
+        <h3>Development Scout</h3>
+        <p class="cadence">Runs automatically every <b>Monday ~9am ET</b></p>
+        <div class="status" id="dev-status"><span class="dot" style="color:var(--muted)"></span> Checking queue…</div>
+        <div class="links">
+          <a href="https://github.com/onebusinesspb/wpbrc/actions/workflows/weekly-scouts.yml" target="_blank" rel="noopener">Run now / history ↗</a>
+          <a href="editor.html#/collections/tracker" target="_blank" rel="noopener">Review projects</a>
+        </div>
+      </div>
+
+      <div class="agent">
+        <h3>Events Scout</h3>
+        <p class="cadence">Runs automatically every <b>Thursday ~9am ET</b></p>
+        <div class="status" id="events-status"><span class="dot" style="color:var(--muted)"></span> Checking queue…</div>
+        <div class="links">
+          <a href="https://github.com/onebusinesspb/wpbrc/actions/workflows/weekly-scouts.yml" target="_blank" rel="noopener">Run now / history ↗</a>
+          <a href="editor.html#/collections/events" target="_blank" rel="noopener">Review events</a>
+        </div>
+      </div>
+
+      <div class="agent">
+        <h3>Health &amp; Security Monitor</h3>
+        <p class="cadence">Runs automatically every <b>Monday ~8am ET</b></p>
+        <div class="status"><span class="dot" style="color:var(--ok)"></span> Opens a GitHub issue if anything breaks</div>
+        <div class="links">
+          <a href="https://github.com/onebusinesspb/wpbrc/actions/workflows/site-health.yml" target="_blank" rel="noopener">Run now / history ↗</a>
+          <a href="https://github.com/onebusinesspb/wpbrc/issues" target="_blank" rel="noopener">Open issues</a>
+        </div>
+      </div>
+
+      <div class="queue" id="queue-box">
+        <div class="msg" id="queue-msg"><b>Checking the approval queue…</b></div>
+        <a class="btn primary" href="editor.html" style="display:none" id="queue-btn">Review &amp; approve</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Freshness</p>
+    <h2 class="sec">Recent activity</h2>
+    <div id="activity" class="activity"><div class="act-empty">Loading…</div></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Shortcuts</p>
+    <h2 class="sec">Quick links</h2>
+    <div class="links-grid">
+      <a class="lnk" href="editor.html"><span class="ic">✎</span> Content Editor <span class="arr">→</span></a>
+      <a class="lnk" href="/" target="_blank" rel="noopener"><span class="ic">🌐</span> Live site <span class="arr">↗</span></a>
+      <a class="lnk" href="https://app.netlify.com/projects/wpbrcagentic/deploys" target="_blank" rel="noopener"><span class="ic">⇪</span> Netlify deploys <span class="arr">↗</span></a>
+      <a class="lnk" href="https://github.com/onebusinesspb/wpbrc/actions" target="_blank" rel="noopener"><span class="ic">⚙</span> Agent runs (Actions) <span class="arr">↗</span></a>
+      <a class="lnk" href="https://github.com/onebusinesspb/wpbrc" target="_blank" rel="noopener"><span class="ic">{ }</span> Source repository <span class="arr">↗</span></a>
+      <a class="lnk" href="https://search.google.com/search-console" target="_blank" rel="noopener"><span class="ic">🔎</span> Search Console <span class="arr">↗</span></a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>WPBRC Site Control · built and maintained by <b>ONE Intelligence</b></span>
+    <span class="stamp" id="stamp"></span>
+  </div>
+</footer>
+
+<script>
+// Each data file: [jsonPath, listKey, human label, editor collection]
+var SOURCES = [
+  ["../assets/projects.json","projects","Development projects","tracker","dev","Project"],
+  ["../assets/events.json","events","Events","events","events","Event"],
+  ["../assets/issues.json","issues","Current issues","issues",null,"Issue"],
+  ["../assets/board.json","members","Board members","board",null,"Board"],
+  ["../assets/media.json","items","Media mentions","media",null,"Media"],
+  ["../assets/blog.json","posts","Blog posts","blog",null,"Post"]
+];
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
+function pendingCount(list){
+  // Scout-added items carry approved:false and are hidden until a human approves.
+  return list.filter(function(i){ return i && i.approved === false; }).length;
+}
+
+function card(label, total, pending, collection){
+  var badge = pending>0
+    ? '<span class="pill pending"><span class="dot"></span>'+pending+' awaiting approval</span>'
+    : '<span class="pill clear"><span class="dot"></span>all approved</span>';
+  var open = collection ? '<div style="margin-top:8px"><a class="open" href="editor.html#/collections/'+collection+'">Open in editor →</a></div>' : '';
+  return '<div class="card"><div class="label">'+label+'</div>'+
+         '<div class="num">'+total+'</div>'+
+         '<div class="sub">live on the site</div>'+
+         badge+open+'</div>';
+}
+
+function setAgent(id, pending, noun){
+  var el = document.getElementById(id);
+  if(!el) return;
+  if(pending>0){
+    el.innerHTML = '<span class="dot" style="color:var(--copper)"></span> '+pending+' new '+noun+' waiting for your review';
+    el.style.color = 'var(--copper-dk)';
+  } else {
+    el.innerHTML = '<span class="dot" style="color:var(--ok)"></span> No pending '+noun+' — queue is clear';
+    el.style.color = 'var(--ok)';
+  }
+}
+
+(function(){
+  document.getElementById('stamp').textContent = 'Loaded ' + new Date().toLocaleString();
+  Promise.all(SOURCES.map(function(s){
+    return fetch(s[0], {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        var list = d && d[s[1]] ? d[s[1]] : [];
+        return {label:s[2], list:list, collection:s[3], agent:s[4], type:s[5]};
+      })
+      .catch(function(){ return {label:s[2], list:[], collection:s[3], agent:s[4], type:s[5], failed:true}; });
+  })).then(function(res){
+    var grid = document.getElementById('content-grid');
+    var html = '', totalPending = 0, failed = 0;
+    var devP=0, evP=0;
+    res.forEach(function(r){
+      if(r.failed) failed++;
+      var pend = pendingCount(r.list);
+      totalPending += pend;
+      if(r.agent==='dev') devP = pend;
+      if(r.agent==='events') evP = pend;
+      html += card(r.label, r.list.length, pend, r.collection);
+    });
+    grid.innerHTML = html;
+
+    setAgent('dev-status', devP, 'projects');
+    setAgent('events-status', evP, 'events');
+
+    var msg = document.getElementById('queue-msg');
+    var btn = document.getElementById('queue-btn');
+    if(totalPending>0){
+      msg.innerHTML = '<b>'+totalPending+' item'+(totalPending>1?'s':'')+'</b> gathered by the agents '+
+                      (totalPending>1?'are':'is')+' waiting for your approval before going live.';
+      btn.style.display = 'inline-flex';
+    } else {
+      msg.innerHTML = '<b>Approval queue is clear.</b> Nothing is waiting — the site is fully up to date. '+
+                      'When an agent runs and finds something new, it will show up here for your review.';
+    }
+
+    // Recent activity — newest dated items across events, posts, media
+    var acts = [];
+    res.forEach(function(r){
+      r.list.forEach(function(it){
+        if(it && it.date){
+          acts.push({type:r.type, title:(it.title||it.name||'Untitled'),
+                     ts:new Date(it.date).getTime(), disp:(it.displayDate||it.date)});
+        }
+      });
+    });
+    acts = acts.filter(function(a){ return !isNaN(a.ts); });
+    acts.sort(function(a,b){ return b.ts - a.ts; });
+    var actEl = document.getElementById('activity');
+    if(acts.length){
+      actEl.innerHTML = acts.slice(0,6).map(function(a){
+        return '<div class="act-row"><span class="act-type">'+escapeHtml(a.type)+'</span>'+
+               '<span class="act-title">'+escapeHtml(a.title)+'</span>'+
+               '<span class="act-date">'+escapeHtml(a.disp)+'</span></div>';
+      }).join('');
+    } else {
+      actEl.innerHTML = '<div class="act-empty">No dated items yet. Events, blog posts, and media mentions will appear here as they are added.</div>';
+    }
+
+    if(failed>0){
+      var e = document.getElementById('load-err');
+      e.style.display = 'block';
+      e.textContent = 'Note: '+failed+' data file(s) could not be read live (this is normal when previewing locally; counts update once deployed).';
+    }
+  });
+})();
+</script>
 </body>
 </html>

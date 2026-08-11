@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="../assets/one-intelligence-mark.svg">
+  <title>WPBRC Content Editor · ONE Intelligence</title>
+  <style>
+    /* ONE Intelligence accent — safe, non-intrusive branding over Decap's UI */
+    body{ background:#faf7f2; }
+    /* Copper top rule across the whole editor */
+    body::before{
+      content:""; position:fixed; top:0; left:0; right:0; height:4px;
+      background:#9a5f2c; z-index:99999; pointer-events:none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decap CMS (open-source, maintained). Reads admin/config.yml from this folder.
+       Login is GitHub via Netlify's OAuth provider (see CMS-SETUP.md).
+       The branded dashboard lives at /admin/ (index.html); this is the editor. -->
+  <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
+</body>
+</html>

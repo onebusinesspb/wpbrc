@@ -1,15 +1,11 @@
 # =====================================================================
 # WPBRC content admin — free, open-source, no-code editing at /admin/
-# Works with Sveltia CMS (admin/index.html) — a maintained drop-in for Decap.
-# Board members log in and edit content through friendly forms; saving commits
-# to the repo and Netlify rebuilds the site automatically (see netlify.toml).
+# Runs on Decap CMS. Editors log in with GitHub via Netlify's OAuth provider.
+# Saving commits to the repo and Netlify rebuilds the site (see netlify.toml).
 #
-# LOGIN — choose ONE backend below:
-#   • git-gateway  (default): easiest for non-technical editors. Requires Netlify
-#     Identity + Git Gateway enabled on the site; invite editors by email.
-#   • github: durable long-term. Editors need GitHub accounts; requires a GitHub
-#     OAuth app (Sveltia supports GitHub directly). Swap the backend block for the
-#     commented "github" one and set repo: OWNER/REPO.
+# LOGIN SETUP (one time): create a GitHub OAuth App, install it as a Netlify
+# authentication provider, and give editors write access to the repo. Steps are
+# in CMS-SETUP.md. Editors then click "Login with GitHub" at /admin.
 # =====================================================================
 
 backend:
@@ -19,6 +15,11 @@ backend:
 
 media_folder: "assets/uploads"     # uploaded images are stored here
 public_folder: "/assets/uploads"
+
+# Branding — ONE Intelligence mark on the login screen + links back to the site
+logo_url: "/assets/one-intelligence-mark.svg"
+site_url: "https://wpbrc.org"
+display_url: "https://wpbrc.org"
 
 # Friendly labels for project statuses reused below
 # (Proposed / In Review / Planning / Approved / Under Construction / Completed / On Hold)

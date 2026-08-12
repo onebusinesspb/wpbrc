@@ -8,122 +8,170 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <title>WPBRC Content Editor · ONE Intelligence</title>
   <style>
-    /* ONE Intelligence branding over Decap — safe, non-breaking.
-       Selectors that don't match are simply ignored. */
-    :root{ --oi-copper:#9a5f2c; --oi-copper-dk:#7a4a22; --oi-cream:#faf7f2;
-           --oi-ink:#23282d; --oi-head:#171c21; }
-    body{ background:var(--oi-cream); }
-    /* Copper top rule across the whole editor */
-    body::before{
-      content:""; position:fixed; top:0; left:0; right:0; height:4px;
-      background:var(--oi-copper); z-index:99999; pointer-events:none;
+    :root{
+      --oi-copper:#9a5f2c; --oi-copper-dk:#7a4a22; --oi-copper-soft:#f3e9dc;
+      --oi-cream:#faf7f2; --oi-paper:#fff; --oi-ink:#23282d; --oi-head:#171c21;
+      --oi-muted:#6c6760; --oi-rule:#e4d9c8; --oi-sand:#e7d3b9;
+      --oi-serif:Georgia,'Palatino Linotype','Book Antiqua',serif;
     }
-    /* Login screen — cream card feel */
-    [class*="LoginPageBackground"], [class*="Login"]{ background-color:var(--oi-cream) !important; }
-    /* Best-effort: tint the primary/publish buttons copper (harmless if unmatched) */
-    button[class*="Primary"], a[class*="Primary"]{
-      background-color:var(--oi-copper) !important; border-color:var(--oi-copper) !important;
+    /* ---------- base ---------- */
+    body{ background:var(--oi-cream) !important; }
+    body::before{ content:""; position:fixed; top:0; left:0; right:0; height:4px;
+      background:var(--oi-copper); z-index:100000; pointer-events:none; }
+
+    /* ---------- top bar → charcoal ---------- */
+    [class*="AppHeader"]{ background-color:var(--oi-head) !important; box-shadow:none !important;
+      border-bottom:1px solid #000 !important; }
+    [class*="AppHeaderContent"], [class*="AppHeaderActions"]{ background:transparent !important; }
+    [class*="AppHeaderNavLink"]{ color:var(--oi-sand) !important; }
+    [class*="AppHeaderNavLink"]:hover{ color:#fff !important; background:rgba(255,255,255,.06) !important; }
+    [class*="AppHeaderNavLink"][class*="Active"], [class*="AppHeaderNavLink"].active{ color:#fff !important; }
+    [class*="AppHeaderSiteLink"]{ color:#cbb89b !important; }
+    [class*="AppHeaderSiteLink"]:hover{ color:#fff !important; }
+
+    /* ---------- primary / action buttons → copper ---------- */
+    [class*="Primary"]:not(input), button[class*="StyledDropdownButton"],
+    [class*="ToolbarButton"][class*="Publish"], .oi-primary{
+      background-color:var(--oi-copper) !important; border-color:var(--oi-copper) !important; color:#fff !important;
     }
-    button[class*="Primary"]:hover, a[class*="Primary"]:hover{ background-color:var(--oi-copper-dk) !important; }
+    [class*="Primary"]:hover:not(input), button[class*="StyledDropdownButton"]:hover, .oi-primary:hover{
+      background-color:var(--oi-copper-dk) !important;
+    }
+
+    /* ---------- sidebar ---------- */
+    [class*="SidebarContainer"]{ background:var(--oi-paper) !important; border:1px solid var(--oi-rule) !important;
+      border-radius:12px !important; }
+    [class*="SidebarHeading"]{ font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
+
+    /* collection nav links + the O mark */
+    a.oi-navlink{ display:flex !important; align-items:center !important; gap:10px !important; }
+    a.oi-navlink > [class*="Icon"]{ display:none !important; }      /* hide Decap's default glyph */
+    .oi-badge{ width:22px; height:22px; flex:0 0 auto; display:inline-flex; }
+    .oi-badge svg{ width:22px; height:22px; display:block; }
+    a.oi-navlink[class*="Active"], a.oi-navlink.active{
+      color:var(--oi-copper-dk) !important; box-shadow:inset 3px 0 0 var(--oi-copper) !important;
+      background:var(--oi-copper-soft) !important;
+    }
+    [class*="NavLink"][class*="Active"]{ color:var(--oi-copper-dk) !important; }
+
+    /* ---------- main content headings → serif ---------- */
+    [class*="CollectionTop"] h1, [class*="CollectionTop"] h2,
+    [class*="EditorControl"] h1, h1[class*="CollectionPageTop"]{
+      font-family:var(--oi-serif) !important; color:var(--oi-head) !important;
+    }
+
+    /* ---------- cards ---------- */
+    [class*="Card"], [class*="ListCard"]{ border-radius:12px !important; border:1px solid var(--oi-rule) !important; }
+
+    /* ---------- login screen ---------- */
+    [class*="LoginPageBackground"]{ background-color:var(--oi-head) !important; }
+    [class*="Login"] button{ background-color:var(--oi-copper) !important; }
   </style>
 </head>
 <body>
-  <!-- Decap CMS (open-source). Reads admin/config.yml from this folder.
-       Login is GitHub via Netlify's OAuth provider (see CMS-SETUP.md).
-       The branded dashboard lives at /admin/ (index.html). -->
+  <!-- Decap CMS (open-source). Config in admin/config.yml. GitHub OAuth via Netlify. -->
   <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
   (function(){
-    // Wait for the Decap globals, then register a live map preview for the tracker.
+    var OSVG = '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+      + '<rect width="64" height="64" rx="14" fill="#171c21"/>'
+      + '<circle cx="32" cy="32" r="16.5" fill="none" stroke="#9a5f2c" stroke-width="4.5"/>'
+      + '<circle cx="32" cy="32" r="5" fill="#faf7f2"/>'
+      + '<rect x="30.4" y="8.5" width="3.2" height="9" rx="1.6" fill="#171c21"/></svg>';
+
+    // ---- polish pass: brand the O onto each collection nav item (runs on SPA re-renders)
+    function polish(){
+      try{
+        var links = document.querySelectorAll('a[href*="#/collections/"]:not([data-oi])');
+        links.forEach(function(a){
+          a.setAttribute('data-oi','1');
+          a.classList.add('oi-navlink');
+          var s = document.createElement('span');
+          s.className = 'oi-badge';
+          s.innerHTML = OSVG;
+          a.insertBefore(s, a.firstChild);
+        });
+      }catch(e){}
+    }
+    var mo = new MutationObserver(function(){ polish(); });
+    function startObserver(){
+      polish();
+      try{ mo.observe(document.body, {childList:true, subtree:true}); }catch(e){}
+    }
+    if (document.readyState !== 'loading') startObserver();
+    else document.addEventListener('DOMContentLoaded', startObserver);
+    setInterval(polish, 1500); // safety net
+
+    // ---- tracker map preview ----
     var tries = 0;
     var iv = setInterval(function(){
       tries++;
-      if (!window.CMS || !window.h || !window.createClass){
-        if (tries > 100) clearInterval(iv);   // give up after ~20s, editor still works
-        return;
-      }
+      if (!window.CMS || !window.h || !window.createClass){ if (tries>100) clearInterval(iv); return; }
       clearInterval(iv);
       try { registerTrackerPreview(); } catch(e){ console.warn('Tracker preview not loaded:', e); }
     }, 200);
 
     function statusColor(s){
-      s = (s||'').toLowerCase();
-      if (s.indexOf('completed') > -1) return '#5F7E3C';
-      if (s.indexOf('construction') > -1) return '#2F7C93';
-      if (s.indexOf('approved') > -1) return '#163B65';
-      if (s.indexOf('hold') > -1) return '#8a8a8a';
-      return '#E0A43B'; // proposed / review / planning
+      s=(s||'').toLowerCase();
+      if(s.indexOf('completed')>-1) return '#5F7E3C';
+      if(s.indexOf('construction')>-1) return '#2F7C93';
+      if(s.indexOf('approved')>-1) return '#163B65';
+      if(s.indexOf('hold')>-1) return '#8a8a8a';
+      return '#E0A43B';
     }
-
     function registerTrackerPreview(){
-      var CMS = window.CMS, h = window.h, createClass = window.createClass;
-
-      // Style the preview pane (raw CSS injected into the preview iframe)
+      var CMS=window.CMS, h=window.h, createClass=window.createClass;
       CMS.registerPreviewStyle(
-        ".oi-map-wrap{font-family:Georgia,'Palatino Linotype',serif}" +
-        ".oi-map-head{color:#171c21;margin:0 0 6px;font-size:18px}" +
-        ".oi-map-note{color:#6c6760;font-size:12.5px;margin:0 0 10px;font-family:system-ui,Segoe UI,sans-serif}" +
-        "#oi-tracker-map{height:460px;border:1px solid #e4d9c8;border-radius:10px}" +
-        ".oi-legend{font-family:system-ui,Segoe UI,sans-serif;font-size:12px;color:#23282d;margin-top:8px}" +
-        ".oi-legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}" +
+        ".oi-map-wrap{font-family:Georgia,'Palatino Linotype',serif}"+
+        ".oi-map-head{color:#171c21;margin:0 0 6px;font-size:18px}"+
+        ".oi-map-note{color:#6c6760;font-size:12.5px;margin:0 0 10px;font-family:system-ui,Segoe UI,sans-serif}"+
+        "#oi-tracker-map{height:460px;border:1px solid #e4d9c8;border-radius:10px}"+
+        ".oi-legend{font-family:system-ui,Segoe UI,sans-serif;font-size:12px;color:#23282d;margin-top:8px}"+
+        ".oi-legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}"+
         ".oi-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}",
-        { raw: true }
-      );
-
+        { raw:true });
       var MapPreview = createClass({
-        componentDidMount: function(){ this._draw(); },
-        componentDidUpdate: function(){ this._draw(); },
-        _draw: function(){
-          try {
-            var doc = document; // preview renders in same document tree
-            var el = doc.getElementById('oi-tracker-map');
-            if (!el || !window.L) return;
-            var entry = this.props.entry;
-            var listImm = entry && entry.getIn(['data','projects']);
-            var projects = listImm && listImm.toJS ? listImm.toJS() : [];
-
-            if (!this._map){
-              this._map = window.L.map(el, { scrollWheelZoom:false }).setView([26.712, -80.058], 12);
-              window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                { attribution:'© OpenStreetMap', maxZoom:19 }).addTo(this._map);
-              this._layer = window.L.layerGroup().addTo(this._map);
+        componentDidMount:function(){ this._draw(); },
+        componentDidUpdate:function(){ this._draw(); },
+        _draw:function(){
+          try{
+            var el=document.getElementById('oi-tracker-map');
+            if(!el||!window.L) return;
+            var listImm=this.props.entry && this.props.entry.getIn(['data','projects']);
+            var projects=listImm&&listImm.toJS?listImm.toJS():[];
+            if(!this._map){
+              this._map=window.L.map(el,{scrollWheelZoom:false}).setView([26.712,-80.058],12);
+              window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:19}).addTo(this._map);
+              this._layer=window.L.layerGroup().addTo(this._map);
             }
             this._layer.clearLayers();
-            var bounds = [];
+            var bounds=[];
             projects.forEach(function(p){
-              var lat = parseFloat(p.lat), lng = parseFloat(p.lng);
-              if (isNaN(lat) || isNaN(lng)) return;
-              var m = window.L.circleMarker([lat,lng], {
-                radius:7, color:'#fff', weight:2, fillColor:statusColor(p.status), fillOpacity:0.95
-              });
+              var lat=parseFloat(p.lat),lng=parseFloat(p.lng);
+              if(isNaN(lat)||isNaN(lng)) return;
+              var m=window.L.circleMarker([lat,lng],{radius:7,color:'#fff',weight:2,fillColor:statusColor(p.status),fillOpacity:.95});
               m.bindPopup('<b>'+(p.name||'')+'</b><br>'+(p.status||'')+'<br><span style="color:#666">'+(p.location||'')+'</span>');
-              this._layer.addLayer(m);
-              bounds.push([lat,lng]);
-            }, this);
-            if (bounds.length) { try { this._map.fitBounds(bounds, {padding:[30,30], maxZoom:15}); } catch(e){} }
-            setTimeout((function(){ if(this._map) this._map.invalidateSize(); }).bind(this), 200);
-          } catch(e){ console.warn('map draw error', e); }
+              this._layer.addLayer(m); bounds.push([lat,lng]);
+            },this);
+            if(bounds.length){ try{ this._map.fitBounds(bounds,{padding:[30,30],maxZoom:15}); }catch(e){} }
+            setTimeout((function(){ if(this._map) this._map.invalidateSize(); }).bind(this),200);
+          }catch(e){ console.warn('map draw error',e); }
         },
-        render: function(){
-          var entry = this.props.entry;
-          var listImm = entry && entry.getIn(['data','projects']);
-          var n = listImm && listImm.size ? listImm.size : 0;
-          return h('div', { className:'oi-map-wrap' },
-            h('h3', { className:'oi-map-head' }, 'Development Tracker — live map preview'),
-            h('p', { className:'oi-map-note' },
-              n + ' project(s). Each dot is a saved pin. If a dot sits in the water or the wrong block, ' +
-              'fix its Latitude/Longitude — or use the Fix Map Pins tool on the dashboard to auto-check every address.'),
-            h('div', { id:'oi-tracker-map' }),
-            h('div', { className:'oi-legend' },
-              h('span', {}, h('i', { style:{background:'#E0A43B'} }), 'Proposed/Planning'),
-              h('span', {}, h('i', { style:{background:'#163B65'} }), 'Approved'),
-              h('span', {}, h('i', { style:{background:'#2F7C93'} }), 'Under construction'),
-              h('span', {}, h('i', { style:{background:'#5F7E3C'} }), 'Completed'))
-          );
+        render:function(){
+          var listImm=this.props.entry && this.props.entry.getIn(['data','projects']);
+          var n=listImm&&listImm.size?listImm.size:0;
+          return h('div',{className:'oi-map-wrap'},
+            h('h3',{className:'oi-map-head'},'Development Tracker — live map preview'),
+            h('p',{className:'oi-map-note'}, n+' project(s). Each dot is a saved pin. If one sits in the water or the wrong block, fix its Latitude/Longitude — or use the Fix Map Pins tool on the dashboard.'),
+            h('div',{id:'oi-tracker-map'}),
+            h('div',{className:'oi-legend'},
+              h('span',{},h('i',{style:{background:'#E0A43B'}}),'Proposed/Planning'),
+              h('span',{},h('i',{style:{background:'#163B65'}}),'Approved'),
+              h('span',{},h('i',{style:{background:'#2F7C93'}}),'Under construction'),
+              h('span',{},h('i',{style:{background:'#5F7E3C'}}),'Completed')));
         }
       });
-
       CMS.registerPreviewTemplate('tracker', MapPreview);
     }
   })();

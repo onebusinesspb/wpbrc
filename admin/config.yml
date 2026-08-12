@@ -27,7 +27,7 @@ display_url: "https://wpbrc.org"
 collections:
   # ------------------------------------------------------------------
   - name: "tracker"
-    label: "🗺️ Development Tracker"
+    label: "Development Tracker"
     files:
       - name: "projects"
         label: "Projects (map)"
@@ -65,7 +65,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "board"
-    label: "👥 Board of Directors"
+    label: "Board of Directors"
     files:
       - name: "board"
         label: "Board members"
@@ -89,7 +89,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "issues"
-    label: "📌 Current Issues"
+    label: "Current Issues"
     files:
       - name: "issues"
         label: "Issues"
@@ -132,7 +132,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "events"
-    label: "📅 Calendar / Events"
+    label: "Calendar / Events"
     files:
       - name: "events"
         label: "Events"
@@ -159,7 +159,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "media"
-    label: "📰 Media / Press"
+    label: "Media / Press"
     files:
       - name: "media"
         label: "Coverage"
@@ -185,7 +185,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "blog"
-    label: "✍️ Blog"
+    label: "Blog"
     files:
       - name: "posts"
         label: "Blog posts"
@@ -211,7 +211,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "pages"
-    label: "📄 Pages (add / edit / delete)"
+    label: "Pages (add / edit / delete)"
     folder: "content/pages"
     extension: "md"
     format: "frontmatter"
@@ -233,7 +233,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "navigation"
-    label: "🧭 Navigation & site settings"
+    label: "Navigation & site settings"
     files:
       - name: "settings"
         label: "Menu & settings"
@@ -261,7 +261,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "home_text"
-    label: "🏠 Home page text"
+    label: "Home page text"
     files:
       - name: "home"
         label: "Home wording"
@@ -296,7 +296,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "about_text"
-    label: "ℹ️ About page text"
+    label: "About page text"
     files:
       - name: "about"
         label: "About wording"
@@ -313,7 +313,7 @@ collections:
 
   # ------------------------------------------------------------------
   - name: "neighborhoods"
-    label: "🏘️ Neighborhood Directory"
+    label: "Neighborhood Directory"
     files:
       - name: "neighborhoods"
         label: "Associations"

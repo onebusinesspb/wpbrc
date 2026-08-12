@@ -112,30 +112,19 @@
     if (document.readyState !== 'loading') startObserver();
     else document.addEventListener('DOMContentLoaded', startObserver);
     setInterval(polish, 1500); // safety net
-
-    // ---- send single-file collections straight to their editor (skip the 1-card listing)
-    var SINGLE = { tracker:'projects', board:'board', issues:'issues', events:'events',
-      media:'media', blog:'posts', navigation:'settings', home_text:'home',
-      about_text:'about', neighborhoods:'neighborhoods' };
-    function autoForward(){
-      try{
-        var m = location.hash.match(/^#\/collections\/([^\/?]+)\/?$/);
-        if (m && SINGLE[m[1]]){
-          location.replace(location.pathname + location.search +
-            '#/collections/' + m[1] + '/entries/' + SINGLE[m[1]]);
-        }
-      }catch(e){}
-    }
-    window.addEventListener('hashchange', autoForward);
-    autoForward();
+    // (Direct-to-editor was removed: Decap hides the section sidebar on an entry page,
+    //  which trapped navigation. The one-card listing keeps the sidebar reachable.)
 
     // ---- tracker map preview ----
     var tries = 0;
     var iv = setInterval(function(){
       tries++;
-      if (!window.CMS || !window.h || !window.createClass){ if (tries>100) clearInterval(iv); return; }
+      var CMS = window.CMS;
+      var h = window.h || (CMS && CMS.h);
+      var createClass = window.createClass || (CMS && CMS.createClass);
+      if (!CMS || !h || !createClass){ if (tries>150) clearInterval(iv); return; }
       clearInterval(iv);
-      try { registerTrackerPreview(); } catch(e){ console.warn('Tracker preview not loaded:', e); }
+      try { registerTrackerPreview(h, createClass); } catch(e){ console.warn('Tracker preview not loaded:', e); }
     }, 200);
 
     function statusColor(s){
@@ -146,8 +135,8 @@
       if(s.indexOf('hold')>-1) return '#8a8a8a';
       return '#E0A43B';
     }
-    function registerTrackerPreview(){
-      var CMS=window.CMS, h=window.h, createClass=window.createClass;
+    function registerTrackerPreview(h, createClass){
+      var CMS=window.CMS;
       CMS.registerPreviewStyle(
         ".oi-map-wrap{font-family:Georgia,'Palatino Linotype',serif}"+
         ".oi-map-head{color:#171c21;margin:0 0 6px;font-size:18px}"+

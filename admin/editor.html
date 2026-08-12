@@ -5,21 +5,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/svg+xml" href="../assets/one-intelligence-mark.svg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <title>WPBRC Content Editor · ONE Intelligence</title>
   <style>
-    /* ONE Intelligence accent — safe, non-intrusive branding over Decap's UI */
-    body{ background:#faf7f2; }
+    /* ONE Intelligence branding over Decap — safe, non-breaking.
+       Selectors that don't match are simply ignored. */
+    :root{ --oi-copper:#9a5f2c; --oi-copper-dk:#7a4a22; --oi-cream:#faf7f2;
+           --oi-ink:#23282d; --oi-head:#171c21; }
+    body{ background:var(--oi-cream); }
     /* Copper top rule across the whole editor */
     body::before{
       content:""; position:fixed; top:0; left:0; right:0; height:4px;
-      background:#9a5f2c; z-index:99999; pointer-events:none;
+      background:var(--oi-copper); z-index:99999; pointer-events:none;
     }
+    /* Login screen — cream card feel */
+    [class*="LoginPageBackground"], [class*="Login"]{ background-color:var(--oi-cream) !important; }
+    /* Best-effort: tint the primary/publish buttons copper (harmless if unmatched) */
+    button[class*="Primary"], a[class*="Primary"]{
+      background-color:var(--oi-copper) !important; border-color:var(--oi-copper) !important;
+    }
+    button[class*="Primary"]:hover, a[class*="Primary"]:hover{ background-color:var(--oi-copper-dk) !important; }
   </style>
 </head>
 <body>
-  <!-- Decap CMS (open-source, maintained). Reads admin/config.yml from this folder.
+  <!-- Decap CMS (open-source). Reads admin/config.yml from this folder.
        Login is GitHub via Netlify's OAuth provider (see CMS-SETUP.md).
-       The branded dashboard lives at /admin/ (index.html); this is the editor. -->
+       The branded dashboard lives at /admin/ (index.html). -->
   <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function(){
+    // Wait for the Decap globals, then register a live map preview for the tracker.
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      if (!window.CMS || !window.h || !window.createClass){
+        if (tries > 100) clearInterval(iv);   // give up after ~20s, editor still works
+        return;
+      }
+      clearInterval(iv);
+      try { registerTrackerPreview(); } catch(e){ console.warn('Tracker preview not loaded:', e); }
+    }, 200);
+
+    function statusColor(s){
+      s = (s||'').toLowerCase();
+      if (s.indexOf('completed') > -1) return '#5F7E3C';
+      if (s.indexOf('construction') > -1) return '#2F7C93';
+      if (s.indexOf('approved') > -1) return '#163B65';
+      if (s.indexOf('hold') > -1) return '#8a8a8a';
+      return '#E0A43B'; // proposed / review / planning
+    }
+
+    function registerTrackerPreview(){
+      var CMS = window.CMS, h = window.h, createClass = window.createClass;
+
+      // Style the preview pane (raw CSS injected into the preview iframe)
+      CMS.registerPreviewStyle(
+        ".oi-map-wrap{font-family:Georgia,'Palatino Linotype',serif}" +
+        ".oi-map-head{color:#171c21;margin:0 0 6px;font-size:18px}" +
+        ".oi-map-note{color:#6c6760;font-size:12.5px;margin:0 0 10px;font-family:system-ui,Segoe UI,sans-serif}" +
+        "#oi-tracker-map{height:460px;border:1px solid #e4d9c8;border-radius:10px}" +
+        ".oi-legend{font-family:system-ui,Segoe UI,sans-serif;font-size:12px;color:#23282d;margin-top:8px}" +
+        ".oi-legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px}" +
+        ".oi-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}",
+        { raw: true }
+      );
+
+      var MapPreview = createClass({
+        componentDidMount: function(){ this._draw(); },
+        componentDidUpdate: function(){ this._draw(); },
+        _draw: function(){
+          try {
+            var doc = document; // preview renders in same document tree
+            var el = doc.getElementById('oi-tracker-map');
+            if (!el || !window.L) return;
+            var entry = this.props.entry;
+            var listImm = entry && entry.getIn(['data','projects']);
+            var projects = listImm && listImm.toJS ? listImm.toJS() : [];
+
+            if (!this._map){
+              this._map = window.L.map(el, { scrollWheelZoom:false }).setView([26.712, -80.058], 12);
+              window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                { attribution:'© OpenStreetMap', maxZoom:19 }).addTo(this._map);
+              this._layer = window.L.layerGroup().addTo(this._map);
+            }
+            this._layer.clearLayers();
+            var bounds = [];
+            projects.forEach(function(p){
+              var lat = parseFloat(p.lat), lng = parseFloat(p.lng);
+              if (isNaN(lat) || isNaN(lng)) return;
+              var m = window.L.circleMarker([lat,lng], {
+                radius:7, color:'#fff', weight:2, fillColor:statusColor(p.status), fillOpacity:0.95
+              });
+              m.bindPopup('<b>'+(p.name||'')+'</b><br>'+(p.status||'')+'<br><span style="color:#666">'+(p.location||'')+'</span>');
+              this._layer.addLayer(m);
+              bounds.push([lat,lng]);
+            }, this);
+            if (bounds.length) { try { this._map.fitBounds(bounds, {padding:[30,30], maxZoom:15}); } catch(e){} }
+            setTimeout((function(){ if(this._map) this._map.invalidateSize(); }).bind(this), 200);
+          } catch(e){ console.warn('map draw error', e); }
+        },
+        render: function(){
+          var entry = this.props.entry;
+          var listImm = entry && entry.getIn(['data','projects']);
+          var n = listImm && listImm.size ? listImm.size : 0;
+          return h('div', { className:'oi-map-wrap' },
+            h('h3', { className:'oi-map-head' }, 'Development Tracker — live map preview'),
+            h('p', { className:'oi-map-note' },
+              n + ' project(s). Each dot is a saved pin. If a dot sits in the water or the wrong block, ' +
+              'fix its Latitude/Longitude — or use the Fix Map Pins tool on the dashboard to auto-check every address.'),
+            h('div', { id:'oi-tracker-map' }),
+            h('div', { className:'oi-legend' },
+              h('span', {}, h('i', { style:{background:'#E0A43B'} }), 'Proposed/Planning'),
+              h('span', {}, h('i', { style:{background:'#163B65'} }), 'Approved'),
+              h('span', {}, h('i', { style:{background:'#2F7C93'} }), 'Under construction'),
+              h('span', {}, h('i', { style:{background:'#5F7E3C'} }), 'Completed'))
+          );
+        }
+      });
+
+      CMS.registerPreviewTemplate('tracker', MapPreview);
+    }
+  })();
+  </script>
 </body>
 </html>

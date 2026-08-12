@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="../assets/one-intelligence-mark.svg">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<title>Fix Map Pins · WPBRC · ONE Intelligence</title>
+<style>
+  :root{
+    --copper:#9a5f2c; --copper-dk:#7a4a22; --copper-soft:#f3e9dc;
+    --ink:#23282d; --head:#171c21; --muted:#6c6760;
+    --cream:#faf7f2; --paper:#fff; --band:#efe6d9; --rule:#e4d9c8;
+    --ok:#2e7d52; --ok-soft:#e7f3ea; --err:#b3402f; --err-soft:#f7e7e4;
+    --serif:Georgia,'Palatino Linotype','Book Antiqua',serif;
+    --sans:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.5}
+  a{color:var(--copper-dk)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  header.top{background:var(--head);color:#fff;border-bottom:3px solid var(--copper)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;gap:12px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mark{width:34px;height:34px}
+  .brand .mark svg{width:34px;height:34px;display:block}
+  .brand .who{font-family:var(--serif);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#e7d3b9}
+  .brand .who b{display:block;font-size:15px;letter-spacing:.02em;color:#fff;text-transform:none;font-weight:600}
+  .top a.back{color:#cbb89b;font-size:13px;font-weight:600}
+  .hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+  .hero .wrap{padding:22px 24px}
+  h1{font-family:var(--serif);font-weight:600;color:var(--head);margin:0 0 4px;font-size:23px}
+  .hero p{margin:0;color:var(--muted);font-size:14px;max-width:760px}
+  .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid transparent;cursor:pointer;font-family:var(--sans)}
+  .btn.primary{background:var(--copper);color:#fff}
+  .btn.primary:hover{background:var(--copper-dk)}
+  .btn.primary:disabled{background:#c9b79f;cursor:default}
+  .btn.ghost{background:#fff;color:var(--ink);border-color:var(--rule)}
+  .btn.ghost:disabled{color:#b9b1a5;cursor:default}
+  .thr{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+  .thr input{width:70px;padding:7px 8px;border:1px solid var(--rule);border-radius:6px;font-family:var(--sans)}
+  .wrap.body{padding-top:22px;padding-bottom:40px}
+  #status{font-size:13px;color:var(--muted);margin:6px 0 0}
+  .bar{height:8px;background:var(--band);border-radius:99px;overflow:hidden;margin:10px 0 0;display:none}
+  .bar>i{display:block;height:100%;width:0;background:var(--copper);transition:width .2s}
+  #map{height:420px;border:1px solid var(--rule);border-radius:12px;margin:16px 0}
+  .legend{font-size:12.5px;color:var(--ink);margin:-6px 0 4px;display:flex;gap:16px;flex-wrap:wrap}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);border-radius:12px;overflow:hidden;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-top:1px solid var(--rule);vertical-align:top}
+  th{background:var(--band);font-family:var(--serif);color:var(--head);font-weight:600;position:sticky;top:0}
+  tr.off td{background:var(--err-soft)}
+  tr.okrow td{background:#fff}
+  .dist{font-weight:700}
+  .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px}
+  .tag.off{background:var(--err-soft);color:var(--err)}
+  .tag.ok{background:var(--ok-soft);color:var(--ok)}
+  .tag.miss{background:#eee;color:#777}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--ink)}
+  .copy{cursor:pointer;color:var(--copper-dk);font-weight:600;font-size:12px}
+  .note{background:var(--copper-soft);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--ink);margin:14px 0}
+  footer{color:var(--muted);font-size:12px;margin-top:22px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">
+    <div class="mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="14" fill="#171c21"/><circle cx="32" cy="32" r="16.5" fill="none" stroke="#9a5f2c" stroke-width="4.5"/><circle cx="32" cy="32" r="5" fill="#faf7f2"/><rect x="30.4" y="8.5" width="3.2" height="9" rx="1.6" fill="#171c21"/></svg></div>
+    <div class="who">ONE Intelligence<b>Fix Map Pins</b></div>
+  </div>
+  <a class="back" href="./">← Back to dashboard</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1>Development Tracker — pin accuracy check</h1>
+  <p>This checks every project's saved map pin against where its street address actually is (using OpenStreetMap), flags the ones that are off, and lets you download a corrected data file. Runs entirely in your browser.</p>
+  <div class="controls">
+    <button class="btn primary" id="run">Check all pins</button>
+    <div class="thr">Flag pins off by more than <input id="thr" type="number" value="120" min="20" step="10"> m</div>
+    <button class="btn ghost" id="download" disabled>Download corrected projects.json</button>
+  </div>
+  <div id="status"></div>
+  <div class="bar"><i></i></div>
+</div></div>
+
+<div class="wrap body">
+  <div class="legend">
+    <span><i style="background:#b3402f"></i> Saved pin (current)</span>
+    <span><i style="background:#2e7d52"></i> Address location (OpenStreetMap)</span>
+    <span>— line connects the two when they differ</span>
+  </div>
+  <div id="map"></div>
+
+  <div class="note" id="intro">
+    Click <b>Check all pins</b> to begin. It looks up one address per second (OpenStreetMap's fair-use limit), so ~50 projects takes about a minute. Nothing is saved until you download the corrected file and commit it.
+  </div>
+
+  <table id="tbl" style="display:none">
+    <thead><tr><th>Project</th><th>Address</th><th>Off by</th><th>Saved</th><th>Address location</th><th>Status</th></tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <footer>Geocoding by OpenStreetMap Nominatim. Distances are straight-line. Always eyeball the map before committing — a PO box or a broad area (“Downtown WPB”) may not geocode to the exact building.</footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var RAW = null, PROJECTS = [], RESULTS = [], map, curLayer, geoLayer, lineLayer;
+
+function haversine(a,b,c,d){
+  var R=6371000, toR=function(x){return x*Math.PI/180;};
+  var dLat=toR(c-a), dLng=toR(d-b);
+  var s=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(toR(a))*Math.cos(toR(c))*Math.sin(dLng/2)*Math.sin(dLng/2);
+  return Math.round(R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s)));
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+function initMap(){
+  map = L.map('map').setView([26.712,-80.058],12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:19}).addTo(map);
+  curLayer=L.layerGroup().addTo(map); geoLayer=L.layerGroup().addTo(map); lineLayer=L.layerGroup().addTo(map);
+}
+
+function loadData(){
+  return fetch('../assets/projects.json',{cache:'no-store'}).then(function(r){
+    if(!r.ok) throw new Error('Could not load projects.json ('+r.status+')');
+    return r.json();
+  }).then(function(d){
+    RAW=d; PROJECTS=(d.projects||[]).slice();
+    // plot current pins immediately
+    PROJECTS.forEach(function(p){
+      var lat=parseFloat(p.lat),lng=parseFloat(p.lng);
+      if(isNaN(lat)||isNaN(lng))return;
+      L.circleMarker([lat,lng],{radius:6,color:'#fff',weight:2,fillColor:'#b3402f',fillOpacity:.9})
+        .bindPopup('<b>'+esc(p.name)+'</b><br>'+esc(p.location)).addTo(curLayer);
+    });
+  });
+}
+
+async function geocode(q){
+  var url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q='+encodeURIComponent(q);
+  var r=await fetch(url,{headers:{'Accept':'application/json'}});
+  if(!r.ok) return null;
+  var j=await r.json();
+  if(!j||!j.length) return null;
+  return {lat:parseFloat(j[0].lat),lng:parseFloat(j[0].lon)};
+}
+
+async function run(){
+  var runBtn=document.getElementById('run'), thr=parseInt(document.getElementById('thr').value,10)||120;
+  runBtn.disabled=true; document.getElementById('intro').style.display='none';
+  var tbl=document.getElementById('tbl'), tb=tbl.querySelector('tbody'); tb.innerHTML=''; tbl.style.display='';
+  var bar=document.querySelector('.bar'); bar.style.display='block';
+  var barI=bar.querySelector('i'); geoLayer.clearLayers(); lineLayer.clearLayers(); RESULTS=[];
+  var n=PROJECTS.length;
+  for(var i=0;i<n;i++){
+    var p=PROJECTS[i];
+    document.getElementById('status').textContent='Checking '+(i+1)+' of '+n+' — '+p.name;
+    barI.style.width=Math.round((i)/n*100)+'%';
+    var q=(p.location||p.name)+', West Palm Beach, FL';
+    var g=null; try{ g=await geocode(q); }catch(e){ g=null; }
+    var lat=parseFloat(p.lat),lng=parseFloat(p.lng);
+    var row={id:p.id,name:p.name,location:p.location,cur:[lat,lng],geo:g,dist:null,status:'miss'};
+    if(g && !isNaN(lat) && !isNaN(lng)){
+      row.dist=haversine(lat,lng,g.lat,g.lng);
+      row.status = row.dist>thr ? 'off' : 'ok';
+      L.circleMarker([g.lat,g.lng],{radius:6,color:'#fff',weight:2,fillColor:'#2e7d52',fillOpacity:.9})
+        .bindPopup('<b>'+esc(p.name)+'</b><br>address → '+g.lat.toFixed(5)+', '+g.lng.toFixed(5)).addTo(geoLayer);
+      if(row.status==='off') L.polyline([[lat,lng],[g.lat,g.lng]],{color:'#b3402f',weight:1.5,dashArray:'4,4'}).addTo(lineLayer);
+    } else if(g){
+      L.circleMarker([g.lat,g.lng],{radius:6,color:'#fff',weight:2,fillColor:'#2e7d52',fillOpacity:.9})
+        .bindPopup('<b>'+esc(p.name)+'</b> (no saved pin)').addTo(geoLayer);
+    }
+    RESULTS.push(row); addRow(row);
+    await sleep(1100); // Nominatim fair-use: ~1 req/sec
+  }
+  barI.style.width='100%';
+  var off=RESULTS.filter(function(r){return r.status==='off';}).length;
+  var miss=RESULTS.filter(function(r){return r.status==='miss';}).length;
+  document.getElementById('status').textContent='Done. '+off+' pin(s) off by more than '+thr+' m'+(miss?', '+miss+' could not be geocoded':'')+'.';
+  document.getElementById('download').disabled = off===0;
+  runBtn.disabled=false;
+}
+
+function addRow(r){
+  var tb=document.querySelector('#tbl tbody');
+  var tr=document.createElement('tr');
+  tr.className = r.status==='off' ? 'off' : (r.status==='ok'?'okrow':'');
+  var cur = (r.cur && !isNaN(r.cur[0])) ? r.cur[0].toFixed(5)+', '+r.cur[1].toFixed(5) : '—';
+  var geo = r.geo ? r.geo.lat.toFixed(5)+', '+r.geo.lng.toFixed(5) : '—';
+  var tag = r.status==='off' ? '<span class="tag off">OFF</span>' :
+            r.status==='ok' ? '<span class="tag ok">OK</span>' :
+            '<span class="tag miss">no match</span>';
+  var copy = r.geo ? ' <span class="copy" data-c="'+r.geo.lat.toFixed(6)+','+r.geo.lng.toFixed(6)+'">copy</span>' : '';
+  tr.innerHTML='<td><b>'+esc(r.name)+'</b></td><td>'+esc(r.location)+'</td>'+
+    '<td class="dist">'+(r.dist==null?'—':r.dist+' m')+'</td>'+
+    '<td class="mono">'+cur+'</td><td class="mono">'+geo+copy+'</td><td>'+tag+'</td>';
+  tb.appendChild(tr);
+  var c=tr.querySelector('.copy'); if(c) c.onclick=function(){ navigator.clipboard.writeText(this.getAttribute('data-c')); this.textContent='copied'; };
+}
+
+function download(){
+  var thr=parseInt(document.getElementById('thr').value,10)||120;
+  // Deep-copy RAW, replace lat/lng for OFF rows with geocoded values
+  var out=JSON.parse(JSON.stringify(RAW));
+  var byId={}; RESULTS.forEach(function(r){ byId[r.id]=r; });
+  (out.projects||[]).forEach(function(p){
+    var r=byId[p.id];
+    if(r && r.status==='off' && r.geo){ p.lat=+r.geo.lat.toFixed(6); p.lng=+r.geo.lng.toFixed(6); }
+  });
+  var blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='projects.json'; a.click();
+}
+
+initMap();
+loadData().then(function(){
+  document.getElementById('status').textContent=PROJECTS.length+' projects loaded. Ready to check.';
+}).catch(function(e){
+  document.getElementById('status').textContent=e.message+' — open this page on the live site (wpbrc.com/admin/geocode.html), not locally.';
+});
+document.getElementById('run').onclick=run;
+document.getElementById('download').onclick=download;
+</script>
+</body>
+</html>

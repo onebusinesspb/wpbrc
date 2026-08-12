@@ -1,16 +1,75 @@
 {
-  "_meta": { "note": "Site navigation + global settings, editable in the CMS. 'order' sets menu position (low = left). 'show' hides an item. Feature pages are 'locked' (don't remove them). Custom pages you create can also appear in the menu." },
-  "join": { "label": "Join", "url": "contact.html" },
+  "_meta": {
+    "note": "Site navigation + global settings, editable in the CMS. 'order' sets menu position (low = left). 'show' hides an item. Feature pages are 'locked' (don't remove them). Custom pages you create can also appear in the menu."
+  },
+  "join": {
+    "label": "Join",
+    "url": "contact.html"
+  },
   "nav": [
-    { "label": "Home", "url": "index.html", "order": 10, "show": true, "locked": true },
-    { "label": "About", "url": "about.html", "order": 20, "show": true },
-    { "label": "Development", "url": "development.html", "order": 30, "show": true, "locked": true },
-    { "label": "Resources", "url": "resources.html", "order": 40, "show": true },
-    { "label": "Neighborhoods", "url": "neighborhoods.html", "order": 50, "show": true },
-    { "label": "Board", "url": "board.html", "order": 60, "show": true },
-    { "label": "Calendar", "url": "events.html", "order": 70, "show": true, "locked": true },
-    { "label": "Blog", "url": "blog.html", "order": 80, "show": true, "locked": true },
-    { "label": "Contact", "url": "contact.html", "order": 90, "show": true },
-    { "label": "Donate", "url": "donate.html", "order": 100, "show": true }
+    {
+      "label": "Home",
+      "url": "index.html",
+      "order": 10,
+      "show": true,
+      "locked": true
+    },
+    {
+      "label": "About",
+      "url": "about.html",
+      "order": 20,
+      "show": true
+    },
+    {
+      "label": "Development",
+      "url": "development.html",
+      "order": 30,
+      "show": true,
+      "locked": true
+    },
+    {
+      "label": "Calendar",
+      "url": "events.html",
+      "order": 70,
+      "show": true,
+      "locked": true
+    },
+    {
+      "label": "Resources",
+      "url": "resources.html",
+      "order": 40,
+      "show": true
+    },
+    {
+      "label": "Neighborhoods",
+      "url": "neighborhoods.html",
+      "order": 50,
+      "show": true
+    },
+    {
+      "label": "Board",
+      "url": "board.html",
+      "order": 60,
+      "show": true
+    },
+    {
+      "label": "Blog",
+      "url": "blog.html",
+      "order": 80,
+      "show": true,
+      "locked": true
+    },
+    {
+      "label": "Contact",
+      "url": "contact.html",
+      "order": 90,
+      "show": true
+    },
+    {
+      "label": "Donate",
+      "url": "donate.html",
+      "order": 100,
+      "show": true
+    }
   ]
 }

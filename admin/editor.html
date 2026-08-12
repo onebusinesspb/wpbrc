@@ -44,15 +44,25 @@
     [class*="SidebarHeading"]{ font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
 
     /* collection nav links + the O mark */
-    a.oi-navlink{ display:flex !important; align-items:center !important; gap:10px !important; }
+    a.oi-navlink{ display:flex !important; align-items:center !important; gap:11px !important;
+      position:relative !important; padding:12px 14px 12px 16px !important; margin:5px 8px !important;
+      border-radius:8px !important; border-left:0 !important; }
     a.oi-navlink > [class*="Icon"]{ display:none !important; }      /* hide Decap's default glyph */
     .oi-badge{ width:22px; height:22px; flex:0 0 auto; display:inline-flex; }
     .oi-badge svg{ width:22px; height:22px; display:block; }
-    a.oi-navlink[class*="Active"], a.oi-navlink.active{
-      color:var(--oi-copper-dk) !important; box-shadow:inset 3px 0 0 var(--oi-copper) !important;
-      background:var(--oi-copper-soft) !important;
-    }
-    [class*="NavLink"][class*="Active"]{ color:var(--oi-copper-dk) !important; }
+    /* selected item: copper wash + brown bar right next to the icon */
+    a.oi-navlink.active, a.oi-navlink[class*="Active"]{
+      background:var(--oi-copper-soft) !important; color:var(--oi-copper-dk) !important;
+      box-shadow:none !important; border-left:0 !important; }
+    a.oi-navlink.active::before, a.oi-navlink[class*="Active"]::before{
+      content:""; position:absolute; left:5px; top:10px; bottom:10px; width:3px;
+      border-radius:3px; background:var(--oi-copper); }
+    [class*="NavLink"].active{ color:var(--oi-copper-dk) !important; }
+
+    /* "Sort by" + list/grid view toggle → copper */
+    [class*="ViewControls"] svg, [class*="ViewStyle"] svg, [class*="SortControl"] svg,
+    [class*="ViewControls"] button, [class*="ViewControls"] a, [class*="SortControl"] button{
+      color:var(--oi-copper) !important; fill:var(--oi-copper) !important; }
 
     /* ---------- main content headings → serif ---------- */
     [class*="CollectionTop"] h1, [class*="CollectionTop"] h2,
@@ -83,7 +93,7 @@
     // ---- polish pass: brand the O onto each collection nav item (runs on SPA re-renders)
     function polish(){
       try{
-        var links = document.querySelectorAll('a[href*="#/collections/"]:not([data-oi])');
+        var links = document.querySelectorAll('a[href*="#/collections/"]:not([href*="/entries/"]):not([data-oi])');
         links.forEach(function(a){
           a.setAttribute('data-oi','1');
           a.classList.add('oi-navlink');
@@ -102,6 +112,22 @@
     if (document.readyState !== 'loading') startObserver();
     else document.addEventListener('DOMContentLoaded', startObserver);
     setInterval(polish, 1500); // safety net
+
+    // ---- send single-file collections straight to their editor (skip the 1-card listing)
+    var SINGLE = { tracker:'projects', board:'board', issues:'issues', events:'events',
+      media:'media', blog:'posts', navigation:'settings', home_text:'home',
+      about_text:'about', neighborhoods:'neighborhoods' };
+    function autoForward(){
+      try{
+        var m = location.hash.match(/^#\/collections\/([^\/?]+)\/?$/);
+        if (m && SINGLE[m[1]]){
+          location.replace(location.pathname + location.search +
+            '#/collections/' + m[1] + '/entries/' + SINGLE[m[1]]);
+        }
+      }catch(e){}
+    }
+    window.addEventListener('hashchange', autoForward);
+    autoForward();
 
     // ---- tracker map preview ----
     var tries = 0;

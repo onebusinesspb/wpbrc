@@ -13,13 +13,10 @@
       --oi-muted:#6c6760; --oi-rule:#e4d9c8; --oi-sand:#e7d3b9;
       --oi-serif:Georgia,'Palatino Linotype','Book Antiqua',serif;
     }
-    /* Pseudo-elements never intercept clicks (this is what protects navigation) */
-    *::before, *::after{ pointer-events:none; }
-
     /* ---------- base ---------- */
     body{ background:var(--oi-cream) !important; }
     body::before{ content:""; position:fixed; top:0; left:0; right:0; height:4px;
-      background:var(--oi-copper); z-index:100000; }
+      background:var(--oi-copper); z-index:100000; pointer-events:none; }
 
     /* ---------- top bar → charcoal ---------- */
     [class*="AppHeader"]{ background-color:var(--oi-head) !important; box-shadow:none !important;
@@ -41,21 +38,20 @@
       border-radius:12px !important; }
     [class*="SidebarHeading"]{ font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
 
-    /* ---------- collection nav links (pure CSS; clicks fully preserved) ---------- */
+    /* ---------- collection nav links ----------
+       NOTE: we do NOT change the link's display/position, so its click area is
+       exactly what Decap built. The O is an inline pseudo that ignores clicks. */
     a[href*="#/collections/"]:not([href*="/entries/"]){
-      display:flex !important; align-items:center !important; position:relative !important;
       padding:12px 14px 12px 18px !important; margin:6px 8px !important; border-radius:8px !important; }
     a[href*="#/collections/"]:not([href*="/entries/"]) > svg,
     a[href*="#/collections/"]:not([href*="/entries/"]) [class*="Icon"]{ display:none !important; }
     a[href*="#/collections/"]:not([href*="/entries/"])::before{
-      content:""; width:20px; height:20px; flex:0 0 auto; margin-right:11px;
+      content:""; display:inline-block; width:19px; height:19px; vertical-align:-4px; margin-right:10px;
+      pointer-events:none;
       background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171c21'/%3E%3Ccircle cx='32' cy='32' r='16.5' fill='none' stroke='%239a5f2c' stroke-width='4.5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23faf7f2'/%3E%3Crect x='30.4' y='8.5' width='3.2' height='9' rx='1.6' fill='%23171c21'/%3E%3C/svg%3E") center/contain no-repeat;
     }
     a[href*="#/collections/"]:not([href*="/entries/"]).active{
       background:var(--oi-copper-soft) !important; color:var(--oi-copper-dk) !important; }
-    a[href*="#/collections/"]:not([href*="/entries/"]).active::after{
-      content:""; position:absolute; left:5px; top:10px; bottom:10px; width:3px;
-      border-radius:3px; background:var(--oi-copper); }
 
     /* ---------- "Sort by" + list/grid view toggle → copper ---------- */
     [class*="ViewControls"] svg, [class*="ViewStyle"] svg, [class*="SortControl"] svg,
@@ -73,8 +69,7 @@
   </style>
 </head>
 <body>
-  <!-- Decap CMS (open-source). All ONE Intelligence branding is CSS-only.
-       No JavaScript runs here, so Decap's navigation is never disturbed. -->
+  <!-- Decap CMS (open-source). CSS-only branding; no JavaScript; link layout untouched. -->
   <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
 </body>
 </html>

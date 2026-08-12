@@ -25,52 +25,49 @@
     [class*="AppHeaderContent"], [class*="AppHeaderActions"]{ background:transparent !important; }
     [class*="AppHeaderNavLink"]{ color:var(--oi-sand) !important; }
     [class*="AppHeaderNavLink"]:hover{ color:#fff !important; background:rgba(255,255,255,.06) !important; }
-    [class*="AppHeaderNavLink"][class*="Active"], [class*="AppHeaderNavLink"].active{ color:#fff !important; }
     [class*="AppHeaderSiteLink"]{ color:#cbb89b !important; }
     [class*="AppHeaderSiteLink"]:hover{ color:#fff !important; }
 
     /* ---------- primary / action buttons → copper ---------- */
-    [class*="Primary"]:not(input), button[class*="StyledDropdownButton"],
-    [class*="ToolbarButton"][class*="Publish"], .oi-primary{
-      background-color:var(--oi-copper) !important; border-color:var(--oi-copper) !important; color:#fff !important;
-    }
+    [class*="Primary"]:not(input), button[class*="StyledDropdownButton"], .oi-primary{
+      background-color:var(--oi-copper) !important; border-color:var(--oi-copper) !important; color:#fff !important; }
     [class*="Primary"]:hover:not(input), button[class*="StyledDropdownButton"]:hover, .oi-primary:hover{
-      background-color:var(--oi-copper-dk) !important;
-    }
+      background-color:var(--oi-copper-dk) !important; }
 
     /* ---------- sidebar ---------- */
     [class*="SidebarContainer"]{ background:var(--oi-paper) !important; border:1px solid var(--oi-rule) !important;
       border-radius:12px !important; }
     [class*="SidebarHeading"]{ font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
 
-    /* collection nav links + the O mark */
-    a.oi-navlink{ display:flex !important; align-items:center !important; gap:11px !important;
-      position:relative !important; padding:12px 14px 12px 16px !important; margin:5px 8px !important;
-      border-radius:8px !important; border-left:0 !important; }
-    a.oi-navlink > [class*="Icon"]{ display:none !important; }      /* hide Decap's default glyph */
-    .oi-badge{ width:22px; height:22px; flex:0 0 auto; display:inline-flex; }
-    .oi-badge svg{ width:22px; height:22px; display:block; }
-    /* selected item: copper wash + brown bar right next to the icon */
-    a.oi-navlink.active, a.oi-navlink[class*="Active"]{
-      background:var(--oi-copper-soft) !important; color:var(--oi-copper-dk) !important;
-      box-shadow:none !important; border-left:0 !important; }
-    a.oi-navlink.active::before, a.oi-navlink[class*="Active"]::before{
+    /* ---------- collection nav links — pure CSS, keyed on the link address ----------
+       No JavaScript touches these, so Decap's React navigation is never disturbed. */
+    a[href*="#/collections/"]:not([href*="/entries/"]){
+      display:flex !important; align-items:center !important; position:relative !important;
+      padding:12px 14px 12px 18px !important; margin:6px 8px !important; border-radius:8px !important;
+      border-left:0 !important;
+    }
+    /* hide Decap's default glyph, draw our O mark as a pseudo-element */
+    a[href*="#/collections/"]:not([href*="/entries/"]) > svg,
+    a[href*="#/collections/"]:not([href*="/entries/"]) [class*="Icon"]{ display:none !important; }
+    a[href*="#/collections/"]:not([href*="/entries/"])::before{
+      content:""; width:20px; height:20px; flex:0 0 auto; margin-right:11px;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171c21'/%3E%3Ccircle cx='32' cy='32' r='16.5' fill='none' stroke='%239a5f2c' stroke-width='4.5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23faf7f2'/%3E%3Crect x='30.4' y='8.5' width='3.2' height='9' rx='1.6' fill='%23171c21'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    /* selected item ONLY: copper wash + brown bar right next to the icon */
+    a[href*="#/collections/"]:not([href*="/entries/"]).active{
+      background:var(--oi-copper-soft) !important; color:var(--oi-copper-dk) !important; }
+    a[href*="#/collections/"]:not([href*="/entries/"]).active::after{
       content:""; position:absolute; left:5px; top:10px; bottom:10px; width:3px;
       border-radius:3px; background:var(--oi-copper); }
-    [class*="NavLink"].active{ color:var(--oi-copper-dk) !important; }
 
-    /* "Sort by" + list/grid view toggle → copper */
+    /* ---------- "Sort by" + list/grid view toggle → copper ---------- */
     [class*="ViewControls"] svg, [class*="ViewStyle"] svg, [class*="SortControl"] svg,
     [class*="ViewControls"] button, [class*="ViewControls"] a, [class*="SortControl"] button{
       color:var(--oi-copper) !important; fill:var(--oi-copper) !important; }
 
-    /* ---------- main content headings → serif ---------- */
-    [class*="CollectionTop"] h1, [class*="CollectionTop"] h2,
-    [class*="EditorControl"] h1, h1[class*="CollectionPageTop"]{
-      font-family:var(--oi-serif) !important; color:var(--oi-head) !important;
-    }
-
-    /* ---------- cards ---------- */
+    /* ---------- headings + cards ---------- */
+    [class*="CollectionTop"] h1, [class*="CollectionTop"] h2, h1[class*="CollectionPageTop"]{
+      font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
     [class*="Card"], [class*="ListCard"]{ border-radius:12px !important; border:1px solid var(--oi-rule) !important; }
 
     /* ---------- login screen ---------- */
@@ -79,43 +76,12 @@
   </style>
 </head>
 <body>
-  <!-- Decap CMS (open-source). Config in admin/config.yml. GitHub OAuth via Netlify. -->
+  <!-- Decap CMS (open-source). Config in admin/config.yml. GitHub OAuth via Netlify.
+       All branding is CSS-only; the only script is the tracker map preview below. -->
   <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
   (function(){
-    var OSVG = '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
-      + '<rect width="64" height="64" rx="14" fill="#171c21"/>'
-      + '<circle cx="32" cy="32" r="16.5" fill="none" stroke="#9a5f2c" stroke-width="4.5"/>'
-      + '<circle cx="32" cy="32" r="5" fill="#faf7f2"/>'
-      + '<rect x="30.4" y="8.5" width="3.2" height="9" rx="1.6" fill="#171c21"/></svg>';
-
-    // ---- polish pass: brand the O onto each collection nav item (runs on SPA re-renders)
-    function polish(){
-      try{
-        var links = document.querySelectorAll('a[href*="#/collections/"]:not([href*="/entries/"]):not([data-oi])');
-        links.forEach(function(a){
-          a.setAttribute('data-oi','1');
-          a.classList.add('oi-navlink');
-          var s = document.createElement('span');
-          s.className = 'oi-badge';
-          s.innerHTML = OSVG;
-          a.insertBefore(s, a.firstChild);
-        });
-      }catch(e){}
-    }
-    var mo = new MutationObserver(function(){ polish(); });
-    function startObserver(){
-      polish();
-      try{ mo.observe(document.body, {childList:true, subtree:true}); }catch(e){}
-    }
-    if (document.readyState !== 'loading') startObserver();
-    else document.addEventListener('DOMContentLoaded', startObserver);
-    setInterval(polish, 1500); // safety net
-    // (Direct-to-editor was removed: Decap hides the section sidebar on an entry page,
-    //  which trapped navigation. The one-card listing keeps the sidebar reachable.)
-
-    // ---- tracker map preview ----
     var tries = 0;
     var iv = setInterval(function(){
       tries++;

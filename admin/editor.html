@@ -4,12 +4,77 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <title>WPBRC Content Editor</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/one-intelligence-mark.svg">
+  <title>WPBRC Content Editor · ONE Intelligence</title>
+  <style>
+    :root{
+      --oi-copper:#9a5f2c; --oi-copper-dk:#7a4a22; --oi-copper-soft:#f3e9dc;
+      --oi-cream:#faf7f2; --oi-paper:#fff; --oi-ink:#23282d; --oi-head:#171c21;
+      --oi-muted:#6c6760; --oi-rule:#e4d9c8; --oi-sand:#e7d3b9;
+      --oi-serif:Georgia,'Palatino Linotype','Book Antiqua',serif;
+    }
+    /* Pseudo-elements never intercept clicks (this is what protects navigation) */
+    *::before, *::after{ pointer-events:none; }
+
+    /* ---------- base ---------- */
+    body{ background:var(--oi-cream) !important; }
+    body::before{ content:""; position:fixed; top:0; left:0; right:0; height:4px;
+      background:var(--oi-copper); z-index:100000; }
+
+    /* ---------- top bar → charcoal ---------- */
+    [class*="AppHeader"]{ background-color:var(--oi-head) !important; box-shadow:none !important;
+      border-bottom:1px solid #000 !important; }
+    [class*="AppHeaderContent"], [class*="AppHeaderActions"]{ background:transparent !important; }
+    [class*="AppHeaderNavLink"]{ color:var(--oi-sand) !important; }
+    [class*="AppHeaderNavLink"]:hover{ color:#fff !important; background:rgba(255,255,255,.06) !important; }
+    [class*="AppHeaderSiteLink"]{ color:#cbb89b !important; }
+    [class*="AppHeaderSiteLink"]:hover{ color:#fff !important; }
+
+    /* ---------- primary / action buttons → copper ---------- */
+    [class*="Primary"]:not(input), button[class*="StyledDropdownButton"]{
+      background-color:var(--oi-copper) !important; border-color:var(--oi-copper) !important; color:#fff !important; }
+    [class*="Primary"]:hover:not(input), button[class*="StyledDropdownButton"]:hover{
+      background-color:var(--oi-copper-dk) !important; }
+
+    /* ---------- sidebar ---------- */
+    [class*="SidebarContainer"]{ background:var(--oi-paper) !important; border:1px solid var(--oi-rule) !important;
+      border-radius:12px !important; }
+    [class*="SidebarHeading"]{ font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
+
+    /* ---------- collection nav links (pure CSS; clicks fully preserved) ---------- */
+    a[href*="#/collections/"]:not([href*="/entries/"]){
+      display:flex !important; align-items:center !important; position:relative !important;
+      padding:12px 14px 12px 18px !important; margin:6px 8px !important; border-radius:8px !important; }
+    a[href*="#/collections/"]:not([href*="/entries/"]) > svg,
+    a[href*="#/collections/"]:not([href*="/entries/"]) [class*="Icon"]{ display:none !important; }
+    a[href*="#/collections/"]:not([href*="/entries/"])::before{
+      content:""; width:20px; height:20px; flex:0 0 auto; margin-right:11px;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171c21'/%3E%3Ccircle cx='32' cy='32' r='16.5' fill='none' stroke='%239a5f2c' stroke-width='4.5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23faf7f2'/%3E%3Crect x='30.4' y='8.5' width='3.2' height='9' rx='1.6' fill='%23171c21'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    a[href*="#/collections/"]:not([href*="/entries/"]).active{
+      background:var(--oi-copper-soft) !important; color:var(--oi-copper-dk) !important; }
+    a[href*="#/collections/"]:not([href*="/entries/"]).active::after{
+      content:""; position:absolute; left:5px; top:10px; bottom:10px; width:3px;
+      border-radius:3px; background:var(--oi-copper); }
+
+    /* ---------- "Sort by" + list/grid view toggle → copper ---------- */
+    [class*="ViewControls"] svg, [class*="ViewStyle"] svg, [class*="SortControl"] svg,
+    [class*="ViewControls"] button, [class*="ViewControls"] a, [class*="SortControl"] button{
+      color:var(--oi-copper) !important; fill:var(--oi-copper) !important; }
+
+    /* ---------- headings + cards ---------- */
+    [class*="CollectionTop"] h1, [class*="CollectionTop"] h2, h1[class*="CollectionPageTop"]{
+      font-family:var(--oi-serif) !important; color:var(--oi-head) !important; }
+    [class*="Card"], [class*="ListCard"]{ border-radius:12px !important; border:1px solid var(--oi-rule) !important; }
+
+    /* ---------- login screen ---------- */
+    [class*="LoginPageBackground"]{ background-color:var(--oi-head) !important; }
+    [class*="Login"] button{ background-color:var(--oi-copper) !important; }
+  </style>
 </head>
 <body>
-  <!-- DIAGNOSTIC BUILD: bare Decap loader only. No custom CSS or scripts.
-       Purpose: confirm whether the sidebar links navigate on a clean editor.
-       Styling + map preview will be layered back once this is confirmed. -->
+  <!-- Decap CMS (open-source). All ONE Intelligence branding is CSS-only.
+       No JavaScript runs here, so Decap's navigation is never disturbed. -->
   <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
 </body>
 </html>

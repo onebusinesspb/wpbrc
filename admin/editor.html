@@ -41,17 +41,17 @@
     /* ---------- collection nav links ----------
        NOTE: we do NOT change the link's display/position, so its click area is
        exactly what Decap built. The O is an inline pseudo that ignores clicks. */
-    a[href*="#/collections/"]:not([href*="/entries/"]):not([href*="/new"]){
+    [class*="Sidebar"] a[href*="#/collections/"]{
       padding:12px 14px 12px 18px !important; margin:6px 8px !important; border-radius:8px !important;
       line-height:20px !important; }
-    a[href*="#/collections/"]:not([href*="/entries/"]):not([href*="/new"]) > svg,
-    a[href*="#/collections/"]:not([href*="/entries/"]):not([href*="/new"]) [class*="Icon"]{ display:none !important; }
-    a[href*="#/collections/"]:not([href*="/entries/"]):not([href*="/new"])::before{
+    [class*="Sidebar"] a[href*="#/collections/"] > svg,
+    [class*="Sidebar"] a[href*="#/collections/"] [class*="Icon"]{ display:none !important; }
+    [class*="Sidebar"] a[href*="#/collections/"]::before{
       content:""; display:inline-block; width:19px; height:19px; vertical-align:middle; margin-right:11px;
       position:relative; top:-1px; pointer-events:none;
       background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23171c21'/%3E%3Ccircle cx='32' cy='32' r='16.5' fill='none' stroke='%239a5f2c' stroke-width='4.5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23faf7f2'/%3E%3Crect x='30.4' y='8.5' width='3.2' height='9' rx='1.6' fill='%23171c21'/%3E%3C/svg%3E") center/contain no-repeat;
     }
-    a[href*="#/collections/"]:not([href*="/entries/"]):not([href*="/new"]).active{
+    [class*="Sidebar"] a[href*="#/collections/"].active{
       background:var(--oi-copper-soft) !important; color:var(--oi-copper-dk) !important; }
 
     /* ---------- "Sort by" + list/grid view toggle → copper ---------- */
@@ -71,7 +71,7 @@
 </head>
 <body>
   <!-- Decap CMS (open-source). CSS-only branding; no JavaScript; link layout untouched.
-       Build: ONE Intelligence editor v2 — O icons centered, "+ New" button excluded, nav verified working. -->
+       Build: ONE Intelligence editor v3 — O icons scoped to sidebar only (top "+ New" button clean), nav verified working. -->
   <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
 </body>
 </html>
